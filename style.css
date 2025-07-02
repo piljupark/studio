@@ -312,7 +312,7 @@ body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.
 
 /* 모달 내용 컨테이너 */
 .modal-content {padding: 20px; box-sizing: border-box;  border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); width: 45%; min-width: 340px; max-width: 560px; height: 80%; max-height: unset; overflow: hidden; position: relative; display: flex; flex-direction: column; background: #1e1e1e;} 
-.modal-close-button {position: absolute; top: 15px; right: 10px; font-size: 24px; cursor: pointer; color: #f4f4f4; background: #1e1e1e; border: none; padding: 9px; line-height: 1;}
+.modal-close-button {position: absolute; top: 4px; right: 10px; font-size: 24px; cursor: pointer; color: #f4f4f4; background: #1e1e1e; border: none; padding: 9px; line-height: 1;}
 
 /* iframe 스타일 */
 .modal-content iframe {flex-grow: 1; width: 100%; border: none; -ms-overflow-style: none; scrollbar-width: none;}
