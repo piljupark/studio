@@ -27,7 +27,7 @@
       i.id='recatch-embed-script';
       i.src='https://cdn.recatch.cc/recatch-embed.iife.js?t='+a[0]+'&b='+a[1]+'&c='+t+'&tr=true&th='+ch+'&mode=sdk';
       h.prepend(i);
-    })(document,'head','script',['kma','hadbntplmz'],'recatch-form','light');
+    })(document,'head','script',['kma','xvkmrdltjh'],'recatch-form','light');
   </script>
   <!-- End Re:catch embedding code -->
 
@@ -341,11 +341,13 @@
         <div class="grid">
           <div class="vid-wrap">
             
-            <div style="padding:0 0 0 0;position:relative;" class="vid vid1"><iframe src="https://player.vimeo.com/video/1095504277?background=1&amp;badge=0&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;right:0;width:70%;height:80vh;" title="vid_ai"></iframe></div>
+            <div style="padding:0 0 0 0;position:relative;" class="vid">
+              <iframe src="https://player.vimeo.com/video/1095504277?background=1&amp;badge=0&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;right:0;width:70%;height:80vh;" title="vid_ai"></iframe>
+              
+              <iframe src="https://player.vimeo.com/video/1095529271?background=1&amp;badge=0&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;right:0;width:70%;height:80vh;" title="vid_ai3"></iframe>
 
-            <div style="padding:0 0 0 0;position:relative;" class="vid vid2"><iframe src="https://player.vimeo.com/video/1095529271?background=1&amp;badge=0&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;right:0;width:70%;height:80vh;" title="vid_ai3"></iframe></div>
-
-            <div style="padding:0 0 0 0;position:relative;" class="vid vid3"><iframe src="https://player.vimeo.com/video/1095528429?h=a147079ec1&amp;background=1&amp;badge=0&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;right:0;width:70%;height:80vh;" title="vid_ai2"></iframe></div>
+              <iframe src="https://player.vimeo.com/video/1095528429?h=a147079ec1&amp;background=1&amp;badge=0&amp;autoplay=1&amp;loop=1&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;right:0;width:70%;height:80vh;" title="vid_ai2"></iframe>
+            </div>
           </div>
         </div>
       </div>
@@ -633,7 +635,7 @@
         &times; </button>
       <iframe
         id="recatchModalIframe"
-        src="https://kma.recatch.cc/workflows/hadbntplmz" style="width: '100%'; height: '100%'; border: 'none';"
+        src="https://kma.recatch.cc/workflows/xvkmrdltjh" style="width: '100%'; height: '100%'; border: 'none';"
       ></iframe>
     </div>
   </div>
@@ -678,44 +680,49 @@
       },
     });
 
-    // 히치하이커 AI
-    const buttons = document.querySelectorAll('.btn-wrap .btn');
-    const videos = document.querySelectorAll('.vid-wrap .vid');
+   // 히치하이커 AI
+  const buttons = document.querySelectorAll('.btn-wrap .btn');
 
-    const players = Array.from(videos).map((vid) => {
-      const iframe = vid.querySelector('iframe');
-      return new Vimeo.Player(iframe);
-    });
+  // 각 iframe을 직접 선택
+  const iframe1 = document.querySelector('.vid iframe:nth-child(1)');
+  const iframe2 = document.querySelector('.vid iframe:nth-child(2)');
+  const iframe3 = document.querySelector('.vid iframe:nth-child(3)');
 
-    buttons.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        buttons.forEach((b, bIdx) => {
-          if (bIdx === idx) {
-            b.classList.add('active');
-          } else {
-            b.classList.remove('active');
-          }
-        });
+  // Vimeo 플레이어 객체 생성
+  const players = [
+    new Vimeo.Player(iframe1),
+    new Vimeo.Player(iframe2),
+    new Vimeo.Player(iframe3),
+  ];
 
-        // 영상 표시 상태 처리
-          videos.forEach((vid, vIdx) => {
-            vid.style.opacity = (vIdx === idx) ? '1' : '0';
-          });
+  // iframe들을 배열로 저장
+  const iframes = [iframe1, iframe2, iframe3];
 
-          // 모든 플레이어 일시정지
-          players.forEach((player, pIdx) => {
-            if (pIdx !== idx) {
-              player.pause();
-            }
-          });
+  buttons.forEach((btn, idx) => {
+    btn.addEventListener('click', () => {
+      // 버튼 active 처리
+      buttons.forEach((b, bIdx) => {
+        b.classList.toggle('active', bIdx === idx);
+      });
 
-          // 선택된 영상: 처음부터 재생 + 무한 반복
-          const activePlayer = players[idx];
-          activePlayer.setCurrentTime(0).then(() => {
-            activePlayer.play();
-          });
+      // iframe 표시 상태 처리
+      iframes.forEach((iframe, fIdx) => {
+        iframe.style.opacity = (fIdx === idx) ? '1' : '0';
+        iframe.style.pointerEvents = (fIdx === idx) ? 'auto' : 'none';
+      });
+
+      // 다른 영상 일시정지
+      players.forEach((player, pIdx) => {
+        if (pIdx !== idx) player.pause();
+      });
+
+      // 선택된 영상 처음부터 재생
+      const activePlayer = players[idx];
+      activePlayer.setCurrentTime(0).then(() => {
+        activePlayer.play();
       });
     });
+  });
 
     // 멤버십 플랜
     const btn1 = document.querySelector('.mem-area .btn1');
