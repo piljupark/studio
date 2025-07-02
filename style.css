@@ -33,7 +33,7 @@ body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.
 .visual {position: relative; width: 100vw; height: 100vh; display: flex; justify-content: center; align-items: center; transition: margin-top 1s ease-in-out;}
 .visual.hidden { margin-top: 0 }
 
-.visual-inner { position: relative; width: 90vw; max-width: 1700px; height: calc(100vh - 200px); max-height: 960px; background-image: url('/images/bg_intro1.webp'); background-position: center; background-repeat: no-repeat; background-size: cover; border-radius: 40px; overflow: hidden; display: grid; justify-content: center; align-items: center; justify-items: center; align-content: center; text-align: center;}
+.visual-inner { position: relative; width: 90vw; max-width: 1700px; height: calc(100vh - 200px); max-height: 960px; background-image: url('studio_images/bg_intro1.webp'); background-position: center; background-repeat: no-repeat; background-size: cover; border-radius: 40px; overflow: hidden; display: grid; justify-content: center; align-items: center; justify-items: center; align-content: center; text-align: center;}
 
 .visual-inner .txt-wrap {position: relative;}
 .visual-inner .txt-wrap .txt1 {font-size: 50px; font-style: normal; font-weight: 900; line-height: normal; background: linear-gradient(90deg, #FFF 0%, #90D4C9 72.5%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
@@ -143,7 +143,7 @@ body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.
 .cont1-area .swiper-o .swiper-pagination {bottom: 88px; display: grid; justify-items: center;}
 .cont1-area .swiper-o .swiper-pagination .swiper-pagination-bullet {position: relative; width: calc(100% - 96px); height: 60px; margin: 0; padding-left: 54px;  color: rgba(6,6,6,0.6); text-align: left;  background: none;  border-bottom: 1px solid #d9d9d9; border-radius: 0; opacity: 1; display: flex; align-items: center;box-sizing: border-box; font-size: 16px; font-weight: 400; line-height: 28px; letter-spacing: -0.48px;}
 .cont1-area .swiper-o .swiper-pagination .swiper-pagination-bullet:before {position: absolute; content: ''; width: 20px; height: 20px; background: #d9d9d9; border-radius: 100%; left: 14px;}
-.cont1-area .swiper-o .swiper-pagination .swiper-pagination-bullet::after {position: absolute; content: ''; right: 14px; width: 13px; height: 10px; background-image: url('/images/arrow_right_pagination.svg'); background-position: center; background-size: cover; background-repeat: no-repeat;}
+.cont1-area .swiper-o .swiper-pagination .swiper-pagination-bullet::after {position: absolute; content: ''; right: 14px; width: 13px; height: 10px; background-image: url('studio_images/arrow_right_pagination.svg'); background-position: center; background-size: cover; background-repeat: no-repeat;}
 .cont1-area .swiper-o .swiper-pagination .swiper-pagination-bullet:nth-child(1) {display: none;}
 .cont1-area .swiper-o .swiper-pagination .swiper-pagination-bullet:last-child {border: none;}
 /* cont1-area// */
