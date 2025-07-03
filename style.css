@@ -7,6 +7,7 @@ body {margin: 0; padding: 0; font-family: "SUIT variable";}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
 body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 1px); background-size: 25px 25px;}
+a, button {font-family: "SUIT variable";}
 
 
 /* int-logo// */
@@ -456,23 +457,23 @@ body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.
   .mem-area .plan-wrap {flex-direction: column; gap: 20px; padding: 0 25px; box-sizing: border-box;}
 
   .mem-area .plan-wrap .plan {width: 100%; height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
-  .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 390px;}
+  .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 250px;}
   .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
 
-  .mem-area .plan-wrap .left {width: 50%;}
+  .mem-area .plan-wrap .left {width: 40%;}
   .mem-area .plan-wrap .left .txt {display: none;}
   .mem-area .plan-wrap .plan img {float: left; width: 25px;}
   .mem-area .plan-wrap .plan .nm {float: left; margin: 2px 5px 0; font-size: 16px; line-height: 21px;}
   .mem-area .plan-wrap .plan .txt { float: left; width: 100%;}
-  .mem-area .plan-wrap .plan .price {float: left; width: 100%; margin-top: 32px; font-size: 21px; }
+  .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 90px; margin-top: 32px; font-size: 21px; }
   .mem-area .plan-wrap .plan .price span {font-size: 14px;}
   .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); font-size: 14px; }
 
-  .mem-area .plan-wrap .right {width: 50%;}
-  .mem-area .plan-wrap .right .txt {display: block; font-size: 14px; letter-spacing: -0.84px;}
-  .mem-area .plan-wrap .caution {text-align: left; }
-  .mem-area .plan-wrap .list {gap: 5px;}
-  .mem-area .plan-wrap .list li {font-size: 14px; line-height: 16px;}
+  .mem-area .plan-wrap .right {width: 60%;}
+  .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }
+  .mem-area .plan-wrap .caution {text-align: left; padding: 0; margin-top: 10px; font-size: 12px; line-height: 16px;}
+  .mem-area .plan-wrap .list {margin-top: 30px; gap: 5px;}
+  .mem-area .plan-wrap .list li {font-size: 12px; line-height: 16px; letter-spacing: -0.98px;}
 
 }
 
@@ -480,6 +481,4 @@ body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.
   /* exp-hr */
   .exp-hr .hr-inner .btn-wrap {width: 500px; justify-content: flex-start}
 
-  .mem-area .plan-wrap .left {width: 40%;}
-  .mem-area .plan-wrap .right {width: 60%;}
 }
