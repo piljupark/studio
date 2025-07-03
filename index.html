@@ -717,6 +717,22 @@
 
 
   <script>
+    window.addEventListener('load', () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll("section").forEach((section) => {
+      ScrollTrigger.create({
+        trigger: section,
+        start: "top top",
+        end: "+=2000",   // 해당 섹션에서 2000px 더 스크롤해야 다음으로 넘어감
+        pin: true,
+        scrub: true,
+        markers: false // 디버깅용: true면 위치 가이드 보임
+      });
+    });
+  });
+
+
     const labels = ['', 'KMA Original', 'the brief', 'the feed']
 
     var swiper = new Swiper(".swiper-o", {
