@@ -457,17 +457,18 @@ a, button {font-family: "SUIT variable";}
   .mem-area .plan-wrap {flex-direction: column; gap: 20px; padding: 0 25px; box-sizing: border-box;}
 
   .mem-area .plan-wrap .plan {width: 100%; height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
-  .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 250px;}
+  .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 270px;}
   .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
+  .mem-area .plan-wrap .plan.plan2 .most {font-size: 14px;}
 
   .mem-area .plan-wrap .left {width: 40%;}
   .mem-area .plan-wrap .left .txt {display: none;}
   .mem-area .plan-wrap .plan img {float: left; width: 25px;}
-  .mem-area .plan-wrap .plan .nm {float: left; margin: 2px 5px 0; font-size: 16px; line-height: 21px;}
+  .mem-area .plan-wrap .plan .nm {float: left; margin: 2px 0 0 5px; font-size: 14px; line-height: 21px; letter-spacing: -0.94px;}
   .mem-area .plan-wrap .plan .txt { float: left; width: 100%;}
-  .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 90px; margin-top: 32px; font-size: 21px; }
+  .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 80px; margin-top: 32px; font-size: 21px; }
   .mem-area .plan-wrap .plan .price span {font-size: 14px;}
-  .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); font-size: 14px; }
+  .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); height: 40px; font-size: 14px; }
 
   .mem-area .plan-wrap .right {width: 60%;}
   .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }
