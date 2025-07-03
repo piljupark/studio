@@ -58,7 +58,7 @@ a, button {font-family: "SUIT variable";}
 .intro-area .ti {position: relative; font-size: 45px; font-weight: 600; line-height: 64px; text-align: center; letter-spacing: -1.35px; }
 .intro-area .ti span {background: linear-gradient(90deg, #03FFD3 0%, #022A99 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .intro-area .sub-ti {font-size: 20px; font-weight: 500; line-height: 34px; letter-spacing: -0.6px; color: #b3b3b3; text-align: center; margin-top: 24px;}
-.intro-area .intro-item {width: 80%; margin-top: 154px;}
+.intro-area .intro-item {width: 80%; height: auto; margin-top: 154px;}
 /* brief-area// */
 
 /* //curation-area */
@@ -69,7 +69,7 @@ a, button {font-family: "SUIT variable";}
 .curation-area .txt-wrap h2 span{background: linear-gradient(90deg, #03FFD3 0%, #022A99 171.13%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .curation-area .txt-wrap .txt {font-size: 16px; font-weight: 400; line-height: 28px; letter-spacing: -0.48px; color: #fff; text-align: center; margin-top: 40px;}
 .curation-area .cont-wrap {position: absolute; bottom: -60px; width: 100%; height: auto; display: flex; justify-content: center; align-items: flex-end; overflow: visible;}
-.curation-area .cont-wrap img {width: 16.27%; margin: 0 -1.12vw; box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);}
+.curation-area .cont-wrap img {width: 16.27%; height: 100%; margin: 0 -1.12vw; box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);}
 /* curation-area// */
 
 /* //original-area */
@@ -178,9 +178,9 @@ a, button {font-family: "SUIT variable";}
 .exp-hr .hr-inner .app-wrap {position: relative; width: auto; display: flex; gap: 7px;}
 .exp-hr .hr-inner .app-wrap .app {position: relative; width: 235px; height: 80px; border: none; background: #fff; border-radius: 10px; background-position: center; background-size: cover; background-repeat: no-repeat;}
 .exp-hr .hr-inner .app-wrap .app a {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2;} 
-.exp-hr .hr-inner .vid-wrap .vid {position: absolute;}
-.exp-hr .hr-inner .vid-wrap .vid iframe {opacity: 0; transition: all .3s ease;}
-.exp-hr .hr-inner .vid-wrap .vid iframe:nth-child(1) {opacity: 1;}
+.exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; height:80vh; display: flex; justify-content: flex-end;}
+.exp-hr .hr-inner .vid-wrap video {position: absolute; width: 100%; height: 100%; top: 0; left: unset; right: 0; opacity: 0; transition: all .3s ease; inline-size: fit-content;}
+.exp-hr .hr-inner .vid-wrap video:nth-child(1) {opacity: 1;}
 /* exp-area// */
 
 /* //lxp-area */
@@ -199,6 +199,7 @@ a, button {font-family: "SUIT variable";}
 .lxp-cont .grid .txt-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; line-height: 18px; transition: all .3s ease;}
 .lxp-cont .grid .txt-wrap .ti {font-size: 36px; font-weight: 700; line-height: 50px; font-style: normal; letter-spacing: -1.08px; margin-top: 12px; transition: all .3s ease;}
 .lxp-cont .grid .txt-wrap .ti span {background: linear-gradient(90deg, #0381FF -120%, #03FFD3 31.5%, #944041 200%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.lxp-cont .grid .txt-wrap .ti br.mo-only {display: none;}
 .lxp-cont .grid .txt-wrap .txt {font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -0.48px; color: #515151; font-style: normal; margin-top: 27px; transition: all .3s ease;}
 .lxp-cont .grid .txt-wrap .sm-ti2 {position: absolute; opacity: 0;}
 .lxp-cont .grid .txt-wrap .ti2 {position: absolute; opacity: 0;} 
@@ -331,6 +332,16 @@ a, button {font-family: "SUIT variable";}
   to { opacity: 1; transform: translate(-50%, -50%); }
 }
 
+@media screen and (max-width: 1024px) {
+ /* mem-area */
+  .mem-area .plan-wrap {padding: 0 25px; box-sizing: border-box; gap: 20px;}
+  .mem-area .plan-wrap .plan {width: 33%; padding: 25px; }
+  .mem-area .plan-wrap .plan.plan2 {width: 35%;}
+  .mem-area .plan-wrap .plan.plan2 .plan-inner {padding: 25px;}
+
+  .mem-area .plan-wrap .list li {font-size: 14px; letter-spacing: -0.32px;}
+}
+
 
 
 @media screen and (max-width: 768px) {
@@ -441,6 +452,7 @@ a, button {font-family: "SUIT variable";}
   .exp-hr .hr-inner .vid-wrap .vid iframe:nth-child(1) {position: relative !important;}
 
   /* //lxp-area */
+  .lxp-cont {height: auto;}
   .lxp-inner.left {gap: 3vw;}
   .lxp-inner.left .logo {width: 40vw; max-width: 400px;}
   .lxp-inner.left span {font-size: 13vw;}
@@ -450,7 +462,19 @@ a, button {font-family: "SUIT variable";}
   .lxp-inner.right .txt-wrap h3 {font-size: 26px; font-weight: 700; line-height: 38px; letter-spacing: -0.78px;}
   .lxp-inner.right .txt-wrap .txt {font-size: 12px; line-height: 18px; letter-spacing: -0.36px; margin-top: 16px;}
 
+  .lxp-cont .grid {padding: 0 25px; gap: 50px;}
+  .lxp-cont .grid.grid1 .vid-wrap {}
+  .lxp-cont .grid.grid1 .item-wrap {display: none;}
+  .lxp-cont .grid.grid3 .item-wrap img {width: 100%;}
+  .lxp-cont .grid .item-wrap {position: relative; height: auto;}
+
   .lxp-cont .grid .txt-wrap .sm-ti {font-size: 16px;}
+  .lxp-cont .grid .txt-wrap .ti {font-size: 24px; line-height: 30px; letter-spacing: -0.72px; }
+  .lxp-cont .grid .txt-wrap .ti br.mo-only {display: block;}
+  .lxp-cont .grid .txt-wrap .txt { margin-top: 16px; font-size: 14px; color: #b3b3b3; line-height: 20px; letter-spacing: -0.42px;}
+
+  /* out-area */
+  .out-area {display: none;}
 
 
   /* mem-area */
