@@ -447,9 +447,9 @@ a, button {font-family: "SUIT variable";}
 
   .exp-hr .hr-inner .app-wrap {display: none;}
 
-  .exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; background: #5c6b69;}
-  .exp-hr .hr-inner .vid-wrap .vid iframe {width: 65% !important; max-width: 414px; left: 50% !important; transform: translate(-50%, 0);}
-  .exp-hr .hr-inner .vid-wrap .vid iframe:nth-child(1) {position: relative !important;}
+  .exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; height: auto; background: #5c6b69; justify-content: center; padding: 45px 0; box-sizing: border-box;}
+  .exp-hr .hr-inner .vid-wrap video {width: 65% !important; max-width: 414px; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius:10vw; overflow: hidden;}
+  .exp-hr .hr-inner .vid-wrap video:nth-child(1) {position: relative; left: unset; transform: unset;}
 
   /* //lxp-area */
   .lxp-cont {height: auto;}
@@ -463,7 +463,6 @@ a, button {font-family: "SUIT variable";}
   .lxp-inner.right .txt-wrap .txt {font-size: 12px; line-height: 18px; letter-spacing: -0.36px; margin-top: 16px;}
 
   .lxp-cont .grid {padding: 0 25px; gap: 50px;}
-  .lxp-cont .grid.grid1 .vid-wrap {}
   .lxp-cont .grid.grid1 .item-wrap {display: none;}
   .lxp-cont .grid.grid3 .item-wrap img {width: 100%;}
   .lxp-cont .grid .item-wrap {position: relative; height: auto;}
