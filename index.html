@@ -80,14 +80,17 @@
       <h2>일상이 영감으로, <br>성장과 취향을 사로잡는 <span>큐레이션</span></h2>
       <p class="txt">국내 최고·최대의 경영자와 차세대 리더 대상 조찬 세미나를 온라인에서 만나세요. <br>직무와 인문학을 아우르는 숏폼 영상과 전문가 칼럼도 놓치지 마세요.</p>
     </div>
-    <div class="cont-wrap">
-      <img src="studio_images/cur_item1.webp" alt="" style="z-index: 1;" loading="lazy" width="900" height="900">
-      <img src="studio_images/cur_item2.webp" alt="" style="z-index: 2; margin-bottom: 20px;" loading="lazy" width="900" height="900"> 
-      <img src="studio_images/cur_item3.webp" alt="" style="z-index: 3; margin-bottom: 40px;" loading="lazy" width="900" height="900">
-      <img src="studio_images/cur_item4.webp" alt="" style="z-index: 4; margin-bottom: 60px;" loading="lazy" width="900" height="900">
-      <img src="studio_images/cur_item5.webp" alt="" style="z-index: 3; margin-bottom: 40px;" loading="lazy" width="900" height="900">
-      <img src="studio_images/cur_item6.webp" alt="" style="z-index: 2; margin-bottom: 20px;" loading="lazy" width="900" height="900">
-      <img src="studio_images/cur_item7.webp" alt="" style="z-index: 1;" loading="lazy" width="900" height="901">
+
+    <div class="scroll-wrap">
+      <div class="cont-wrap">
+        <img src="studio_images/cur_item1.webp" alt="" style="z-index: 1;" loading="lazy" width="900" height="900">
+        <img src="studio_images/cur_item2.webp" alt="" style="z-index: 2; margin-bottom: 20px;" loading="lazy" width="900" height="900"> 
+        <img src="studio_images/cur_item3.webp" alt="" style="z-index: 3; margin-bottom: 40px;" loading="lazy" width="900" height="900">
+        <img src="studio_images/cur_item4.webp" alt="" style="z-index: 4; margin-bottom: 60px;" loading="lazy" width="900" height="900">
+        <img src="studio_images/cur_item5.webp" alt="" style="z-index: 3; margin-bottom: 40px;" loading="lazy" width="900" height="900">
+        <img src="studio_images/cur_item6.webp" alt="" style="z-index: 2; margin-bottom: 20px;" loading="lazy" width="900" height="900">
+        <img src="studio_images/cur_item7.webp" alt="" style="z-index: 1;" loading="lazy" width="900" height="901">
+      </div>
     </div>
   </section>
   <!-- //curation-area -->
@@ -717,18 +720,28 @@
 
 
   <script>
-    window.addEventListener('load', () => {
+  window.addEventListener('load', () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    document.querySelectorAll("section").forEach((section) => {
-      ScrollTrigger.create({
-        trigger: section,
+    const contWrap = document.querySelector(".curation-area .cont-wrap");
+
+    const scrollAmount = contWrap.getBoundingClientRect().height;
+
+    gsap.set(contWrap, {
+      transformOrigin: "center top"
+    });
+
+    gsap.to(contWrap, {
+      y: () => scrollAmount - window.innerHeight, 
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".curation-area",
         start: "top top",
-        end: "+=2000",   // 해당 섹션에서 2000px 더 스크롤해야 다음으로 넘어감
+        end: `+=${scrollAmount}`,
         pin: true,
         scrub: true,
-        markers: false // 디버깅용: true면 위치 가이드 보임
-      });
+        markers: true
+      }
     });
   });
 
