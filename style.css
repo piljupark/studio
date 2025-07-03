@@ -454,6 +454,12 @@ a, button {font-family: "SUIT variable";}
 
 
   /* mem-area */
+  .mem-area {padding-top: 50px;}
+  .mem-area h3 {font-size: 24px; font-weight: 600; line-height: 32px; letter-spacing: -0.72px;}
+  .mem-area .btn-wrap {width: 210px; margin: 40px auto 0;}
+  .mem-area .btn-wrap .btn1 img {width: 45px;}
+  .mem-area .btn-wrap .btn2 {font-size: 14px; }
+
   .mem-area .plan-wrap {flex-direction: column; gap: 20px; padding: 0 25px; box-sizing: border-box;}
 
   .mem-area .plan-wrap .plan {width: 100%; height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
@@ -475,6 +481,25 @@ a, button {font-family: "SUIT variable";}
   .mem-area .plan-wrap .caution {text-align: left; padding: 0; margin-top: 10px; font-size: 12px; line-height: 16px;}
   .mem-area .plan-wrap .list {margin-top: 30px; gap: 5px;}
   .mem-area .plan-wrap .list li {font-size: 12px; line-height: 16px; letter-spacing: -0.98px;}
+
+  .mem-area .more span {font-size: 14px; letter-spacing: -0.87px;}
+
+  /* promotion */
+  .promo {font-size: 14px; gap: 18px;}
+  .promo img {width: 18px;}
+
+  /* banner */
+  .swiperBanner .swiper-slide {padding: 38px 36px; height: 180px;}
+  .swiperBanner .swiper-slide .ti {font-size: 16px;}
+  .swiperBanner .swiper-slide span {font-size: 14px;}
+  .swiperBanner .swiper-slide .promo-item {width: 76px; right: 30px;}
+
+  .loop-banner {margin-top: 75px;}
+  .loop-banner .banner-list .banner img {width: 1200px;}
+
+  .bottom {margin-top: 75px;}
+  .bottom .move-wrap {gap: 24px;}
+  .bottom .move-wrap a {font-size: 14px;}
 
 }
 
