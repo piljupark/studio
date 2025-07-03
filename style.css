@@ -2,7 +2,7 @@
 
 
 * {font-family: "SUIT variable";}
-html {overflow-x: hidden;}
+html {overflow-x: hidden; scroll-behavior: smooth;}
 body {margin: 0; padding: 0; font-family: "SUIT variable";}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
@@ -90,10 +90,10 @@ a, button {font-family: "SUIT variable";}
 .original-area .cont-wrap .item .item-txt-wrap .txt {font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px; letter-spacing: -0.48px; color: #06060680; margin-top: 16px;}
 .original-area .cont-wrap .item .item-txt-wrap .sub {font-size: 14px; font-style: normal; font-weight: 400; line-height: 14px; letter-spacing: -0.42px; margin-top: 24px;}
 
-.original-area .cont-wrap .item.item1 {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-30deg); z-index: 1}
-.original-area .cont-wrap .item.item2 {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-5deg); z-index: 2}
-.original-area .cont-wrap .item.item3 {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(20deg); z-index: 3}
-.original-area .cont-wrap .item.item4 {position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(45deg); z-index: 4}
+.original-area .cont-wrap .item.item1 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-30deg); z-index: 1}
+.original-area .cont-wrap .item.item2 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-5deg); z-index: 2}
+.original-area .cont-wrap .item.item3 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(20deg); z-index: 3}
+.original-area .cont-wrap .item.item4 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(45deg); z-index: 4}
 /* original-area// */ 
 
 
