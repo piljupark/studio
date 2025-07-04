@@ -75,7 +75,7 @@ a, button {font-family: "SUIT variable";}
 /* curation-area// */
 
 /* //original-area */
-.original-area {position: relative; width: 100%; height: auto; min-height: 100vh; background: #060606; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: hidden;}
+.original-area {position: relative; width: 100%; height: auto; min-height: 100vh; background: #060606; display: flex; justify-content: center; align-items: center; z-index: 2; overflow: visible;}
 .original-area .txt-wrap {position: relative; width: 100%; height: auto; z-index: 2; }
 .original-area .txt-wrap h2 {font-size: 45px; font-weight: 600; line-height: 66px; letter-spacing: -1.35px; color: #fff; text-align: center;}
 .original-area .txt-wrap h2 span{background: linear-gradient(90deg, #03FFD3 0%, #022A99 171.13%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
