@@ -87,9 +87,38 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 
     // brief gsap
     const briefWrap = document.querySelector('.brief-area .cont-wrap');
+    const title = document.querySelector('.brief-area .txt-wrap h2');
+    const subtitle = document.querySelector('.brief-area .txt-wrap .txt');
     const items = briefWrap.querySelectorAll('.item');
     const wrapHeight = briefWrap.getBoundingClientRect().height;
     const speedFactors = [0.6, 1.0, 0.6, 1.2]; // 각 아이템별 속도 조절
+
+    gsap.set([title, subtitle], { fontSize: 0, opacity: 0 });
+
+    gsap.to(title, {
+      fontSize: "45px",
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".brief-area",
+        start: "top top",
+        toggleActions: "play none none reverse", // pin 시작될 때 play
+        pin: false // 이 애니메이션 자체에 pin은 안 걸려 있음
+      }
+    });
+
+    gsap.to(subtitle, {
+      fontSize: "16px",
+      opacity: 1,
+      duration: 0.5,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: ".brief-area",
+        start: "top top",
+        toggleActions: "play none none reverse"
+      }
+    });
 
     // 컨테이너 전체 이동 (위로)
     gsap.set(briefWrap, {
