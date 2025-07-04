@@ -26,6 +26,8 @@ a, button {font-family: "SUIT Variable";}
   100% {opacity: 1;}
 }
 
+.int-area .visual-inner {position: absolute; width: 0; height: 0; opacity: 0; overflow: hidden;}
+
 /* //int-logo */
 
 

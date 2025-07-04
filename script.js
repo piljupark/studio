@@ -1,7 +1,37 @@
 if (window.matchMedia("(min-width: 768px)").matches) {
   window.addEventListener('load', () => {
-    gsap.registerPlugin(ScrollTrigger);
 
+
+    // int
+    ScrollTrigger.create({
+      trigger: ".int-area",
+      start: "top top",
+      end: "+=1000",
+      pin: true,
+      scrub: false,
+      markers: true // 확인용 (완성되면 삭제해도 됨)
+    });
+    
+    // ✅ 2. 애니메이션은 앞쪽 500px에서만 진행
+    gsap.to(".visual-inner", {
+      width: "90vw",
+      height: "calc(100vh - 200px)",
+      opacity: 1,
+      ease: "power2.out",
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".int-area",
+        start: "top top",
+        end: "+=500",
+        toggleActions: "play none none reverse",
+        scrub: false,
+        immediateRender: false,
+      }
+    });
+
+
+
+    // curation
     const contWrap = document.querySelector(".curation-area .cont-wrap");
 
     // 실제 이미지 개수 기준으로 계산
