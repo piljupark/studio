@@ -2,51 +2,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
   window.addEventListener('load', () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const intro = document.querySelector('.intro-area');
-    const curation = document.querySelector('.curation-area');
-
-    // scrollTrigger로 intro fixed 제어
-    ScrollTrigger.create({
-      trigger: intro,
-      start: 'top top',
-      end: '+=1000', // 스크롤 길이 조절
-      scrub: true,
-      onEnter: () => intro.classList.add('fixed'),
-      onLeave: () => intro.classList.remove('fixed'),
-      onEnterBack: () => intro.classList.add('fixed'),
-      onLeaveBack: () => intro.classList.remove('fixed'),
-    });
-
-    // intro fade-out + curation fade-in
-    gsap.to(intro, {
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: intro,
-        start: 'top top',
-        end: '+=1000',
-        scrub: true
-      }
-    });
-
-    gsap.to(curation, {
-      opacity: 1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: intro,
-        start: 'top top',
-        end: '+=1000',
-        scrub: true,
-        onUpdate: self => {
-          if (self.progress > 0) {
-            curation.classList.add('visible');
-          } else {
-            curation.classList.remove('visible');
-          }
-        }
-      }
-    });
-
     const contWrap = document.querySelector(".curation-area .cont-wrap");
 
     // 실제 이미지 개수 기준으로 계산
@@ -128,8 +83,55 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       opacity: 1,
       ease: "power2.inOut"
     }, "<"); // 💡 "<" : 바로 위 애니메이션과 동시에 시작
-  });
-}
+
+
+    // brief gsap
+    const briefWrap = document.querySelector('.brief-area .cont-wrap');
+    const items = briefWrap.querySelectorAll('.item');
+    const wrapHeight = briefWrap.getBoundingClientRect().height;
+    const speedFactors = [0.6, 1.0, 0.6, 1.2]; // 각 아이템별 속도 조절
+
+    // 컨테이너 전체 이동 (위로)
+    gsap.set(briefWrap, {
+      y: window.innerHeight
+    });
+
+    gsap.to(briefWrap, {
+      y: -wrapHeight,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".brief-area",
+        start: "top top",
+        end: () => `+=${wrapHeight + window.innerHeight * 1.2}`,
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+        // markers: true
+      }
+    });
+
+    // 각 아이템 개별 속도 설정
+    items.forEach((item, i) => {
+      const speed = speedFactors[i] || 1; // fallback 값
+
+      gsap.fromTo(item,
+        { y: 0 },
+        {
+          y: -wrapHeight * speed,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".brief-area",
+            start: "top top",
+            end: () => `+=${wrapHeight + window.innerHeight * 1.2}`,
+            scrub: true,
+            // markers: true
+          }
+        }
+      );
+    });
+
+  }); // load
+} // matchmedia
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -262,14 +264,14 @@ recatchModal.addEventListener('click', (event) => {
 
 // Re:catch iframe에서 메시지 수신
 window.addEventListener('message', (event) => {
-  console.log("확인용 : " + event.data?.type);
+  // console.log("확인용 : " + event.data?.type);
 
   if (
     event.data?.type === 'disqualified' ||
     event.data?.type === 'bookingComplete' ||
     event.data?.type === 'closeModal'
   ) {
-    console.log('리캐치 폼 이벤트 발생:', event.data.type);
+    // console.log('리캐치 폼 이벤트 발생:', event.data.type);
 
     const successModal = document.getElementById('recatch-success-modal');
     if (successModal) {
@@ -284,9 +286,9 @@ window.addEventListener('message', (event) => {
     closeRecatchModal(); // 모달 닫기
   }
 
-  if (event.data?.type === 'formReady') {
-    console.log('리캐치 폼 로드 준비 완료!');
-  }
+  // if (event.data?.type === 'formReady') {
+  //   console.log('리캐치 폼 로드 준비 완료!');
+  // }
 });
 
   });

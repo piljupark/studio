@@ -55,16 +55,14 @@ a, button {font-family: "SUIT Variable";}
 
 /* //intro-area */
 .intro-area {position: relative; width: 100%; height: 100vh; background: #fff; display: grid; align-items: center; justify-content: center; align-content: center; justify-items: center; opacity: 1; z-index: 10;}
-.intro-area.fixed {position: fixed; top: 0; left: 0;}
 .intro-area .ti {position: relative; font-size: 45px; font-weight: 600; line-height: 64px; text-align: center; letter-spacing: -1.35px; }
 .intro-area .ti span {background: linear-gradient(90deg, #03FFD3 0%, #022A99 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .intro-area .sub-ti {font-size: 20px; font-weight: 500; line-height: 34px; letter-spacing: -0.6px; color: #b3b3b3; text-align: center; margin-top: 24px;}
 .intro-area .intro-item {width: 80%; height: auto; margin-top: 154px;}
-/* brief-area// */
+/* intro-area// */
 
 /* //curation-area */
-.curation-area {position: relative; width: 100%; height: auto; min-height: 100vh; background-color: #060606; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0; transition: opacity .3s ease;}
-.curation-area.visible {opacity: 1;}
+.curation-area {position: relative; width: 100%; height: auto; min-height: 100vh; background-color: #060606; display: flex; align-items: center; justify-content: center; overflow: hidden; transition: opacity .3s ease;}
 .curation-area .bg {position: absolute; width: 100%; height: 100vh; top: 0; left: 0; background-image: linear-gradient(to right top, rgba(3, 255, 211, 0.4), rgba(0, 236, 240, 0.4), rgba(0, 213, 255, 0.4), rgba(0, 187, 255, 0.4), rgba(0, 157, 255, 0.4));}
 .curation-area .txt-wrap {position: relative; width: 100%; height: auto; z-index: 2; }
 .curation-area .txt-wrap h2 {font-size: 45px; font-weight: 600; line-height: 66px; letter-spacing: -1.35px; color: #fff; text-align: center;}
@@ -84,7 +82,7 @@ a, button {font-family: "SUIT Variable";}
 .original-area .txt-wrap .txt {font-size: 16px; font-weight: 400; line-height: 28px; letter-spacing: -0.48px; color: #fff; text-align: center; margin-top: 40px;}
 /* .original-area .cont-wrap {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 1440px; height: auto; padding: 0 20px; box-sizing: border-box; display: flex; gap: 22px; z-index: 2;} */
 .original-area .cont-wrap {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100%; max-width: 1440px; height: auto; padding: 0 20px; box-sizing: border-box; display: flex; gap: 22px; z-index: 2;}
-.original-area .cont-wrap .item {width: 25%; height: 70vh; max-height: 612px; padding: 12px 12px 48px; background: #fff;  border-radius: 30px; background-color: #D7F2EE; box-sizing: border-box;}
+.original-area .cont-wrap .item {position:absolute; top: 50%; left: 50%; width: 40%; max-width: 363px; height: 70vh; max-height: 612px; padding: 12px 12px 48px; background: #fff;  border-radius: 30px; background-color: #D7F2EE; box-sizing: border-box;}
 .original-area .cont-wrap .item figure {position: relative; width: 100%; height: auto; min-height: 400px; margin: 0; background: #ddd; border-radius: 22px; overflow: hidden;}
 .original-area .cont-wrap .item img {position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover;}
 .original-area .cont-wrap .item .item-txt-wrap {position: relative; width: 100%; height: auto; margin-top: 30px; padding: 0 10px; box-sizing: border-box;}
@@ -92,10 +90,10 @@ a, button {font-family: "SUIT Variable";}
 .original-area .cont-wrap .item .item-txt-wrap .txt {font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px; letter-spacing: -0.48px; color: #06060680; margin-top: 16px;}
 .original-area .cont-wrap .item .item-txt-wrap .sub {font-size: 14px; font-style: normal; font-weight: 400; line-height: 14px; letter-spacing: -0.42px; margin-top: 24px;}
 
-.original-area .cont-wrap .item.item1 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-30deg); z-index: 1}
-.original-area .cont-wrap .item.item2 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-5deg); z-index: 2}
-.original-area .cont-wrap .item.item3 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(20deg); z-index: 3}
-.original-area .cont-wrap .item.item4 {position: absolute; width: 40%; max-width: 363px; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(45deg); z-index: 4}
+.original-area .cont-wrap .item.item1 {transform: translate(-50%, -50%) rotate(-30deg); z-index: 1}
+.original-area .cont-wrap .item.item2 {transform: translate(-50%, -50%) rotate(-5deg); z-index: 2}
+.original-area .cont-wrap .item.item3 {transform: translate(-50%, -50%) rotate(20deg); z-index: 3}
+.original-area .cont-wrap .item.item4 {transform: translate(-50%, -50%) rotate(45deg); z-index: 4}
 /* original-area// */ 
 
 
@@ -118,9 +116,9 @@ a, button {font-family: "SUIT Variable";}
 .brief-area .cont-wrap .item .item-txt-wrap .txt {font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px; letter-spacing: -0.48px; color: #06060680; margin-top: 16px;}
 .brief-area .cont-wrap .item .item-txt-wrap .sub {font-size: 14px; font-style: normal; font-weight: 400; line-height: 14px; letter-spacing: -0.42px; margin-top: 24px;}
 
-.brief-area .cont-wrap .item.item2 {margin-left: 6vw; margin-top: 60px;}
+.brief-area .cont-wrap .item.item2 {margin-left: 6vw; margin-top: 160px;}
 .brief-area .cont-wrap .item.item3 {margin-top: 240px;} 
-.brief-area .cont-wrap .item.item4 {margin-top: 60px; margin-left: -10vw;}
+.brief-area .cont-wrap .item.item4 {margin-top: 300px; margin-left: -10vw;}
 /* brief-area //*/
 
 
@@ -400,8 +398,8 @@ a, button {font-family: "SUIT Variable";}
   .original-area .txt-wrap {padding: 0 25px; box-sizing: border-box;}
   .original-area .txt-wrap h2 {font-size: 28px; letter-spacing: -0.84px; line-height: 28px; text-align: left;}
   .original-area .txt-wrap .txt {font-size: 14px; line-height: 20px; letter-spacing: -0.42px; text-align: left;  margin-top: 15px;}
-  .original-area .cont-wrap {position: relative; top: unset; left: unset; transform: unset; margin-top: 30px; padding: 0 25px 30px; display: grid; grid-template-columns: repeat(2, 1fr);}
-  .original-area .cont-wrap .item {width: 100%; height: auto; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px;}
+  .original-area .cont-wrap {position: relative; top: unset; left: unset; transform: unset; margin-top: 30px; padding: 0 25px 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;}
+  .original-area .cont-wrap .item {position: relative; width: 100%; height: auto; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; transform: unset !important; left: unset; top: unset;}
   .original-area .cont-wrap .item figure {min-height: 157px; border-radius: 10px;}
   .original-area .cont-wrap .item .item-txt-wrap {margin-top: 14px; padding: 0 5px;}
   .original-area .cont-wrap .item .item-txt-wrap h3 {font-size: 12px; line-height: 28px; letter-spacing: -0.6px; letter-spacing: -0.34px;}
