@@ -1,13 +1,13 @@
 @charset "UTF-8";
 
 
-* {font-family: "SUIT variable";}
+* {font-family: "SUIT Variable";}
 html {overflow-x: hidden; scroll-behavior: smooth;}
-body {margin: 0; padding: 0; font-family: "SUIT variable";}
+body {margin: 0; padding: 0; font-family: "SUIT Variable";}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
 body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 1px); background-size: 25px 25px;}
-a, button {font-family: "SUIT variable";}
+a, button {font-family: "SUIT Variable";}
 
 
 /* int-logo// */
@@ -54,7 +54,8 @@ a, button {font-family: "SUIT variable";}
 /* //visual */
 
 /* //intro-area */
-.intro-area {position: relative; width: 100%; height: 100vh; background: #fff; display: grid; align-items: center; justify-content: center; align-content: center; justify-items: center;}
+.intro-area {position: relative; width: 100%; height: 100vh; background: #fff; display: grid; align-items: center; justify-content: center; align-content: center; justify-items: center; opacity: 1; z-index: 10;}
+.intro-area.fixed {position: fixed; top: 0; left: 0;}
 .intro-area .ti {position: relative; font-size: 45px; font-weight: 600; line-height: 64px; text-align: center; letter-spacing: -1.35px; }
 .intro-area .ti span {background: linear-gradient(90deg, #03FFD3 0%, #022A99 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .intro-area .sub-ti {font-size: 20px; font-weight: 500; line-height: 34px; letter-spacing: -0.6px; color: #b3b3b3; text-align: center; margin-top: 24px;}
@@ -62,7 +63,8 @@ a, button {font-family: "SUIT variable";}
 /* brief-area// */
 
 /* //curation-area */
-.curation-area {position: relative; width: 100%; height: auto; min-height: 100vh; background-color: #060606; display: flex; align-items: center; justify-content: center; overflow: hidden;}
+.curation-area {position: relative; width: 100%; height: auto; min-height: 100vh; background-color: #060606; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0; transition: opacity .3s ease;}
+.curation-area.visible {opacity: 1;}
 .curation-area .bg {position: absolute; width: 100%; height: 100vh; top: 0; left: 0; background-image: linear-gradient(to right top, rgba(3, 255, 211, 0.4), rgba(0, 236, 240, 0.4), rgba(0, 213, 255, 0.4), rgba(0, 187, 255, 0.4), rgba(0, 157, 255, 0.4));}
 .curation-area .txt-wrap {position: relative; width: 100%; height: auto; z-index: 2; }
 .curation-area .txt-wrap h2 {font-size: 45px; font-weight: 600; line-height: 66px; letter-spacing: -1.35px; color: #fff; text-align: center;}
@@ -259,7 +261,7 @@ a, button {font-family: "SUIT variable";}
 .mem-area .plan-wrap .price {margin-top: 26px; font-size: 34px; font-weight: 800; line-height: 34px; color: #060606; letter-spacing: -1.02px; }
 .mem-area .plan-wrap .price span {font-size: 18px; font-weight: 600; color: #898989; line-height: 22px; }
 .mem-area .plan-wrap .contact {position: relative; width: 100%; margin-top: 40px; height: 50px; border: 1px solid #EDEDED; background: linear-gradient(0deg, #F8F8F8 0%, #EDEDED 100%); border-radius: 40px; font-size: 18px; color: #3f3f3f; font-weight: 700; line-height: 22px; font-style: normal; transition: all .3s ease-in-out; }
-.mem-area .plan-wrap .contact a {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2;}
+.mem-area .plan-wrap .contact a {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2; cursor: pointer;}
 
 .mem-area .plan-wrap .right {position: relative;}
 .mem-area .plan-wrap .right .txt {display: none;}

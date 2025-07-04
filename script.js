@@ -2,33 +2,50 @@ if (window.matchMedia("(min-width: 768px)").matches) {
   window.addEventListener('load', () => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // 페이드 아웃 intro-area
-      gsap.to(".intro-area", {
-        opacity: 0,
-        scrollTrigger: {
-          trigger: ".curation-area",
-          start: "top bottom", // 스크롤로 .curation-area가 보이기 시작할 때
-          end: "top center",   // 중간쯤 왔을 때 완전 사라짐
-          scrub: true,
-          onLeave: () => {
-            document.querySelector('.intro-area')?.classList.add('end');
-          }
-        }
-      });
+    const intro = document.querySelector('.intro-area');
+    const curation = document.querySelector('.curation-area');
 
-      // 페이드 인 curation-area
-      gsap.to(".curation-area", {
-        opacity: 1,
-        scrollTrigger: {
-          trigger: ".curation-area",
-          start: "top bottom",
-          end: "top center",
-          scrub: true,
-          onEnter: () => {
-            document.querySelector('.curation-area')?.classList.add('start');
+    // scrollTrigger로 intro fixed 제어
+    ScrollTrigger.create({
+      trigger: intro,
+      start: 'top top',
+      end: '+=1000', // 스크롤 길이 조절
+      scrub: true,
+      onEnter: () => intro.classList.add('fixed'),
+      onLeave: () => intro.classList.remove('fixed'),
+      onEnterBack: () => intro.classList.add('fixed'),
+      onLeaveBack: () => intro.classList.remove('fixed'),
+    });
+
+    // intro fade-out + curation fade-in
+    gsap.to(intro, {
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: intro,
+        start: 'top top',
+        end: '+=1000',
+        scrub: true
+      }
+    });
+
+    gsap.to(curation, {
+      opacity: 1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: intro,
+        start: 'top top',
+        end: '+=1000',
+        scrub: true,
+        onUpdate: self => {
+          if (self.progress > 0) {
+            curation.classList.add('visible');
+          } else {
+            curation.classList.remove('visible');
           }
         }
-      });
+      }
+    });
 
     const contWrap = document.querySelector(".curation-area .cont-wrap");
 
@@ -202,63 +219,74 @@ buttons.forEach((btn, idx) => {
       }
     });
 
-    //리캐치 스크립트
-    const openButton = document.getElementById('openRecatchFormButton');
-    const recatchModal = document.getElementById('recatchModal');
-    const recatchModalIframe = document.getElementById('recatchModalIframe');
+    // =============================== Re:catch 모달 ===============================
+    // 모든 열기 버튼 가져오기
+const openButtons = document.querySelectorAll('.recatch_open');
+const recatchModal = document.getElementById('recatchModal');
+const recatchModalIframe = document.getElementById('recatchModalIframe');
 
-    // 모달 열기 함수
-    function openRecatchModal() {
-      recatchModal.style.display = 'flex'; // 'flex'로 변경하여 가운데 정렬
+// 모달 열기 함수
+function openRecatchModal() {
+  recatchModal.style.display = 'flex'; // flex로 가운데 정렬
+}
+
+// 모달 닫기 함수
+function closeRecatchModal() {
+  if (recatchModal) {
+    recatchModal.style.display = 'none';
+  }
+}
+
+// HTML의 onclick 속성에서도 호출 가능하도록 전역 등록
+window.closeRecatchModal = closeRecatchModal;
+
+// 모든 버튼에 클릭 이벤트 연결
+openButtons.forEach((btn) => {
+  btn.addEventListener('click', openRecatchModal);
+});
+
+// ESC 키 누르면 모달 닫기
+document.addEventListener('keydown', (event) => {
+  const isModalOpen = window.getComputedStyle(recatchModal).display !== 'none';
+  if (event.key === 'Escape' && isModalOpen) {
+    closeRecatchModal();
+  }
+});
+
+// 모달 외부 영역 클릭 시 닫기
+recatchModal.addEventListener('click', (event) => {
+  if (event.target === recatchModal) {
+    closeRecatchModal();
+  }
+});
+
+// Re:catch iframe에서 메시지 수신
+window.addEventListener('message', (event) => {
+  console.log("확인용 : " + event.data?.type);
+
+  if (
+    event.data?.type === 'disqualified' ||
+    event.data?.type === 'bookingComplete' ||
+    event.data?.type === 'closeModal'
+  ) {
+    console.log('리캐치 폼 이벤트 발생:', event.data.type);
+
+    const successModal = document.getElementById('recatch-success-modal');
+    if (successModal) {
+      successModal.style.display = 'block';
+
+      // 3초 후 자동 닫기
+      setTimeout(() => {
+        successModal.style.display = 'none';
+      }, 3000);
     }
 
-    // 모달 닫기 함수
-    function closeRecatchModal() {
-      recatchModal.style.display = 'none';
-    }
+    closeRecatchModal(); // 모달 닫기
+  }
 
-    // 버튼 클릭 시 모달 열기
-    if (openButton) {
-      openButton.addEventListener('click', openRecatchModal);
-    }
-
-    // ESC 키 누르면 모달 닫기 (선택 사항)
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && recatchModal.style.display === 'flex') {
-        closeRecatchModal();
-      }
-    });
-
-    // 모달 외부 클릭 시 닫기 (선택 사항)
-    recatchModal.addEventListener('click', (event) => {
-      if (event.target === recatchModal) {
-        closeRecatchModal();
-      }
-    });
-
-    // Re:catch 폼에서 메시지 수신 (폼 제출 완료 등)
-    window.addEventListener('message', (event) => {
-      console.log("확인용 : " + event.data.type);
-
-      if (event.data.type === 'disqualified' || event.data.type === 'bookingComplete' || event.data.type === 'closeModal') {
-        console.log('리캐치 폼 이벤트 발생:', event.data.type);
-
-        const modal = document.getElementById('recatch-success-modal');
-        if (modal) {
-          modal.style.display = 'block';
-
-          // 3초 후 자동 닫기
-          setTimeout(() => {
-            modal.style.display = 'none';
-          }, 3000);
-        }
-        closeRecatchModal(); // 폼 제출 완료 또는 닫기 이벤트 시 모달 닫기
-      }
-
-      // 추가적인 이벤트 처리 (예: formReady)
-      if (event.data.type === 'formReady') {
-        console.log('리캐치 폼 로드 준비 완료!');
-      }
-    });
+  if (event.data?.type === 'formReady') {
+    console.log('리캐치 폼 로드 준비 완료!');
+  }
+});
 
   });
