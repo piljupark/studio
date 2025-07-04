@@ -189,6 +189,54 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       );
     });
 
+    // feed gsap
+    const feedItems = gsap.utils.toArray(".feed-area .item");
+
+    const fl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".feed-area",
+        start: "top top",
+        end: "+=4000", // 스크롤 길이 조절
+        scrub: true,
+        pin: true,
+        markers: true
+      }
+    });
+
+    feedItems.forEach((item, index) => {
+      if (index === 0) {
+        // item1은 기본 상태 유지 (opacity: 1로 보이게)
+        gsap.set(item, { opacity: 1, zIndex: 1 });
+      } else {
+        fl.to(item, {
+          opacity: 1,
+          scale: 1,
+          zIndex: index + 1,
+          duration: 1
+        }, "+=1"); // 간격 벌려서 하나씩 등장
+      }
+    });
+
+
+      // 1. pin the .exp-vid section (video 영역)
+      const video = document.querySelector(".exp-vid video");
+
+      ScrollTrigger.create({
+        trigger: ".exp-vid",
+        start: "top top",
+        end: "+=1000", // 충분한 pin 길이 (스크롤 막기용)
+        pin: true,
+        scrub: false,
+        markers: true // 디버그용
+      });
+
+      // 2. 영상 재생 완료 후 자동 스크롤 이동
+      video.addEventListener("ended", () => {
+        document.querySelector(".exp-hr").scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+
   }); // load
 } // matchmedia
 
