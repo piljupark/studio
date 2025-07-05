@@ -233,21 +233,46 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 
         // feed gsap
         const feedItems = gsap.utils.toArray(".feed-area .item");
+        const txtWrap = document.querySelector(".feed-area .txt-wrap");
+        const feedWrap = document.querySelector(".feed-area .cont-wrap");
 
+        // 초기 위치 셋팅
+        gsap.set(txtWrap, { x: "-100vw", opacity: 0 });
+        gsap.set(feedWrap, { x: "100vw", opacity: 0 });
+
+        // 메인 타임라인
         const fl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".feed-area",
                 start: "top top",
-                end: "+=4000", // 스크롤 길이 조절
+                end: "+=4000",
                 scrub: true,
                 pin: true,
                 markers: true
             }
         });
 
+        // 0~200px 구간: 시간 흘리는 용
+        fl.to({}, { duration: 1 }); // 스크롤 구간상 약 200px 해당 (scrub: true이기 때문)
+
+        // 200px 시점에서 txt-wrap / cont-wrap 슬라이드 인 (0.3초)
+        fl.to(txtWrap, {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out"
+        }, "slideIn");
+
+        fl.to(feedWrap, {
+            x: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out"
+        }, "slideIn"); // 타이밍 레이블로 동기화
+
+        // 이후 feedItems 순차 등장
         feedItems.forEach((item, index) => {
             if (index === 0) {
-                // item1은 기본 상태 유지 (opacity: 1로 보이게)
                 gsap.set(item, { opacity: 1, zIndex: 1 });
             } else {
                 fl.to(item, {
@@ -255,9 +280,11 @@ if (window.matchMedia("(min-width: 768px)").matches) {
                     scale: 1,
                     zIndex: index + 1,
                     duration: 1
-                }, "+=1"); // 간격 벌려서 하나씩 등장
+                }, "+=1"); // 간격 줘서 등장
             }
         });
+
+
 
 
         // exp
