@@ -73,6 +73,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       }
     });
 
+
+    // original 
     const cards = document.querySelectorAll('.original-area .item');
 
     // 초기 상태 세팅
@@ -130,12 +132,14 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     }, "<"); // 💡 "<" : 바로 위 애니메이션과 동시에 시작
 
 
+
     // brief gsap
     const briefWrap = document.querySelector('.brief-area .cont-wrap');
     const title = document.querySelector('.brief-area .txt-wrap h2');
     const subtitle = document.querySelector('.brief-area .txt-wrap .txt');
     const items = briefWrap.querySelectorAll('.item');
     const wrapHeight = briefWrap.getBoundingClientRect().height;
+    const scrollRange = wrapHeight + window.innerHeight * 1.2;
     const speedFactors = [0.6, 1.0, 0.6, 1.2]; // 각 아이템별 속도 조절
 
     gsap.set([title, subtitle], { fontSize: 0, opacity: 0 });
@@ -176,11 +180,38 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       scrollTrigger: {
         trigger: ".brief-area",
         start: "top top",
-        end: () => `+=${wrapHeight + window.innerHeight * 1.2}`,
+        end: () => `+=${scrollRange}`,
         scrub: true,
         pin: true,
         anticipatePin: 1,
-        // markers: true
+        onLeave: () => {
+          gsap.to(title, {
+            fontSize: 0,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+          gsap.to(subtitle, {
+            fontSize: 0,
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(title, {
+            fontSize: "45px",
+            opacity: 1, 
+            duration: 0.5,
+            ease: "power2.out"
+          });
+          gsap.to(subtitle, {
+            fontSize: "16px",
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        }
       }
     });
 
@@ -196,7 +227,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           scrollTrigger: {
             trigger: ".brief-area",
             start: "top top",
-            end: () => `+=${wrapHeight + window.innerHeight * 1.2}`,
+            end: () => `+=${scrollRange}`,
             scrub: true,
             // markers: true
           }
