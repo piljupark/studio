@@ -3,30 +3,45 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     gsap.registerPlugin(ScrollTrigger);
 
 
+    let played = false;
+
     ScrollTrigger.create({
       trigger: ".int-area",
       start: "top top",
-      end: "+=1000",
+      end: "+=1200",
       pin: true,
       scrub: false,
       markers: true,
-      id: "pinOnly"
-    });
+      id: "pinOnly",
+      onUpdate: self => {
+        // 스크롤 진행도 계산 (0.0 ~ 1.0)
+        const progress = self.progress;
     
-    // 2. 애니메이션: 스크롤 조금만 해도 바로 트윈 재생
-    gsap.to(".visual-inner", {
-      width: "90vw",
-      height: "calc(100vh - 200px)",
-      opacity: 1,
-      duration: 0.5, // 애니메이션 자연스럽게 1초 진행
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".visual-inner", // .int-area와 다르게 별도 트리거
-        start: "top+=100 top",    // 살짝 스크롤하면 시작되게
-        toggleActions: "play none none reverse", // 아래로 스크롤 → 재생, 위로 → 역재생
-        scrub: false,
-        markers: true,
-        id: "animateInner"
+        // 600px 중 100px == 100 / 600 = 약 0.1666
+        if (progress >= 0.1 && !played) {
+          played = true;
+    
+          gsap.to(".visual-inner", {
+            width: "90vw",
+            height: "calc(100vh - 200px)",
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        }
+    
+        // 스크롤 되돌릴 때 되감기
+        if (progress < 0.083 && played) {
+          played = false;
+    
+          gsap.to(".visual-inner", {
+            width: "0",
+            height: "0",
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          });
+        }
       }
     });
 
