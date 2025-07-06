@@ -84,4 +84,33 @@ document.addEventListener('DOMContentLoaded', () => {
       clickable: true,
     }
   });
+
+  // 반응형 리로드
+  let lastWidth = window.innerWidth;
+
+  window.addEventListener('resize', () => {
+    const currentWidth = window.innerWidth;
+
+    const wasDesktop = lastWidth > 768;
+    const isNowMobile = currentWidth <= 768;
+    const wasMobile = lastWidth <= 768;
+    const isNowDesktop = currentWidth > 768;
+
+    // 상태가 바뀔 때만 reload
+    if ((wasDesktop && isNowMobile) || (wasMobile && isNowDesktop)) {
+      const scrollY = window.scrollY || window.pageYOffset;
+      sessionStorage.setItem("scrollPosition", scrollY);
+      location.reload();
+    }
+
+    lastWidth = currentWidth;
+  });
+
+  window.addEventListener("load", () => {
+    const scrollPosition = sessionStorage.getItem("scrollPosition");
+    if (scrollPosition) {
+      window.scrollTo(0, parseInt(scrollPosition));
+      sessionStorage.removeItem("scrollPosition");
+    }
+  });
 });

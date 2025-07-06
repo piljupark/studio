@@ -10,7 +10,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       end: "+=1200",
       pin: true,
       scrub: false,
-      markers: true,
+      // markers: true,
       id: "pinOnly",
       onUpdate: self => {
         // 스크롤 진행도 계산 (0.0 ~ 1.0)
@@ -45,31 +45,30 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     });
 
     // curation
-    const contWrap = document.querySelector(".curation-area .cont-wrap");
+    let jumped = false; // 중복 방지
 
-    // 실제 이미지 개수 기준으로 계산
-    const containerHeight = contWrap.scrollHeight;
-    const windowHeight = window.innerHeight;
-
-    // 💡 실제 y 이동 거리: contWrap 전체 높이 + window 높이
-    const scrollDistance = containerHeight + windowHeight;
-
-    gsap.set(contWrap, {
-      transformOrigin: "center top",
-    });
-
-    gsap.to(contWrap, {
-      y: -scrollDistance, // 💡 완전히 위로 퇴장
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".curation-area",
-        start: "top top",
-        end: `+=${scrollDistance}`, // 💡 스크롤도 그만큼 길게
-        pin: true,
-        scrub: 1.2,
-        // markers: true
-      },
-    });
+gsap.to(".curation-area .cont-wrap", {
+  y: -window.innerHeight * 2,
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".curation-area",
+    start: "top top",
+    end: `+=${window.innerHeight}`, // 이건 애니메이션 길이일 뿐, 실제 pin 해제 조건 아님
+    pin: true,
+    scrub: 1.2,
+    // markers: true,
+    onUpdate: self => {
+      if (!jumped && self.progress > 0) {
+        jumped = true;
+        gsap.to(window, {
+          scrollTo: ".original-area",
+          duration: 4,
+          ease: "power2.inOut"
+        });
+      }
+    }
+  }
+});
 
     // original
     const cards = document.querySelectorAll(".original-area .item");
@@ -97,7 +96,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         end: "+=2000", // 전체 길이 조정
         scrub: 1.2,
         pin: true,
-        markers: true,
+        //markers: true,
       },
     });
 
@@ -256,7 +255,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         end: "+=4000",
         scrub: 1.2,
         pin: true,
-        markers: true,
+        //markers: true,
       },
     });
 
@@ -313,7 +312,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       end: "+=1000", // 충분한 pin 길이 (스크롤 막기용)
       pin: true,
       scrub: false,
-      markers: true, // 디버그용
+      //markers: true, // 디버그용
     });
 
     // 2. 영상 재생 완료 후 자동 스크롤 이동
@@ -333,7 +332,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         end: "+=2500", // 적당한 길이로 조절
         scrub: 1.2,
         pin: true,
-        markers: true,
+        //markers: true,
         id: "lxpPin",
         onLeave: () => {
           if (isAutoScrolling) return;
@@ -398,6 +397,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       },
       {
         width: "100%", // 중앙 도달 시 확장
+        height: "100vh",
         ease: "power2.out",
       },
       0
@@ -421,10 +421,12 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       ".lxp-inner.right video",
       {
         width: 0,
+        height: "auto",
         opacity: 0,
+        objectFit: "contain",
         ease: "power2.inOut",
       },
-      "+=0.3"
+      "+=1"
     ); // 영상 다 보인 뒤 시작
 
     tlLXP.to(
@@ -457,8 +459,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 
     tlLXP.to(
       ".lxp-cont .txt-wrap .sm-ti span:nth-child(1), \
-                        .lxp-cont .txt-wrap .ti p:nth-child(1), \
-                        .lxp-cont .txt-wrap .txt span:nth-child(1)",
+        .lxp-cont .txt-wrap .ti p:nth-child(1), \
+        .lxp-cont .txt-wrap .txt span:nth-child(1)",
       {
         opacity: 1,
         duration: 1,
@@ -521,6 +523,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       "+=1"
     ); // ← item-wrap 등장 후 1초 뒤
 
+
+    // out-area 
     const outItems = gsap.utils.toArray(".out-item");
 
     // 초기 위치 세팅
@@ -542,7 +546,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       end: "+=2000", // pin 고정 유지 시간
       pin: true,
       scrub: false,
-      markers: true,
+      //markers: true,
       id: "outPin",
       onEnter: () => {
         const tl = gsap.timeline();
@@ -620,7 +624,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       end: "+=800", // 모바일에서는 스크롤 길이 줄임
       pin: true,
       scrub: false,
-      markers: true,
+      //markers: true,
       id: "pinOnlyMobile",
       onUpdate: self => {
         const progress = self.progress;
@@ -679,7 +683,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           });
         }
       },
-      markers: false,
+      //markers: false,
     });
 
     // 위로 → curation → intro (★ 수정된 부분)
@@ -701,7 +705,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           });
         }
       },
-      markers: false,
+      //markers: false,
       immediateRender: false, // ★ 중요: 스크롤 방향 이벤트 초기화 방지
     });
 
@@ -718,7 +722,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         end: `+=${scrollLength}`,
         pin: true,
         scrub: 1.2,
-        markers: false,
+        //markers: false,
       },
     });
 
@@ -744,7 +748,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         end: `+=${briefScrollLength}`,
         pin: true,
         scrub: 1.2,
-        markers: false,
+        //markers: false,
       },
     });
 
@@ -780,7 +784,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         pin: true,
         scrub: 1.2,
         anticipatePin: 1,
-        markers: false,
+        //markers: false,
       },
     });
 
@@ -893,7 +897,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         end: "+=2500", // 적당한 길이로 조절
         scrub: 1.2,
         pin: true,
-        markers: true,
+        //markers: true,
         id: "lxpPin",
         onLeave: () => {
           if (isAutoScrolling) return;
