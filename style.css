@@ -439,11 +439,12 @@ a, button {font-family: "SUIT Variable";}
   .brief-area .cont-wrap .item .item-txt-wrap .sub {margin-top: 12px; font-size: 7px; line-height: 7px; letter-spacing: -0.2px;}
 
   /* feed-area */
-  .feed-area {height: auto; padding-top: 80px;}
+  .feed-area {height: auto; min-height: 100vh; padding-top: 80px;}
   .feed-area .wrapper {flex-direction: column; padding: 0 25px;}
   .feed-area .txt-wrap h2 {font-size: 28px; line-height: 28px; letter-spacing: -0.84px;}
   .feed-area .txt-wrap .txt {margin-top: 15px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
   .feed-area .cont-wrap {width: 100%; margin-top: 30px; padding-bottom: 110px; gap: 12px; }
+  .feed-area .cont-wrap::after {content: ''; display: block; flex: 0 0 80px;}
   .feed-area .cont-wrap .item {position: relative; top: unset; left: unset; min-width: 38vw; height: 262px; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; opacity: 1;}
   .feed-area .cont-wrap .item figure {min-height: 157px; border-radius: 10px;}
   .feed-area .cont-wrap .item .item-txt-wrap {margin-top: 15px;}

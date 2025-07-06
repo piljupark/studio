@@ -1,6 +1,5 @@
 if (window.matchMedia("(min-width: 768px)").matches) {
   window.addEventListener("load", () => {
-
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     let played = false;
@@ -607,14 +606,12 @@ if (window.matchMedia("(min-width: 768px)").matches) {
   }); // load
 } // matchmedia
 
-
-// 
+//
 if (window.matchMedia("(max-width: 767px)").matches) {
   window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-
-    // int 
+    // int
     let played = false;
 
     ScrollTrigger.create({
@@ -625,7 +622,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       scrub: false,
       markers: true,
       id: "pinOnlyMobile",
-      onUpdate: (self) => {
+      onUpdate: self => {
         const progress = self.progress;
 
         if (progress >= 0.1 && !played) {
@@ -654,8 +651,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       },
     });
 
-
-    // intro 
+    // intro
     const intro = document.querySelector(".intro-area");
     const curation = document.querySelector(".curation-area");
 
@@ -689,8 +685,8 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     // 위로 → curation → intro (★ 수정된 부분)
     ScrollTrigger.create({
       trigger: curation,
-      start: "top top",       // 뷰포트의 top과 curation의 top이 닿을 때
-      end: "bottom top",      // 아래서 올라올 때를 잡기 위함
+      start: "top top", // 뷰포트의 top과 curation의 top이 닿을 때
+      end: "bottom top", // 아래서 올라올 때를 잡기 위함
       onLeaveBack: () => {
         if (!locked) {
           locked = true;
@@ -709,8 +705,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       immediateRender: false, // ★ 중요: 스크롤 방향 이벤트 초기화 방지
     });
 
-
-    // original 
+    // original
     const items = gsap.utils.toArray(".original-area .item");
 
     // 전체 스크롤 길이 = 아이템 수 * 400px
@@ -724,21 +719,20 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         pin: true,
         scrub: 1.2,
         markers: false,
-      }
+      },
     });
 
     // 각 아이템을 400px 간격으로 순차 등장
     items.forEach((item, i) => {
-      tl.fromTo(item,
+      tl.fromTo(
+        item,
         { opacity: 0, y: 50 },
         { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
         i * 0.4 // 400px 기준으로 분배 (스크롤 400px = 타임라인 0.4초)
       );
     });
 
-
     // brief
-
     const briefItems = gsap.utils.toArray(".brief-area .item");
 
     const briefScrollLength = briefItems.length * 400;
@@ -751,7 +745,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         pin: true,
         scrub: 1.2,
         markers: false,
-      }
+      },
     });
 
     briefItems.forEach((item, i) => {
@@ -762,11 +756,47 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           opacity: 1,
           y: 0,
           duration: 0.3,
-          ease: "power2.out"
+          ease: "power2.out",
         },
         i * 0.4 // 400px 당 한 개씩 등장
       );
     });
 
+    //feed
+    const feedCont = document.querySelector(".feed-area .cont-wrap");
+    const feedItems = gsap.utils.toArray(".feed-area .item");
+
+    // 전체 스크롤할 거리 계산 (가로 스크롤 길이 + 추가 스크롤 600px)
+    const scrollWidth = feedCont.scrollWidth - window.innerWidth;
+    const extraScroll = 1200;
+
+    gsap.to(feedCont, {
+      x: () => `-${scrollWidth}px`,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".feed-area",
+        start: "top top",
+        end: () => `+=${scrollWidth + extraScroll}`,
+        pin: true,
+        scrub: 1.2,
+        anticipatePin: 1,
+        markers: false,
+      },
+    });
+
+    // 실제 가로 이동
+    tl.to(feedCont, {
+      x: -scrollWidth,
+      ease: "none",
+      duration: scrollWidth / 1000, // 비례로 조절
+    });
+
+    // 빈 공간 유지용 더미 애니메이션
+    tl.to(
+      {},
+      {
+        duration: extraScroll / 1000, // 비례로 맞춤
+      }
+    );
   });
 }
