@@ -768,7 +768,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
     // 전체 스크롤할 거리 계산 (가로 스크롤 길이 + 추가 스크롤 600px)
     const scrollWidth = feedCont.scrollWidth - window.innerWidth;
-    const extraScroll = 1200;
+    const extraScroll = 800;
 
     gsap.to(feedCont, {
       x: () => `-${scrollWidth}px`,
@@ -788,15 +788,97 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     tl.to(feedCont, {
       x: -scrollWidth,
       ease: "none",
-      duration: scrollWidth / 1000, // 비례로 조절
+      duration: scrollWidth / 500, // 비례로 조절
     });
 
     // 빈 공간 유지용 더미 애니메이션
     tl.to(
       {},
       {
-        duration: extraScroll / 1000, // 비례로 맞춤
+        duration: extraScroll / 500, // 비례로 맞춤
       }
     );
+
+    // exp
+    const scrollStep = 500;
+    const totalSteps = 3;
+    const buttons = document.querySelectorAll(".btn-wrap .btn");
+    const videos = document.querySelectorAll(".vid-wrap video");
+
+    let fixed = false;
+
+    const fixFinalState = () => {
+      fixed = true;
+
+      // btn3만 active
+      buttons.forEach((btn, i) => {
+        btn.classList.toggle("active", i === 2);
+        btn.classList.toggle("dimmed", i !== 2);
+      });
+
+      // video3만 보여주기
+      videos.forEach((vid, i) => {
+        gsap.set(vid, { opacity: i === 2 ? 1 : 0 });
+      });
+
+      // btn-wrap 위치 유지
+      gsap.set(".btn-wrap", { x: -60 });
+    };
+
+    ScrollTrigger.create({
+      trigger: ".exp-hr",
+      start: "top top",
+      end: `+=${scrollStep * totalSteps}`,
+      scrub: true,
+      pin: true,
+
+      onUpdate: self => {
+        if (fixed) return;
+
+        const index = Math.floor(self.progress * totalSteps);
+        const offsetX = index === 2 ? 60 : 0;
+
+        // 버튼 이동
+        gsap.to(".btn-wrap", {
+          x: -offsetX,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+
+        // 버튼 상태
+        buttons.forEach((btn, i) => {
+          btn.classList.toggle("active", i === index);
+          btn.classList.toggle("dimmed", i !== index);
+        });
+
+        // 비디오 상태
+        videos.forEach((vid, i) => {
+          gsap.to(vid, {
+            opacity: i === index ? 1 : 0,
+            duration: 0.4,
+            ease: "power2.out",
+          });
+        });
+
+        // 마지막 단계 진입하면 고정
+        if (index === 2 && self.progress >= 0.98) {
+          fixFinalState();
+        }
+      },
+
+      onLeave: () => {
+        if (!fixed) fixFinalState();
+      },
+
+      onScrubComplete: () => {
+        // 보완 처리
+        const scroll = ScrollTrigger.getById("expHR");
+        if (!fixed && scroll && scroll.progress >= 0.99) {
+          fixFinalState();
+        }
+      },
+
+      id: "expHR",
+    });
   });
 }

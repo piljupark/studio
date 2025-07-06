@@ -459,9 +459,9 @@ a, button {font-family: "SUIT Variable";}
   .exp-hr .hr-inner .ti-wrap .sm-ti {font-size: 16px; }
   .exp-hr .hr-inner .ti-wrap .ti {font-size: 28px; font-weight: 700; line-height: 36px; letter-spacing: -0.84px;}
   .exp-hr .hr-inner .ti-wrap .txt {margin-top: 16px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
-  .exp-hr .hr-inner .btn-wrap {width: 100%; padding: 33px 25px 0; margin-top: 40px; box-sizing: border-box; display: flex; justify-content: center; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none;}
+  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 25px 0; margin-top: 40px; box-sizing: border-box; display: flex; justify-content: center; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0); will-change: transform;}
   .exp-hr .hr-inner .btn-wrap::-webkit-scrollbar {display: none;}
-  .exp-hr .hr-inner .btn-wrap .btn {min-width: max-content; padding: 0 14px;}
+  .exp-hr .hr-inner .btn-wrap .btn {min-width: max-content; padding: 0 14px; flex: 0 0 auto;}
   .exp-hr .hr-inner .btn-wrap .btn p {color: rgba(255, 255, 255, 0.8)}
   .exp-hr .hr-inner .btn-wrap .btn::before {width: 100%; padding: 0 20px; box-sizing: border-box; background: rgba(255, 255, 255, 0.2);}
   .exp-hr .hr-inner .btn-wrap .btn .arrow {display: none;}
@@ -477,6 +477,7 @@ a, button {font-family: "SUIT Variable";}
   .exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; height: auto; background: #5c6b69; justify-content: center; padding: 45px 0; box-sizing: border-box;}
   .exp-hr .hr-inner .vid-wrap video {width: 65% !important; max-width: 414px; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius:10vw; overflow: hidden;}
   .exp-hr .hr-inner .vid-wrap video:nth-child(1) {position: relative; left: unset; transform: unset;}
+  .exp-hr .hr-inner .vid-wrap video.active {opacity: 1;}
 
   /* //lxp-area */
   .lxp-cont {height: auto;}
@@ -550,11 +551,5 @@ a, button {font-family: "SUIT Variable";}
   .bottom {margin-top: 75px;}
   .bottom .move-wrap {gap: 24px;}
   .bottom .move-wrap a {font-size: 14px;}
-
-}
-
-@media screen and (max-width: 500px) {
-  /* exp-hr */
-  .exp-hr .hr-inner .btn-wrap {width: 500px; justify-content: flex-start}
 
 }
