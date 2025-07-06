@@ -47,28 +47,28 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     // curation
     let jumped = false; // 중복 방지
 
-gsap.to(".curation-area .cont-wrap", {
-  y: -window.innerHeight * 2,
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".curation-area",
-    start: "top top",
-    end: `+=${window.innerHeight}`, // 이건 애니메이션 길이일 뿐, 실제 pin 해제 조건 아님
-    pin: true,
-    scrub: 1.2,
-    // markers: true,
-    onUpdate: self => {
-      if (!jumped && self.progress > 0) {
-        jumped = true;
-        gsap.to(window, {
-          scrollTo: ".original-area",
-          duration: 4,
-          ease: "power2.inOut"
-        });
-      }
-    }
-  }
-});
+    gsap.to(".curation-area .cont-wrap", {
+      y: -window.innerHeight * 2,
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".curation-area",
+        start: "top top",
+        end: `+=${window.innerHeight}`, // 이건 애니메이션 길이일 뿐, 실제 pin 해제 조건 아님
+        pin: true,
+        scrub: 1.2,
+        // markers: true,
+        onUpdate: self => {
+          if (!jumped && self.progress > 0) {
+            jumped = true;
+            gsap.to(window, {
+              scrollTo: ".original-area",
+              duration: 6,
+              ease: "power2.inOut",
+            });
+          }
+        },
+      },
+    });
 
     // original
     const cards = document.querySelectorAll(".original-area .item");
@@ -523,8 +523,7 @@ gsap.to(".curation-area .cont-wrap", {
       "+=1"
     ); // ← item-wrap 등장 후 1초 뒤
 
-
-    // out-area 
+    // out-area
     const outItems = gsap.utils.toArray(".out-item");
 
     // 초기 위치 세팅
@@ -578,7 +577,7 @@ gsap.to(".curation-area .cont-wrap", {
           {
             y: yEnd,
             rotation: 15,
-            duration: 2,
+            duration: 0.8,
             ease: "power1.inOut",
           },
           "+=0.2"
@@ -589,7 +588,7 @@ gsap.to(".curation-area .cont-wrap", {
           {
             y: yEnd - 50,
             rotation: -15,
-            duration: 2.2,
+            duration: 1,
             ease: "power1.inOut",
           },
           "<"
@@ -600,7 +599,7 @@ gsap.to(".curation-area .cont-wrap", {
           {
             y: yEnd - 100,
             rotation: 10,
-            duration: 2.4,
+            duration: 1.2,
             ease: "power1.inOut",
           },
           "<"
@@ -885,8 +884,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       id: "expHR",
     });
 
-
-    // lxp 
+    // lxp
 
     let isAutoScrolling = false; // 중복 방지용 플래그
 
@@ -959,7 +957,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       ".lxp-inner.right video",
       {
         width: "40%", // 시작 상태
-        height: "auto"
+        height: "auto",
       },
       {
         width: "100%", // 중앙 도달 시 확장
@@ -981,7 +979,5 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       },
       ">0.2"
     ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
-
-
   });
 }
