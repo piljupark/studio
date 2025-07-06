@@ -485,7 +485,7 @@ a, button {font-family: "SUIT Variable";}
   .lxp-inner.left .logo {width: 40vw; max-width: 400px;}
   .lxp-inner.left span {font-size: 13vw;}
 
-  .lxp-inner.right iframe {width: 100% !important;}
+  .lxp-inner.right video {object-fit: cover;}
   .lxp-inner.right .txt-wrap {left: 25px; bottom: 80px;}
   .lxp-inner.right .txt-wrap h3 {font-size: 26px; font-weight: 700; line-height: 38px; letter-spacing: -0.78px;}
   .lxp-inner.right .txt-wrap .txt {font-size: 12px; line-height: 18px; letter-spacing: -0.36px; margin-top: 16px;}

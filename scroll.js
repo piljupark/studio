@@ -880,5 +880,104 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
       id: "expHR",
     });
+
+
+    // lxp 
+
+    let isAutoScrolling = false; // 중복 방지용 플래그
+
+    const tlLXP = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".lxp-area",
+        start: "top top",
+        end: "+=2500", // 적당한 길이로 조절
+        scrub: 1.2,
+        pin: true,
+        markers: true,
+        id: "lxpPin",
+        onLeave: () => {
+          if (isAutoScrolling) return;
+          isAutoScrolling = true;
+          gsap.to(window, {
+            scrollTo: ".out-area",
+            duration: 0.8,
+            ease: "power2.inOut",
+            onComplete: () => {
+              isAutoScrolling = false;
+            },
+          });
+        },
+        onEnterBack: () => {
+          if (isAutoScrolling) return;
+          isAutoScrolling = true;
+          gsap.to(window, {
+            scrollTo: ".lxp-area",
+            duration: 0.8,
+            ease: "power2.inOut",
+            onComplete: () => {
+              isAutoScrolling = false;
+            },
+          });
+        },
+      },
+    });
+
+    // .left → 왼쪽 바깥으로 나감
+    tlLXP.to(
+      ".lxp-inner.left",
+      {
+        x: "-100%", // 왼쪽 바깥으로 이동
+        opacity: 0,
+        duration: 1.2,
+        ease: "power2.out",
+      },
+      0
+    );
+
+    // .right → 오른쪽 바깥에서 중앙으로 들어옴
+    tlLXP.fromTo(
+      ".lxp-inner.right",
+      {
+        x: "100%", // 오른쪽 바깥에서 시작
+        opacity: 0,
+      },
+      {
+        x: "0%",
+        opacity: 1,
+        duration: 1.2,
+        ease: "power2.out",
+      },
+      0
+    );
+
+    // 🔥 .right 안의 video는 width 확장
+    tlLXP.fromTo(
+      ".lxp-inner.right video",
+      {
+        width: "40%", // 시작 상태
+        height: "auto"
+      },
+      {
+        width: "100%", // 중앙 도달 시 확장
+        height: "100vh",
+        ease: "power2.out",
+      },
+      0
+    ); // 같은 타이밍에 실행
+
+    // 4️⃣ txt-wrap → opacity: 0 → 1 (영상 중앙 도달 직후)
+    tlLXP.fromTo(
+      ".lxp-inner.right .txt-wrap",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        ease: "power2.out",
+      },
+      ">0.2"
+    ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
+
+
   });
 }
