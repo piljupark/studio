@@ -3,7 +3,7 @@
 
 * {font-family: "SUIT Variable";}
 html {overflow-x: hidden; height: auto; overflow-x: hidden;}
-body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable";}
+body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow-x: hidden;}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
 body {background: #060606; background-image: radial-gradient(rgba(255,255,255,0.15) 2px, transparent 1px); background-size: 25px 25px;}
