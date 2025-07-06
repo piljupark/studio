@@ -1,5 +1,6 @@
 if (window.matchMedia("(min-width: 768px)").matches) {
   window.addEventListener("load", () => {
+
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     let played = false;
@@ -232,7 +233,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             trigger: ".brief-area",
             start: "top top",
             end: () => `+=${scrollRange}`,
-            scrub: true,
+            scrub: 1.2,
             // markers: true
           },
         }
@@ -261,7 +262,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     });
 
     // 0~200px 구간: 시간 흘리는 용
-    fl.to({}, { duration: 1 }); // 스크롤 구간상 약 200px 해당 (scrub: true이기 때문)
+    fl.to({}, { duration: 1 }); // 스크롤 구간상 약 200px 해당 (scrub: 1.2이기 때문)
 
     // 200px 시점에서 txt-wrap / cont-wrap 슬라이드 인 (0.3초)
     fl.to(
