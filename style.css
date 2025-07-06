@@ -195,37 +195,52 @@ a, button {font-family: "SUIT Variable";}
 
 /* //lxp-area */
 .lxp-area {position: relative; width: 100%; height: auto; background-color: #060606;}
-.lxp-inner {position: relative; width: 100%; height: 100vh;}
-.lxp-inner.left {display: flex; justify-content: center; align-items: center; gap: 40px;}
+.lxp-inner {position: relative; width: 100%; height: 100vh; z-index: 6;}
+.lxp-inner.left {display: flex; justify-content: center; align-items: center; gap: 40px; will-change: transform; }
 .lxp-inner.left .logo {width: 400px }
 .lxp-inner.left span {font-size: 134px; font-weight: 400; color: #03ffd3; letter-spacing: -4.023px; font-style: normal; line-height: 134px;}
-.lxp-inner.right .txt-wrap {position: absolute; left: 165px; bottom: 165px; }
+
+.lxp-inner.right {position: absolute; top: 0; width: 100%; height: 100vh; will-change: transform; z-index: 5;}
+.lxp-inner.right video {position: absolute; width: 600px; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.lxp-inner.right .txt-wrap {position: absolute; left: 165px; bottom: 165px; opacity: 0; transition: none;}
 .lxp-inner.right .txt-wrap h3 {font-size: 36px; font-style: normal; font-weight: 600; line-height: 50px; color: #fff; letter-spacing: -1.08px;}
 .lxp-inner.right .txt-wrap h3 span {color: #03ffd3;}
 .lxp-inner.right .txt-wrap .txt {font-size: 16px; font-style: normal; font-weight: 500; line-height: 24px; color: #fff; letter-spacing: -0.48px; margin-top: 45px;}
-.lxp-cont {position: relative; width: 100%; height: 100vh; background-color: #f4f4f4;}
+
+
+.lxp-cont {position: absolute; top: 0; width: 100%; height: 100vh; background-color: #f4f4f4; opacity: 0;} 
 .lxp-cont .grid {position: relative; width: 100%; max-width: 1000px; height: 100vh; padding: 0 10px; margin: 0 auto; box-sizing: border-box; display: grid; align-content: center; gap: clamp(30px, 6vw, 75px);}
 .lxp-cont .grid .txt-wrap {text-align: center;}
-.lxp-cont .grid .txt-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; line-height: 18px; transition: all .3s ease;}
-.lxp-cont .grid .txt-wrap .ti {font-size: 36px; font-weight: 700; line-height: 50px; font-style: normal; letter-spacing: -1.08px; margin-top: 12px; transition: all .3s ease;}
-.lxp-cont .grid .txt-wrap .ti span {background: linear-gradient(90deg, #0381FF -120%, #03FFD3 31.5%, #944041 200%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
+.lxp-cont .grid .txt-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; line-height: 18px; transition: all .3s ease; transition: none; display: flex; justify-content: center; align-items: center;}
+.lxp-cont .grid .txt-wrap .sm-ti span {opacity: 0;}
+.lxp-cont .grid .txt-wrap .sm-ti span:nth-child(2) {position: absolute; opacity: 0;}
+.lxp-cont .grid .txt-wrap .ti {font-size: 36px; font-weight: 700; line-height: 50px; font-style: normal; letter-spacing: -1.08px; margin-top: 12px; transition: all .3s ease; transition: none; display: flex; justify-content: center; align-items: center;}
+.lxp-cont .grid .txt-wrap .ti p {opacity: 0;}
+.lxp-cont .grid .txt-wrap .ti p:nth-child(2) {position: absolute; opacity: 0;}
+.lxp-cont .grid .txt-wrap .ti p span {background: linear-gradient(90deg, #0381FF -120%, #03FFD3 31.5%, #944041 200%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .lxp-cont .grid .txt-wrap .ti br.mo-only {display: none;}
-.lxp-cont .grid .txt-wrap .txt {font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -0.48px; color: #515151; font-style: normal; margin-top: 27px; transition: all .3s ease;}
-.lxp-cont .grid .txt-wrap .sm-ti2 {position: absolute; opacity: 0;}
-.lxp-cont .grid .txt-wrap .ti2 {position: absolute; opacity: 0;} 
-.lxp-cont .grid .txt-wrap .txt2 {position: absolute; opacity: 0;}
+.lxp-cont .grid .txt-wrap .txt {font-size: 16px; font-weight: 500; line-height: 24px; letter-spacing: -0.48px; color: #515151; font-style: normal; margin-top: 27px; transition: all .3s ease; transition: none; display: flex; justify-content: center; align-items: center;}
+.lxp-cont .grid .txt-wrap .txt br.mo-only {display: none;}
+.lxp-cont .grid .txt-wrap .txt span {opacity: 0;}
+.lxp-cont .grid .txt-wrap .txt span:nth-child(2) {position: absolute; opacity: 0;}
 
-.lxp-cont .grid .item-wrap {position: absolute; width: 100%; height: 100vh; top: 0; left: 0; display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 1; }
+.lxp-cont .grid video {position: relative; width: 100%; margin-top: 50px; border-radius: 30px;}
+
+.lxp-cont .grid .item-wrap {position: absolute; width: 100%; height: auto; top: 50%; left: 0; transform: translate(0, -25%); display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 0; }
 .lxp-cont .grid .item-wrap img {width: calc(50% - 25px);}
+
+.lxp-area .mo-grid {display: none;}
+.lxp-area .mo-grid.grid1 {display: block;}
 /* lxp-area// */
 
 
 /* //out-wrap */
 .out-area {position: relative; width: 100%; height: 100vh; background: #E7FBF7; overflow: hidden;}
 .out-area .txt-wrap {position: relative; width: auto; height: 100vh; margin: 0 auto; display: grid; align-content: center; justify-items: center; text-align: center;}
-.out-area .txt-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; font-style: normal; line-height: 18px;}
-.out-area .txt-wrap h3 {font-size: 50px; font-weight: 700; font-style: normal; color: #000; line-height: 70px; letter-spacing: -1.5px; margin-top: 12px;}
+.out-area .txt-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; font-style: normal; line-height: 18px; opacity: 0;}
+.out-area .txt-wrap h3 {font-size: 50px; font-weight: 700; font-style: normal; color: #000; line-height: 70px; letter-spacing: -1.5px; margin-top: 12px; opacity: 0;}
 .out-area .txt-wrap h3 span {background: linear-gradient(90deg, #0381FF -120%, #03FFD3 31.5%, #944041 200%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.out-area .txt-wrap .txt {font-size: 16px; font-weight: 500; color: #515151; line-height: 24px; letter-spacing: -0.48px; margin-top: 48px; opacity: 0;}
 .out-area .item-wrap {position: absolute; width: 50vw; height: 100vh; top: 0; left: 50%; transform: translate(-50%, 0);}
 .out-area .item-wrap .out-item {position: absolute; width: 300px;}
 .out-area .item-wrap .out-item.out-item1 {right: 0; bottom: 400px; transform: rotate(-20deg);}

@@ -1,6 +1,6 @@
 if (window.matchMedia("(min-width: 768px)").matches) {
     window.addEventListener('load', () => {
-        gsap.registerPlugin(ScrollTrigger);
+        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 
         let played = false;
@@ -68,7 +68,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
                 start: "top top",
                 end: `+=${scrollDistance}`, // 💡 스크롤도 그만큼 길게
                 pin: true,
-                scrub: true,
+                scrub: 1.2,
                 // markers: true
             }
         });
@@ -98,7 +98,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
                 trigger: ".original-area",
                 start: "top top",
                 end: "+=2000", // 전체 길이 조정
-                scrub: true,
+                scrub: 1.2,
                 pin: true,
                 markers: true
             }
@@ -181,7 +181,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
                 trigger: ".brief-area",
                 start: "top top",
                 end: () => `+=${scrollRange}`,
-                scrub: true,
+                scrub: 1.2,
                 pin: true,
                 anticipatePin: 1,
                 onLeave: () => {
@@ -246,7 +246,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
                 trigger: ".feed-area",
                 start: "top top",
                 end: "+=4000",
-                scrub: true,
+                scrub: 1.2,
                 pin: true,
                 markers: true
             }
@@ -305,6 +305,227 @@ if (window.matchMedia("(min-width: 768px)").matches) {
                 behavior: "smooth"
             });
         });
+        
+
+        // lxp gsap
+        let isAutoScrolling = false;  // 중복 방지용 플래그
+
+        const tlLXP = gsap.timeline({
+        scrollTrigger: {
+            trigger: ".lxp-area",
+            start: "top top",
+            end: "+=2500",  // 적당한 길이로 조절
+            scrub: 1.2,
+            pin: true,
+            markers: true,
+            id: "lxpPin",
+            onLeave: () => {
+            if (isAutoScrolling) return;
+            isAutoScrolling = true;
+            gsap.to(window, {
+                scrollTo: ".out-area",
+                duration: 0.8,
+                ease: "power2.inOut",
+                onComplete: () => {
+                isAutoScrolling = false;
+                }
+            });
+            },
+            onEnterBack: () => {
+            if (isAutoScrolling) return;
+            isAutoScrolling = true;
+            gsap.to(window, {
+                scrollTo: ".lxp-area",
+                duration: 0.8,
+                ease: "power2.inOut",
+                onComplete: () => {
+                isAutoScrolling = false;
+                }
+            });
+            }
+        }
+        });
+          
+          // .left → 왼쪽 바깥으로 나감
+          tlLXP.to(".lxp-inner.left", {
+            x: "-100%", // 왼쪽 바깥으로 이동
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0);
+          
+          // .right → 오른쪽 바깥에서 중앙으로 들어옴
+          tlLXP.fromTo(".lxp-inner.right", {
+            x: "100%", // 오른쪽 바깥에서 시작
+            opacity: 0
+          }, {
+            x: "0%",
+            opacity: 1,
+            duration: 1.2,
+            ease: "power2.out"
+          }, 0);
+
+          // 🔥 .right 안의 video는 width 확장
+            tlLXP.fromTo(".lxp-inner.right video", {
+                width: "40%", // 시작 상태
+            }, {
+                width: "100%", // 중앙 도달 시 확장
+                ease: "power2.out"
+            }, 0); // 같은 타이밍에 실행
+
+            // 4️⃣ txt-wrap → opacity: 0 → 1 (영상 중앙 도달 직후)
+            tlLXP.fromTo(".lxp-inner.right .txt-wrap", {
+                opacity: 0
+            }, {
+                opacity: 1,
+                ease: "power2.out"
+            }, ">0.2"); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
+
+            // 🔥 4️⃣ 스크롤 500px 더 진행한 뒤 전환
+            tlLXP.to(".lxp-inner.right video", {
+                width: 0,
+                opacity: 0,
+                ease: "power2.inOut"
+            }, "+=0.3"); // 영상 다 보인 뒤 시작
+            
+            tlLXP.to(".lxp-inner.right .txt-wrap", {
+                opacity: 0,
+                ease: "power2.out"
+            }, "<"); // 동시에 사라짐
+            
+            tlLXP.fromTo(".lxp-cont", {
+                opacity: 0
+            }, {
+                opacity: 1,
+                ease: "power2.out"
+            }, "<+0.1"); // 살짝 딜레이해서 부드럽게 등장
+
+
+            tlLXP.fromTo(".lxp-cont",
+                { opacity: 0 },
+                { opacity: 1, duration: 0.6, ease: "power2.out" },
+                "<+0.1"
+              );
+              
+              tlLXP.to(".lxp-cont .txt-wrap .sm-ti span:nth-child(1), \
+                        .lxp-cont .txt-wrap .ti p:nth-child(1), \
+                        .lxp-cont .txt-wrap .txt span:nth-child(1)",
+                {
+                  opacity: 1,
+                  duration: 1,
+                  ease: "power2.out",
+                  stagger: 0.05
+                },
+                ">1"
+              );
+
+
+            tlLXP.to([
+                ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
+                ".lxp-cont .txt-wrap .ti p:nth-child(1)",
+                ".lxp-cont .txt-wrap .txt span:nth-child(1)"
+            ], {
+                opacity: 0,
+                duration: 0.5,
+                ease: "power2.out"
+            }, "+=0.2"); // ← 이전 텍스트 등장 후 약간 텀 주고 시작
+            
+            tlLXP.to(".lxp-cont video", {
+                width: "50%",
+                height: "500px",
+                opacity: 0,
+                ease: "power2.inOut",
+                duration: 0.7
+            }, "<"); // ← 위 텍스트 사라짐과 동시에
+
+
+            // 🔥 6️⃣ 다음 콘텐츠 등장: item-wrap → opacity 1
+            tlLXP.to(".lxp-cont .grid .item-wrap", {
+                opacity: 1,
+                duration: 0.5,
+                ease: "power2.out"
+            }, "<"); // ← video 사라진 후 0.5초 뒤
+            
+            // 🔥 7️⃣ 텍스트 순차 등장: sm-ti2, ti2, txt2
+            tlLXP.to([
+                ".lxp-cont .txt-wrap .sm-ti span:nth-child(2)",
+                ".lxp-cont .txt-wrap .ti p:nth-child(2)",
+                ".lxp-cont .txt-wrap .txt span:nth-child(2)"
+            ], {
+                opacity: 1,
+                duration: 0.6,
+                ease: "power2.out",
+                stagger: 0.2
+            }, "+=1"); // ← item-wrap 등장 후 1초 뒤
+
+
+
+            
+            const outItems = gsap.utils.toArray(".out-item");
+
+// 초기 위치 세팅
+gsap.set(".out-area .txt-wrap .sm-ti, .out-area .txt-wrap h3, .out-area .txt-wrap .txt", { opacity: 0 });
+outItems.forEach((item, i) => {
+  gsap.set(item, {
+    y: window.innerHeight + 100 + i * 50,
+    rotation: 0
+  });
+});
+
+// scrollTrigger: pin만 담당 + onEnter에서 애니메이션 자동 실행
+ScrollTrigger.create({
+  trigger: ".out-area",
+  start: "top top",
+  end: "+=2000",  // pin 고정 유지 시간
+  pin: true,
+  scrub: false,
+  markers: true,
+  id: "outPin",
+  onEnter: () => {
+    const tl = gsap.timeline();
+
+    // 1단계: sm-ti, h3 등장
+    tl.to(".out-area .txt-wrap .sm-ti, .txt-wrap h3", {
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "power1.out"
+    });
+
+    // 2단계: 1초 후 .txt 등장
+    tl.to(".out-area .txt-wrap .txt", {
+      opacity: 1,
+      duration: 0.5,
+      ease: "power1.out"
+    }, "+=1");
+
+    // 3단계: 이미지 올라가며 회전
+    const yEnd = - (window.innerHeight / 2 + 300);
+
+    tl.to(outItems[0], {
+      y: yEnd,
+      rotation: 15,
+      duration: 2,
+      ease: "power1.inOut"
+    }, "+=0.2");
+
+    tl.to(outItems[1], {
+      y: yEnd - 50,
+      rotation: -15,
+      duration: 2.2,
+      ease: "power1.inOut"
+    }, "<");
+
+    tl.to(outItems[2], {
+      y: yEnd - 100,
+      rotation: 10,
+      duration: 2.4,
+      ease: "power1.inOut"
+    }, "<");
+  }
+});
+
+
 
     }); // load
 } // matchmedia
