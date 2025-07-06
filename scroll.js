@@ -606,3 +606,167 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     });
   }); // load
 } // matchmedia
+
+
+// 
+if (window.matchMedia("(max-width: 767px)").matches) {
+  window.addEventListener("load", () => {
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+
+    // int 
+    let played = false;
+
+    ScrollTrigger.create({
+      trigger: ".int-area",
+      start: "top top",
+      end: "+=800", // 모바일에서는 스크롤 길이 줄임
+      pin: true,
+      scrub: false,
+      markers: true,
+      id: "pinOnlyMobile",
+      onUpdate: (self) => {
+        const progress = self.progress;
+
+        if (progress >= 0.1 && !played) {
+          played = true;
+
+          gsap.to(".visual-inner", {
+            width: "90vw",
+            height: "60vh", // 모바일에 맞게 비율 조정
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
+
+        if (progress < 0.083 && played) {
+          played = false;
+
+          gsap.to(".visual-inner", {
+            width: "0",
+            height: "0",
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
+      },
+    });
+
+
+    // intro 
+    const intro = document.querySelector(".intro-area");
+    const curation = document.querySelector(".curation-area");
+
+    let locked = false;
+
+    // 아래로 → intro → curation
+    ScrollTrigger.create({
+      trigger: intro,
+      start: "bottom bottom",
+      end: "bottom top",
+      onEnter: () => {
+        if (!locked) {
+          locked = true;
+          gsap.to(window, {
+            scrollTo: {
+              y: curation,
+              offsetY: 0,
+            },
+            duration: 1,
+            ease: "power2.out",
+            onComplete: () => {
+              // 일정 시간 뒤에 다시 스크롤 허용
+              setTimeout(() => (locked = false), 100);
+            },
+          });
+        }
+      },
+      markers: false,
+    });
+
+    // 위로 → curation → intro (★ 수정된 부분)
+    ScrollTrigger.create({
+      trigger: curation,
+      start: "top top",       // 뷰포트의 top과 curation의 top이 닿을 때
+      end: "bottom top",      // 아래서 올라올 때를 잡기 위함
+      onLeaveBack: () => {
+        if (!locked) {
+          locked = true;
+          gsap.to(window, {
+            scrollTo: {
+              y: intro,
+              offsetY: 0,
+            },
+            duration: 1,
+            ease: "power2.out",
+            onComplete: () => setTimeout(() => (locked = false), 100),
+          });
+        }
+      },
+      markers: false,
+      immediateRender: false, // ★ 중요: 스크롤 방향 이벤트 초기화 방지
+    });
+
+
+    // original 
+    const items = gsap.utils.toArray(".original-area .item");
+
+    // 전체 스크롤 길이 = 아이템 수 * 400px
+    const scrollLength = items.length * 400;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".original-area",
+        start: "top top",
+        end: `+=${scrollLength}`,
+        pin: true,
+        scrub: 1.2,
+        markers: false,
+      }
+    });
+
+    // 각 아이템을 400px 간격으로 순차 등장
+    items.forEach((item, i) => {
+      tl.fromTo(item,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
+        i * 0.4 // 400px 기준으로 분배 (스크롤 400px = 타임라인 0.4초)
+      );
+    });
+
+
+    // brief
+
+    const briefItems = gsap.utils.toArray(".brief-area .item");
+
+    const briefScrollLength = briefItems.length * 400;
+
+    const tlBrief = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".brief-area",
+        start: "top top",
+        end: `+=${briefScrollLength}`,
+        pin: true,
+        scrub: 1.2,
+        markers: false,
+      }
+    });
+
+    briefItems.forEach((item, i) => {
+      tlBrief.fromTo(
+        item,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        },
+        i * 0.4 // 400px 당 한 개씩 등장
+      );
+    });
+
+  });
+}

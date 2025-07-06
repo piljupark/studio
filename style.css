@@ -404,7 +404,8 @@ a, button {font-family: "SUIT Variable";}
   .curation-area {display: grid; align-content: center;}
   .curation-area .txt-wrap h2 {font-size: 30px; line-height: 44px; letter-spacing: -0.9px; }
   .curation-area .txt-wrap .txt {font-size: 14px; line-height: 20px; letter-spacing: -0.42px; color: #b3b3b3;}
-  .curation-area .cont-wrap {position: relative;}
+  
+  .curation-area .scroll-wrap {position: relative; height: auto;}
   .curation-area .cont-wrap img:nth-child(2), .curation-area .cont-wrap img:nth-child(6) {margin-bottom: 10px !important;}
   .curation-area .cont-wrap img:nth-child(3), .curation-area .cont-wrap img:nth-child(5) {margin-bottom: 18px !important;} 
   .curation-area .cont-wrap img:nth-child(4) {margin-bottom: 26px !important;} 
@@ -442,8 +443,8 @@ a, button {font-family: "SUIT Variable";}
   .feed-area .wrapper {flex-direction: column; padding: 0 25px;}
   .feed-area .txt-wrap h2 {font-size: 28px; line-height: 28px; letter-spacing: -0.84px;}
   .feed-area .txt-wrap .txt {margin-top: 15px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
-  .feed-area .cont-wrap {width: 100%; margin-top: 30px; padding-bottom: 110px; gap: 18px; }
-  .feed-area .cont-wrap .item {min-width: 38vw; height: 262px; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px;}
+  .feed-area .cont-wrap {width: 100%; margin-top: 30px; padding-bottom: 110px; gap: 12px; }
+  .feed-area .cont-wrap .item {position: relative; top: unset; left: unset; min-width: 38vw; height: 262px; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; opacity: 1;}
   .feed-area .cont-wrap .item figure {min-height: 157px; border-radius: 10px;}
   .feed-area .cont-wrap .item .item-txt-wrap {margin-top: 15px;}
   .feed-area .cont-wrap .item .item-txt-wrap h3 {font-size: clamp(12px, 3vw, 20px);}
