@@ -46,32 +46,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       },
     });
 
-    // curation
-    // let jumped = false; // 중복 방지
-
-    // gsap.to(".curation-area .cont-wrap", {
-    //   y: -window.innerHeight * 2,
-    //   ease: "none",
-    //   scrollTrigger: {
-    //     trigger: ".curation-area",
-    //     start: "top top",
-    //     end: `+=${window.innerHeight}`, // 이건 애니메이션 길이일 뿐, 실제 pin 해제 조건 아님
-    //     pin: true,
-    //     scrub: 1.2,
-    //     // markers: true,
-    //     onUpdate: self => {
-    //       if (!jumped && self.progress > 0) {
-    //         jumped = true;
-    //         gsap.to(window, {
-    //           scrollTo: ".original-area",
-    //           duration: 6,
-    //           ease: "power2.inOut",
-    //         });
-    //       }
-    //     },
-    //   },
-    // });
-
     // original
     const cards = document.querySelectorAll(".original-area .item");
 
@@ -83,10 +57,15 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       const z = 10 - Math.abs(i - 1.5);
 
       gsap.set(card, {
+        xPercent: -50, // ← 중심 기준 정렬
+        yPercent: -50,
         x: offsetX,
         y: offsetY,
         rotate: rotation,
         zIndex: z,
+        position: "absolute", // 필요 시 위치 고정
+        top: "50%",
+        left: "50%",
       });
     });
 
@@ -608,6 +587,10 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         );
       },
     });
+
+    setTimeout(() => {
+      ScrollTrigger.refresh(true);
+    }, 100); // 지연 로드
   }); // load
 } // matchmedia
 
