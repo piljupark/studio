@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>회사 교육이 새로워질 때 | stud.io</title>
 
+  <!-- SEO & OpenGraph -->
   <meta name="description" content="단 하나의 플랫폼으로 회사교육이 쉬워집니다">
   <meta name="author" content="KMA Korea Management Association">
   <meta name="robots" content="index, follow">
@@ -28,28 +29,26 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kmadev-lab/kma-font@main/kma-font/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" />
 
-  <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
-
-
-  <script> 
+  <!-- 리로드 시 스크롤 최상단 유지 -->
+  <script>
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
-    }; // 리로드 스크롤 위치 최상단 초기화
+    };
   </script>
 
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
 
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
+  <script type="module" src="/scroll.js"></script>
 
+  <script defer src="/script.js"></script>
+  <script defer src="/modal.js"></script>
 
-
-  <script src="/script.js"></script>
-  <script src="/modal.js"></script>
-
-  <!-- Re:catch embedding code -->
+  <!-- Re:catch -->
   <script async defer>
     (function (r, e, c, a, t, ch) {
       var h = r.getElementsByTagName(e)[0], i = r.createElement(c);
@@ -60,7 +59,6 @@
       h.prepend(i);
     })(document, 'head', 'script', ['kma', 'xvkmrdltjh'], 'recatch-form', 'light');
   </script>
-  <!-- End Re:catch embedding code -->
 </head>
 
 <body>
@@ -765,7 +763,7 @@
   <!-- Swiper JS -->
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <script defer src="/scroll.js"></script>
+  
 </body>
 
 </html>
