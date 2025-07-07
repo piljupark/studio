@@ -176,8 +176,10 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       const subtitle = document.querySelector(".brief-area .txt-wrap .txt");
       const items = briefWrap.querySelectorAll(".item");
       const wrapHeight = briefWrap.getBoundingClientRect().height;
-      const scrollRange = wrapHeight + window.innerHeight * 1.2;
-      const speedFactors = [0.6, 1.0, 0.6, 1.2]; // 각 아이템별 속도 조절
+      const startOffset = window.innerHeight + wrapHeight;
+      const scrollRange = wrapHeight + 500;
+      const speedFactors = [0.6, 1.0, 0.6, 1.2, 1.5]; // 각 아이템별 속도 조절
+      const itemMoveDistance = wrapHeight * 0.8;
 
       gsap.set([title, subtitle], { fontSize: 0, opacity: 0 });
 
@@ -208,7 +210,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 
       // 컨테이너 전체 이동 (위로)
       gsap.set(briefWrap, {
-        y: window.innerHeight,
+        y: startOffset,
       });
 
       gsap.to(briefWrap, {
@@ -251,16 +253,17 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       // 각 아이템 개별 속도 설정
       items.forEach((item, i) => {
         const speed = speedFactors[i] || 1; // fallback 값
+        console.log(`Item ${i + 1} speed:`, speed);
 
         gsap.fromTo(
           item,
           { y: 0 },
           {
-            y: -wrapHeight * speed,
+            y: -itemMoveDistance * speed,
             ease: "none",
             scrollTrigger: {
               trigger: ".brief-area",
-              start: "top top",
+              start: "top+=900 top",
               end: () => `+=${scrollRange}`,
               scrub: 1.2,
               // markers: true
@@ -293,7 +296,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".feed-area",
           start: "top top",
-          end: "+=4300", // ✅ 300px 늘려줌 (마지막 퇴장용)
+          end: "+=4600", // ✅ 300px 늘려줌 (마지막 퇴장용)
           scrub: 1.2,
           pin: true,
           // markers: true,
@@ -301,7 +304,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       });
 
       // 1) 등장 시퀀스
-      fl.to({}, { duration: 1 });
+      fl.to({}, { duration: 0.2 });
 
       fl.to(
         txtWrap,

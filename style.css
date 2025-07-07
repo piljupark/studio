@@ -114,8 +114,9 @@ a, button {font-family: "SUIT Variable";}
 .brief-area .cont-wrap .item .item-txt-wrap .sub {font-size: 14px; font-style: normal; font-weight: 400; line-height: 14px; letter-spacing: -0.42px; margin-top: 24px;}
 
 .brief-area .cont-wrap .item.item2 {margin-left: 6vw; margin-top: 160px;}
-.brief-area .cont-wrap .item.item3 {margin-top: 240px;} 
-.brief-area .cont-wrap .item.item4 {margin-top: 300px; margin-left: -10vw;}
+.brief-area .cont-wrap .item.item3 {margin-left: 3vw; margin-top: 250px;}
+.brief-area .cont-wrap .item.item4 {margin-top: 240px;} 
+.brief-area .cont-wrap .item.item5 {margin-top: 300px; margin-left: -10vw;}
 /* brief-area //*/
 
 
@@ -130,7 +131,7 @@ a, button {font-family: "SUIT Variable";}
 .feed-area .cont-wrap {position: relative; width: 40%; min-width: 40%; height: 100vh; box-sizing: border-box; display: flex; justify-content: center; align-items: center; gap: 22px; z-index: 2;}
 .feed-area .cont-wrap .item {position: absolute; right: 0; width: 25%; min-width: 424px; height: 70vh; max-height: 612px; padding: 12px 12px 48px; background: #fff;  border-radius: 30px; background-color: #D7F2EE; box-sizing: border-box; opacity: 0; transform: scale(0.95);}
 .feed-area .cont-wrap .item figure {position: relative; width: 100%; height: auto; min-height: clamp(300px, 43vh, 400px); margin: 0; background: #ddd; border-radius: 22px; overflow: hidden;}
-.feed-area .cont-wrap .item img {position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover;}
+.feed-area .cont-wrap .item img {position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover; scale: 1.1;}
 .feed-area .cont-wrap .item .item-txt-wrap {position: relative; width: 100%; height: auto; margin-top: 30px; padding: 0 10px; box-sizing: border-box;}
 .feed-area .cont-wrap .item .item-txt-wrap h3 {font-size: 24px; font-style: normal; font-weight: 600; color: #060606; line-height: 24px; letter-spacing: -0.72px; }
 .feed-area .cont-wrap .item .item-txt-wrap .txt {font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px; letter-spacing: -0.48px; color: #06060680; margin-top: 16px;}
@@ -167,18 +168,18 @@ a, button {font-family: "SUIT Variable";}
 .exp-hr .hr-inner .ti-wrap .ti {font-size: 36px; font-weight: 800; line-height: 50px; columns: #000; letter-spacing: -1.08px; font-style: normal; margin-top: 12px;}
 .exp-hr .hr-inner .ti-wrap .ti span {background: linear-gradient(90deg, #0381FF 0%, #03FFD3 81.5%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .exp-hr .hr-inner .ti-wrap .txt {position: relative; font-size: 16px; color: #b3b3b3; line-height: 24px; font-style: normal; letter-spacing: -0.48px; margin-top: 20px; }
-.exp-hr .hr-inner .btn-wrap {position: relative; width: auto; display: grid; justify-content: start; align-content: start; gap: 10px; }
+.exp-hr .hr-inner .btn-wrap {position: relative; width: auto; display: grid; justify-content: start; align-content: start; gap: 10px; margin-bottom: 180px;}
 .exp-hr .hr-inner .btn-wrap .btn {position: relative; width: auto; height: 56px; display: flex; align-items: center; background: none; border: none;  text-align: left; padding: 0; padding-left: 50px; margin: 0; box-sizing: border-box; cursor: pointer; inline-size: fit-content; transition: all .3s; }
-.exp-hr .hr-inner .btn-wrap .btn p {font-size: 16px; color: #787878; font-style: normal; line-height: 24px; font-weight: 600; letter-spacing: -0.48px; z-index: 2;} 
-.exp-hr .hr-inner .btn-wrap .btn .arrow {position: absolute; left: 14px; z-index: 2;}
-.exp-hr .hr-inner .btn-wrap .btn::before {content: ''; position: absolute; width: 36px; height: 36px; left: 0; background: #d9d9d9; border-radius: 40px; transition: all .3s;  z-index: 0;}
+.exp-hr .hr-inner .btn-wrap .btn p {font-size: 20px; color: #787878; font-style: normal; line-height: 24px; font-weight: 600; letter-spacing: -0.48px; z-index: 2;} 
+.exp-hr .hr-inner .btn-wrap .btn .arrow {position: absolute; left: 20px; z-index: 2;}
+.exp-hr .hr-inner .btn-wrap .btn::before {content: ''; position: absolute; width: 48px; height: 48px; left: 0; background: #d9d9d9; border-radius: 40px; transition: all .3s;  z-index: 0;}
 .exp-hr .hr-inner .btn-wrap .btn::after {content: ''; position: absolute; left: 20px; width: 0px; height: 2.5px; background-color: #fff; transition: all .3s ease;}
 .exp-hr .hr-inner .btn-wrap .btn:hover p {color: #fff;}
 .exp-hr .hr-inner .btn-wrap .btn:hover::before {width:calc(100% + 20px); background: #3e4145;}
-.exp-hr .hr-inner .btn-wrap .btn:hover::after {left: 0; width: 20px;}
+.exp-hr .hr-inner .btn-wrap .btn:hover::after {left: 0; width: 24px;}
 .exp-hr .hr-inner .btn-wrap .btn.active p {color: #fff;}
 .exp-hr .hr-inner .btn-wrap .btn.active::before {width:calc(100% + 20px); background: #3e4145;}
-.exp-hr .hr-inner .btn-wrap .btn.active::after {left: 0; width: 20px;}
+.exp-hr .hr-inner .btn-wrap .btn.active::after {left: 0; width: 24px;}
 
 .exp-hr .hr-inner .app-wrap {position: relative; width: auto; display: flex; gap: 7px;}
 .exp-hr .hr-inner .app-wrap .app {position: relative; width: 235px; height: 80px; border: none; background: #fff; border-radius: 10px; background-position: center; background-size: cover; background-repeat: no-repeat;}
