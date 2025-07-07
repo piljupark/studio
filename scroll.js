@@ -79,8 +79,9 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 
       // original
       const cards = document.querySelectorAll(".original-area .item");
+      const container = document.querySelector(".original-area .cont-wrap");
 
-      // 초기 상태 세팅
+      // 🔹 카드 초기 세팅 (기존 그대로)
       cards.forEach((card, i) => {
         const offsetX = (i - 1.5) * 80;
         const offsetY = Math.abs(i - 1.5) * 40;
@@ -88,16 +89,34 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         const z = 10 - Math.abs(i - 1.5);
 
         gsap.set(card, {
-          xPercent: -50, // ← 중심 기준 정렬
+          xPercent: -50,
           yPercent: -50,
           x: offsetX,
           y: offsetY,
           rotate: rotation,
           zIndex: z,
-          position: "absolute", // 필요 시 위치 고정
+          position: "absolute",
           top: "50%",
           left: "50%",
         });
+      });
+
+      // 🔹 .cont-wrap을 아래로 숨김
+      gsap.set(container, {
+        y: window.innerHeight + 200,
+      });
+
+      // 🔹 ScrollTrigger로 .cont-wrap을 위로 올림 (제자리로)
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: ".original-area",
+          start: "top top",
+          end: "+=200", // 200px 안에서 이동 완료
+          scrub: 1,
+        },
+      }).to(container, {
+        y: 0,
+        ease: "power2.out",
       });
 
       // 타임라인 생성
@@ -105,7 +124,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".original-area",
           start: "top top",
-          end: "+=2000", // 전체 길이 조정
+          end: "+=2400", // 전체 길이 조정
           scrub: 1.2,
           pin: true,
           //markers: true,

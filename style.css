@@ -251,8 +251,8 @@ a, button {font-family: "SUIT Variable";}
 .mem-area h3 {position: relative; width: 100%; text-align: center; font-size: 34px; font-style: normal; font-weight: 600; line-height: 48px; color: #060606; letter-spacing: -1.02px;}
 .mem-area .btn-wrap {position: relative; width: 240px; height: 45px; margin: 75px auto 0; background: rgba(0,0,0,0.1); border-radius: 40px; display: flex; align-items: center; justify-content: space-between;}
 .mem-area .btn-wrap .btn {width: 50%; height: 100%; border: none; background: none; cursor: pointer; z-index: 2;}
-.mem-area .btn-wrap .btn1 img {width: 65px; filter: invert();}
-.mem-area .btn-wrap .btn2 {font-family: 'KMA'; font-size: 16px; font-weight: 700; font-style: normal; color: #060606; line-height: 30px; }
+.mem-area .btn-wrap .btn1 {font-family: 'KMA'; font-size: 16px; font-weight: 700; font-style: normal; color: #060606; line-height: 30px; }
+.mem-area .btn-wrap .btn2 img {width: 65px; filter: invert();}
 .mem-area .btn-wrap .act-btn {position: absolute; width: 50%; height: 100%; left: 0; top: 0; background-color: #fff; border-radius: 40px; transition: all .3s ease-in-out;}
 .mem-area .plan-wrap {position: relative; width: 100%; max-width: 1280px; height: auto; margin: 45px auto 0; display: flex; justify-content: space-between; align-items: flex-end; transition: opacity .3s ease;}
 .mem-area .plan-wrap.hidden {opacity: 0; visibility: hidden; pointer-events: none;}
@@ -265,7 +265,8 @@ a, button {font-family: "SUIT Variable";}
 .mem-area .plan-wrap .plan.plan2 .plan-inner {position: absolute; width: calc(100% - 10px); height: 612px; padding: 44px 38px; box-sizing: border-box; background-color: #fff;left: 5px; bottom: 5px; border-radius: 33px; display: block;}
 
 .mem-area .plan-wrap#planWrap2 {display: none;}
-.mem-area .plan-wrap#planWrap2 .plan.plan2 {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
+.mem-area .plan-wrap#planWrap1 .plan.plan2 {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
+.mem-area .plan-wrap#planWrap2 .plan.plan2 {background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); }
 
 
 .mem-area .plan-wrap .nm {font-size: 26px; font-weight: 800; line-height: 34px; font-style: normal; color: #060606; margin-top: 40px;}
@@ -287,7 +288,9 @@ a, button {font-family: "SUIT Variable";}
 .mem-area .plan-wrap .plan:hover {bottom: 20px;}
 .mem-area .plan-wrap .plan:hover .contact { background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); color: #fff;}
 
-.mem-area .plan-wrap#planWrap2 .plan:hover .contact {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
+
+.mem-area .plan-wrap#planWrap1 .plan:hover .contact {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
+.mem-area .plan-wrap#planWrap2 .plan:hover .contact {background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); background: linear-gradient(0deg, #F8F8F8 0%, #EDEDED 100%); color: #3f3f3f;}
 
 .mem-area .more {position: relative; width: 156px; height: 30px; margin: 0 auto; left: 50%; transform: translate(-50%, 0); margin-top: 37px; border: none; background: none; opacity: .5;}
 .mem-area .more span {display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 600; color: #060606; line-height: 16px; letter-spacing: -0.48px; transition: .5s; box-sizing: border-box;}
@@ -309,8 +312,8 @@ a, button {font-family: "SUIT Variable";}
 .loop-banner {position: relative; height: auto; margin-top: 180px; display: flex; flex-direction: column; gap: 20px; overflow: hidden;}
 .loop-banner .loop-track {position: relative; width: 100%; white-space: nowrap;}
 .loop-banner .banner-list {display: inline-flex;}
-.loop-banner .left-loop .banner-list {animation: bannerLeft 30s linear infinite;}
-.loop-banner .right-loop .banner-list { animation: bannerRight 30s linear infinite;}
+.loop-banner .left-loop .banner-list {animation: bannerLeft 80s linear infinite;}
+.loop-banner .right-loop .banner-list { animation: bannerRight 80s linear infinite;}
 .loop-banner .banner-list .banner {flex: 0 0 auto; list-style: none;}
 .loop-banner .banner-list .banner img {width: 2400px;}
 @keyframes bannerLeft {
