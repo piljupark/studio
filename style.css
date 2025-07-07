@@ -124,7 +124,7 @@ a, button {font-family: "SUIT Variable";}
 
 /* //feed-area */
 .feed-area {position: relative; width: 100%; height: 100vh; background: #060606; display: flex; justify-content: center; align-items: center;}
-.feed-area .wrapper {position: relative; width: 100%; max-width: 1640px; padding: 0 20px; box-sizing: border-box; display: flex; align-items: center;}
+.feed-area .wrapper {position: relative; width: 100%; max-width: 1640px; padding: 0 25px; box-sizing: border-box; display: flex; align-items: center;}
 .feed-area .txt-wrap {position: relative; width: 100%; min-width: 60%; height: auto; z-index: 2; text-align: left;}
 .feed-area .txt-wrap h2 {font-size: 45px; font-weight: 600; line-height: 66px; letter-spacing: -1.35px; color: #fff; }
 .feed-area .txt-wrap h2 span{background: linear-gradient(90deg, #03FFD3 0%, #022A99 171.13%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -158,7 +158,7 @@ a, button {font-family: "SUIT Variable";}
 /* //exp-area */
 .exp-area {position: relative; width: 100%; height: auto; }
 .exp-area .exp-vid {position:relative; width: 100%; height: 100vh; overflow: hidden; transition: top 0.5s ease-in-out; z-index: 10;}
-.exp-area .exp-vid video {position: absolute; width: auto; height: 110vh; top: 50%; left: 50%; transform: translate(-50%, -50%);}
+.exp-area .exp-vid video {position: absolute; width: 100%; height: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover;}
 
 
 .exp-hr {position: relative; width: 100%; height: 100vh; background: #f4f4f4; }
