@@ -623,6 +623,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         onEnter: () => {
           const tl = gsap.timeline();
 
+          tl.to({}, { duration: 0.3 });
+
           // 1단계: sm-ti, h3 등장
           tl.to(".out-area .txt-wrap .sm-ti, .txt-wrap h3", {
             opacity: 1,
@@ -650,7 +652,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd,
               rotation: 15,
-              duration: 0.8,
+              duration: 0.8 * 3,
               ease: "power1.inOut",
             },
             "+=0.2"
@@ -661,7 +663,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd - 50,
               rotation: -15,
-              duration: 1,
+              duration: 1 * 3,
               ease: "power1.inOut",
             },
             "<"
@@ -672,7 +674,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd - 100,
               rotation: 10,
-              duration: 1.2,
+              duration: 1.2 * 3,
               ease: "power1.inOut",
             },
             "<"

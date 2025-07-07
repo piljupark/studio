@@ -168,14 +168,14 @@ a, button {font-family: "SUIT Variable";}
 
 
 .exp-hr {position: relative; width: 100%; height: 100vh; background: #f4f4f4; }
-.exp-hr .hr-inner {position: relative; width: 100%; height: 100vh; max-width: 1640px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; display: flex; align-items: center;}
+.exp-hr .hr-inner {position: relative; width: 100%; height: 100vh; max-width: 1640px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; display: flex; align-items: center; }
 .exp-hr .hr-inner .grid {position: relative; width: 50%; height: 80vh; display: grid; align-content: space-between; }
 .exp-hr .hr-inner .ti-wrap {position: relative;}
 .exp-hr .hr-inner .ti-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; line-height: 18px;}
 .exp-hr .hr-inner .ti-wrap .ti {font-size: 36px; font-weight: 800; line-height: 50px; columns: #000; letter-spacing: -1.08px; font-style: normal; margin-top: 12px;}
 .exp-hr .hr-inner .ti-wrap .ti span {background: linear-gradient(90deg, #0381FF 0%, #03FFD3 81.5%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .exp-hr .hr-inner .ti-wrap .txt {position: relative; font-size: 16px; color: #b3b3b3; line-height: 24px; font-style: normal; letter-spacing: -0.48px; margin-top: 20px; }
-.exp-hr .hr-inner .btn-wrap {position: relative; width: auto; display: grid; justify-content: start; align-content: start; gap: 10px; margin-bottom: 180px;}
+.exp-hr .hr-inner .btn-wrap {position: relative; width: auto; display: grid; justify-content: start; align-content: start; gap: 10px; margin-bottom: clamp(70px, 10vh, 150px);}
 .exp-hr .hr-inner .btn-wrap .btn {position: relative; width: auto; height: 56px; display: flex; align-items: center; background: none; border: none;  text-align: left; padding: 0; padding-left: 50px; margin: 0; box-sizing: border-box; cursor: pointer; inline-size: fit-content; transition: all .3s; }
 .exp-hr .hr-inner .btn-wrap .btn p {font-size: 20px; color: #787878; font-style: normal; line-height: 24px; font-weight: 600; letter-spacing: -0.48px; z-index: 2;} 
 .exp-hr .hr-inner .btn-wrap .btn .arrow {position: absolute; left: 20px; z-index: 2;}
