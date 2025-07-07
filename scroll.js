@@ -47,30 +47,30 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     });
 
     // curation
-    let jumped = false; // 중복 방지
+    // let jumped = false; // 중복 방지
 
-    gsap.to(".curation-area .cont-wrap", {
-      y: -window.innerHeight * 2,
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".curation-area",
-        start: "top top",
-        end: `+=${window.innerHeight}`, // 이건 애니메이션 길이일 뿐, 실제 pin 해제 조건 아님
-        pin: true,
-        scrub: 1.2,
-        // markers: true,
-        onUpdate: self => {
-          if (!jumped && self.progress > 0) {
-            jumped = true;
-            gsap.to(window, {
-              scrollTo: ".original-area",
-              duration: 6,
-              ease: "power2.inOut",
-            });
-          }
-        },
-      },
-    });
+    // gsap.to(".curation-area .cont-wrap", {
+    //   y: -window.innerHeight * 2,
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     trigger: ".curation-area",
+    //     start: "top top",
+    //     end: `+=${window.innerHeight}`, // 이건 애니메이션 길이일 뿐, 실제 pin 해제 조건 아님
+    //     pin: true,
+    //     scrub: 1.2,
+    //     // markers: true,
+    //     onUpdate: self => {
+    //       if (!jumped && self.progress > 0) {
+    //         jumped = true;
+    //         gsap.to(window, {
+    //           scrollTo: ".original-area",
+    //           duration: 6,
+    //           ease: "power2.inOut",
+    //         });
+    //       }
+    //     },
+    //   },
+    // });
 
     // original
     const cards = document.querySelectorAll(".original-area .item");

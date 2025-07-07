@@ -31,12 +31,19 @@
 
   <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet">
 
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script> 
+
+  <script> 
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }; // 리로드 스크롤 위치 최상단 초기화
+  </script>
+
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.32/dist/lenis.min.js"></script>
 
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollToPlugin.min.js"></script>
-  
+
 
 
   <script src="/script.js"></script>
@@ -121,8 +128,6 @@
         <img src="studio_images/cur_item6.webp" alt="" style="z-index: 2; margin-bottom: 20px;" loading="lazy"
           width="900" height="900">
         <img src="studio_images/cur_item7.webp" alt="" style="z-index: 1;" loading="lazy" width="900" height="901">
-
-        <div class="bg-bk"></div>
       </div>
     </div>
   </section>
@@ -443,7 +448,8 @@
           우리 회사만의 교육 콘텐츠가 필요하다면? 만들면 되죠!
         </p>
       </div>
-      <video src="/studio_images/vid_lxp2.mp4" preload="metadata" loading="lazy" playsinline webkit-playsinline autoplay muted loop></video>
+      <video src="/studio_images/vid_lxp2.mp4" preload="metadata" loading="lazy" playsinline webkit-playsinline autoplay
+        muted loop></video>
     </div>
 
     <div class="grid mo-grid grid2">
