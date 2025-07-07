@@ -353,38 +353,22 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       // exp
       const video = document.querySelector(".exp-vid video");
 
-      // 고정할 스크롤 위치 변수
-      let scrollLocked = true;
-      let lockScrollPos = 0;
-
-      const st = ScrollTrigger.create({
+      ScrollTrigger.create({
         trigger: ".exp-vid",
         start: "top top",
-        end: "+=1000",
+        end: "+=1000", // 충분한 pin 길이 (스크롤 막기용)
         pin: true,
         scrub: false,
-        onEnter: () => {
-          scrollLocked = true;
-          lockScrollPos = window.scrollY;
-        },
-        onLeave: () => {
-          scrollLocked = false;
-        },
-        onUpdate: self => {
-          if (scrollLocked) {
-            // 스크롤 위치를 고정
-            window.scrollTo(0, lockScrollPos);
-          }
-        },
+        //markers: true, // 디버그용
       });
 
-      // 영상 끝나면 스크롤 잠금 해제하고 다음 섹션으로 이동
+      // 2. 영상 재생 완료 후 자동 스크롤 이동
       video.addEventListener("ended", () => {
-        scrollLocked = false;
-        document
-          .querySelector(".exp-hr")
-          .scrollIntoView({ behavior: "smooth" });
+        document.querySelector(".exp-hr").scrollIntoView({
+          behavior: "smooth",
+        });
       });
+
 
       // lxp gsap
       let isAutoScrolling = false; // 중복 방지용 플래그
