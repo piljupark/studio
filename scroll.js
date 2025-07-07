@@ -23,6 +23,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           gsap.to(".visual-inner", {
             width: "90vw",
             height: "calc(100vh - 200px)",
+            minHeight: "660px",
             opacity: 1,
             duration: 0.5,
             ease: "power2.out",
@@ -36,6 +37,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           gsap.to(".visual-inner", {
             width: "0",
             height: "0",
+            minHeight: "0",
             opacity: 0,
             duration: 0.5,
             ease: "power2.out",
