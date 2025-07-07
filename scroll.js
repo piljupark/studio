@@ -3,35 +3,35 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
     // ✅ Lenis 초기화 및 연동 추가
-    const lenis = new Lenis({
-      duration: 1.5,
-      wheelMultiplier: 0.5,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    });
+    // const lenis = new Lenis({
+    //   duration: 1.5,
+    //   wheelMultiplier: 0.5,
+    //   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    // });
 
-    ScrollTrigger.scrollerProxy(document.body, {
-      scrollTop(value) {
-        return arguments.length ? lenis.scrollTo(value) : window.scrollY;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
-      },
-      pinType: document.body.style.transform ? "transform" : "fixed",
-    });
+    // ScrollTrigger.scrollerProxy(document.body, {
+    //   scrollTop(value) {
+    //     return arguments.length ? lenis.scrollTo(value) : window.scrollY;
+    //   },
+    //   getBoundingClientRect() {
+    //     return {
+    //       top: 0,
+    //       left: 0,
+    //       width: window.innerWidth,
+    //       height: window.innerHeight,
+    //     };
+    //   },
+    //   pinType: document.body.style.transform ? "transform" : "fixed",
+    // });
 
-    lenis.on("scroll", ScrollTrigger.update);
+    // lenis.on("scroll", ScrollTrigger.update);
 
-    // 🚀 Lenis requestAnimationFrame
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    // // 🚀 Lenis requestAnimationFrame
+    // function raf(time) {
+    //   lenis.raf(time);
+    //   requestAnimationFrame(raf);
+    // }
+    // requestAnimationFrame(raf);
 
     requestAnimationFrame(() => {
       let played = false;
