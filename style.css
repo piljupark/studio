@@ -230,7 +230,7 @@ a, button {font-family: "SUIT Variable";}
 .lxp-cont .grid video {position: relative; width: 100%; margin-top: 50px; border-radius: 30px;}
 
 .lxp-cont .grid .item-wrap {position: absolute; width: 100%; height: auto; top: 50%; left: 0; transform: translate(0, -25%); display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 0; }
-.lxp-cont .grid .item-wrap img {width: calc(50% - 25px);}
+.lxp-cont .grid .item-wrap img {width: calc(50% - 25px); border-radius: 30px;}
 
 .lxp-area .mo-grid {display: none;}
 .lxp-area .mo-grid.grid1 {display: block;}

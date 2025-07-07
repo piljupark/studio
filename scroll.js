@@ -398,7 +398,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".lxp-area",
           start: "top top",
-          end: "+=2500", // 적당한 길이로 조절
+          end: "+=4000", // 적당한 길이로 조절
           scrub: 1.2,
           pin: true,
           //markers: true,
@@ -436,7 +436,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         {
           x: "-100%", // 왼쪽 바깥으로 이동
           opacity: 0,
-          duration: 1.2,
+          duration: 12,
           ease: "power2.out",
         },
         0
@@ -452,7 +452,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         {
           x: "0%",
           opacity: 1,
-          duration: 1.2,
+          duration: 12,
           ease: "power2.out",
         },
         0
@@ -467,9 +467,9 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         {
           width: "100%", // 중앙 도달 시 확장
           height: "100vh",
-          ease: "power2.out",
+          duration: 12,
         },
-        0
+        "0.3"
       ); // 같은 타이밍에 실행
 
       // 4️⃣ txt-wrap → opacity: 0 → 1 (영상 중앙 도달 직후)
@@ -480,6 +480,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         },
         {
           opacity: 1,
+          duration: 24,
           ease: "power2.out",
         },
         ">0.2"
@@ -494,6 +495,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           opacity: 0,
           objectFit: "contain",
           ease: "power2.inOut",
+          duration: 12,
         },
         "+=1"
       ); // 영상 다 보인 뒤 시작
@@ -502,6 +504,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ".lxp-inner.right .txt-wrap",
         {
           opacity: 0,
+          duration: 12,
           ease: "power2.out",
         },
         "<"
@@ -514,6 +517,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         },
         {
           opacity: 1,
+          duration: 12,
           ease: "power2.out",
         },
         "<+0.1"
@@ -522,7 +526,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       tlLXP.fromTo(
         ".lxp-cont",
         { opacity: 0 },
-        { opacity: 1, duration: 0.6, ease: "power2.out" },
+        { opacity: 1, duration: 12, ease: "power2.out" },
         "<+0.1"
       );
 
@@ -534,7 +538,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           opacity: 1,
           duration: 1,
           ease: "power2.out",
-          stagger: 0.05,
+          stagger: 0.1,
         },
         ">1"
       );
@@ -547,7 +551,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ],
         {
           opacity: 0,
-          duration: 0.5,
+          duration: 12,
           ease: "power2.out",
         },
         "+=0.2"
@@ -560,7 +564,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           height: "500px",
           opacity: 0,
           ease: "power2.inOut",
-          duration: 0.7,
+          duration: 12,
         },
         "<"
       ); // ← 위 텍스트 사라짐과 동시에
@@ -570,7 +574,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ".lxp-cont .grid .item-wrap",
         {
           opacity: 1,
-          duration: 0.5,
+          duration: 12,
           ease: "power2.out",
         },
         "<"
@@ -587,7 +591,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           opacity: 1,
           duration: 0.6,
           ease: "power2.out",
-          stagger: 0.2,
+          stagger: 0.3,
         },
         "+=1"
       ); // ← item-wrap 등장 후 1초 뒤
