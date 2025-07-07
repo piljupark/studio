@@ -26,7 +26,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
 
     // lenis.on("scroll", ScrollTrigger.update);
 
-    // // 🚀 Lenis requestAnimationFrame
     // function raf(time) {
     //   lenis.raf(time);
     //   requestAnimationFrame(raf);
@@ -118,7 +117,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         tl.to(
           card,
           {
-            x: (i - 1.5) * 390,
+            x: (i - 1.5) * 330,
             y: 0,
             rotate: 0,
             zIndex: 10,
