@@ -107,17 +107,19 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       });
 
       // 🔹 ScrollTrigger로 .cont-wrap을 위로 올림 (제자리로)
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: ".original-area",
-          start: "top top",
-          end: "+=200", // 200px 안에서 이동 완료
-          scrub: 1,
-        },
-      }).to(container, {
-        y: 0,
-        ease: "power2.out",
-      });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".original-area",
+            start: "top top",
+            end: "+=200", // 200px 안에서 이동 완료
+            scrub: 1,
+          },
+        })
+        .to(container, {
+          y: 0,
+          ease: "power2.out",
+        });
 
       // 타임라인 생성
       const tl = gsap.timeline({
@@ -296,7 +298,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".feed-area",
           start: "top top",
-          end: "+=4600", // ✅ 300px 늘려줌 (마지막 퇴장용)
+          end: "+=4600", //
           scrub: 1.2,
           pin: true,
           // markers: true,
@@ -390,7 +392,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         });
       });
 
-
       // lxp gsap
       let isAutoScrolling = false; // 중복 방지용 플래그
 
@@ -398,34 +399,20 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".lxp-area",
           start: "top top",
-          end: "+=4000", // 적당한 길이로 조절
+          end: "+=7000", // 적당한 길이로 조절
           scrub: 1.2,
           pin: true,
           //markers: true,
           id: "lxpPin",
           onLeave: () => {
             if (isAutoScrolling) return;
-            isAutoScrolling = true;
-            gsap.to(window, {
-              scrollTo: ".out-area",
-              duration: 0.8,
-              ease: "power2.inOut",
-              onComplete: () => {
-                isAutoScrolling = false;
-              },
-            });
+            // isAutoScrolling = true; // 막아둠
+            // 자동 스크롤 주석 처리하거나 제거
           },
           onEnterBack: () => {
             if (isAutoScrolling) return;
-            isAutoScrolling = true;
-            gsap.to(window, {
-              scrollTo: ".lxp-area",
-              duration: 0.8,
-              ease: "power2.inOut",
-              onComplete: () => {
-                isAutoScrolling = false;
-              },
-            });
+            // isAutoScrolling = true;
+            // 자동 스크롤 주석 처리 또는 제거
           },
         },
       });
@@ -495,7 +482,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           opacity: 0,
           objectFit: "contain",
           ease: "power2.inOut",
-          duration: 12,
+          duration: 6,
         },
         "+=1"
       ); // 영상 다 보인 뒤 시작
@@ -530,19 +517,34 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         "<+0.1"
       );
 
+      // 1️⃣ 첫 번째 텍스트 등장
       tlLXP.to(
-        ".lxp-cont .txt-wrap .sm-ti span:nth-child(1), \
-        .lxp-cont .txt-wrap .ti p:nth-child(1), \
-        .lxp-cont .txt-wrap .txt span:nth-child(1)",
+        [
+          ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
+          ".lxp-cont .txt-wrap .ti p:nth-child(1)",
+          ".lxp-cont .txt-wrap .txt span:nth-child(1)",
+        ],
         {
           opacity: 1,
-          duration: 1,
+          duration: 6,
           ease: "power2.out",
-          stagger: 0.1,
+          stagger: 1,
         },
-        ">1"
+        "+=0.3"
       );
 
+      // 2️⃣ video 등장
+      tlLXP.to(
+        ".lxp-cont video",
+        {
+          opacity: 1,
+          duration: 6,
+          ease: "power2.out",
+        },
+        ">0.5" // 텍스트 나오고 살짝 뒤
+      );
+
+      // 3️⃣ 스크롤 500px 후 → video + 첫 번째 텍스트 모두 사라짐
       tlLXP.to(
         [
           ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
@@ -551,36 +553,23 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ],
         {
           opacity: 0,
-          duration: 12,
+          duration: 6,
           ease: "power2.out",
         },
-        "+=0.2"
-      ); // ← 이전 텍스트 등장 후 약간 텀 주고 시작
+        "+=8" // 500px 정도 더 진행
+      );
 
       tlLXP.to(
         ".lxp-cont video",
         {
-          width: "50%",
-          height: "500px",
           opacity: 0,
-          ease: "power2.inOut",
-          duration: 12,
-        },
-        "<"
-      ); // ← 위 텍스트 사라짐과 동시에
-
-      // 🔥 6️⃣ 다음 콘텐츠 등장: item-wrap → opacity 1
-      tlLXP.to(
-        ".lxp-cont .grid .item-wrap",
-        {
-          opacity: 1,
-          duration: 12,
+          duration: 6,
           ease: "power2.out",
         },
-        "<"
-      ); // ← video 사라진 후 0.5초 뒤
+        "<" // 동시에 사라짐
+      );
 
-      // 🔥 7️⃣ 텍스트 순차 등장: sm-ti2, ti2, txt2
+      // 4️⃣ 두 번째 텍스트 등장
       tlLXP.to(
         [
           ".lxp-cont .txt-wrap .sm-ti span:nth-child(2)",
@@ -589,12 +578,23 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ],
         {
           opacity: 1,
-          duration: 0.6,
+          duration: 6,
           ease: "power2.out",
           stagger: 0.3,
         },
-        "+=1"
-      ); // ← item-wrap 등장 후 1초 뒤
+        "+=1.5" // 사라지고 여유 두고 등장
+      );
+
+      // 5️⃣ item-wrap 등장
+      tlLXP.to(
+        ".lxp-cont .grid .item-wrap",
+        {
+          opacity: 1,
+          duration: 6,
+          ease: "power2.out",
+        },
+        "+=0.5" // 텍스트 등장 이후 바로
+      );
 
       // out-area
       const outItems = gsap.utils.toArray(".out-item");
