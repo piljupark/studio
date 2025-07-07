@@ -225,26 +225,35 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       const txtWrap = document.querySelector(".feed-area .txt-wrap");
       const feedWrap = document.querySelector(".feed-area .cont-wrap");
 
-      // 초기 위치 셋팅
+      // 초기 상태
       gsap.set(txtWrap, { x: "-100vw", opacity: 0 });
-      gsap.set(feedWrap, { x: "100vw", opacity: 0 });
+      gsap.set(feedWrap, { y: "-100vh", opacity: 0 });
+
+      feedItems.forEach(item => {
+        gsap.set(item, {
+          x: "100vw",
+          opacity: 0,
+          scale: 1,
+          position: "absolute",
+          left: 0,
+        });
+      });
 
       // 메인 타임라인
       const fl = gsap.timeline({
         scrollTrigger: {
           trigger: ".feed-area",
           start: "top top",
-          end: "+=4000",
+          end: "+=4300", // ✅ 300px 늘려줌 (마지막 퇴장용)
           scrub: 1.2,
           pin: true,
-          //markers: true,
+          // markers: true,
         },
       });
 
-      // 0~200px 구간: 시간 흘리는 용
-      fl.to({}, { duration: 1 }); // 스크롤 구간상 약 200px 해당 (scrub: 1.2이기 때문)
+      // 1) 등장 시퀀스
+      fl.to({}, { duration: 1 });
 
-      // 200px 시점에서 txt-wrap / cont-wrap 슬라이드 인 (0.3초)
       fl.to(
         txtWrap,
         {
@@ -259,31 +268,56 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       fl.to(
         feedWrap,
         {
-          x: 0,
+          y: 0,
           opacity: 1,
           duration: 1,
           ease: "power2.out",
         },
         "slideIn"
-      ); // 타이밍 레이블로 동기화
+      );
 
-      // 이후 feedItems 순차 등장
+      // 2) 카드 날아오기 (오른쪽 겹침 + zIndex)
+      const CARD_SPACING = 60;
+
       feedItems.forEach((item, index) => {
-        if (index === 0) {
-          gsap.set(item, { opacity: 1, zIndex: 1 });
-        } else {
-          fl.to(
-            item,
-            {
-              opacity: 1,
-              scale: 1,
-              zIndex: index + 1,
-              duration: 1,
-            },
-            "+=1"
-          ); // 간격 줘서 등장
-        }
+        fl.to(
+          item,
+          {
+            x: CARD_SPACING * index,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            zIndex: index + 1,
+          },
+          `+=0.6`
+        );
       });
+
+      // 3) 300px 정도 여유 (스크롤 후 퇴장용)
+      fl.to({}, { duration: 0.6 });
+
+      // 4) 퇴장 애니메이션
+      fl.to(
+        txtWrap,
+        {
+          x: "-100vw",
+          opacity: 0,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "exit"
+      );
+
+      fl.to(
+        feedWrap,
+        {
+          y: "-100vh",
+          opacity: 0,
+          duration: 1,
+          ease: "power2.in",
+        },
+        "exit"
+      );
 
       // exp
       const video = document.querySelector(".exp-vid video");

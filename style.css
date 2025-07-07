@@ -129,9 +129,9 @@ a, button {font-family: "SUIT Variable";}
 .feed-area .txt-wrap h2 {font-size: 45px; font-weight: 600; line-height: 66px; letter-spacing: -1.35px; color: #fff; }
 .feed-area .txt-wrap h2 span{background: linear-gradient(90deg, #03FFD3 0%, #022A99 171.13%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .feed-area .txt-wrap .txt {font-size: 16px; font-weight: 400; line-height: 28px; letter-spacing: -0.48px; color: #fff; margin-top: 40px;}
-.feed-area .cont-wrap {position: relative; width: 40%; min-width: 40%; height: 50vh; box-sizing: border-box; display: flex; gap: 22px; z-index: 2;}
-.feed-area .cont-wrap .item {position: absolute; top: 0; right: 0; width: 25%; min-width: 424px; height: 70vh; max-height: 612px; padding: 12px 12px 48px; background: #fff;  border-radius: 30px; background-color: #D7F2EE; box-sizing: border-box; opacity: 0; transform: scale(0.95);}
-.feed-area .cont-wrap .item figure {position: relative; width: 100%; height: auto; min-height: 400px; margin: 0; background: #ddd; border-radius: 22px; overflow: hidden;}
+.feed-area .cont-wrap {position: relative; width: 40%; min-width: 40%; height: 100vh; box-sizing: border-box; display: flex; justify-content: center; align-items: center; gap: 22px; z-index: 2;}
+.feed-area .cont-wrap .item {position: absolute; right: 0; width: 25%; min-width: 424px; height: 70vh; max-height: 612px; padding: 12px 12px 48px; background: #fff;  border-radius: 30px; background-color: #D7F2EE; box-sizing: border-box; opacity: 0; transform: scale(0.95);}
+.feed-area .cont-wrap .item figure {position: relative; width: 100%; height: auto; min-height: clamp(300px, 43vh, 400px); margin: 0; background: #ddd; border-radius: 22px; overflow: hidden;}
 .feed-area .cont-wrap .item img {position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover;}
 .feed-area .cont-wrap .item .item-txt-wrap {position: relative; width: 100%; height: auto; margin-top: 30px; padding: 0 10px; box-sizing: border-box;}
 .feed-area .cont-wrap .item .item-txt-wrap h3 {font-size: 24px; font-style: normal; font-weight: 600; color: #060606; line-height: 24px; letter-spacing: -0.72px; }
