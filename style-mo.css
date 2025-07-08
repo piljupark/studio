@@ -28,6 +28,7 @@
   .visual-inner .txt-wrap .txt2 {margin-top: 35px; font-size: clamp(14px, 3vw, 18px); line-height: 24px; letter-spacing: -0.196px;}
   .visual-inner .txt-wrap .more {padding: 13px 40px; font-size: clamp(12px, 3vw, 16px); margin-top: 80px;}
 
+  .visual-inner .scroll-btn {width: 16px;}
   .visual-inner .scroll {width: 16px}
   /* visual// */
 
@@ -41,7 +42,7 @@
   /* //intro-area */
   .intro-area .ti {font-size: 30px; line-height: 44px; letter-spacing: -0.9px;}
   .intro-area .sub-ti {font-size: 14px; line-height: 20px; letter-spacing: -0.42px; margin-top: 29px; }
-  .intro-area .intro-item {margin-top: 90px;}
+  .intro-area .intro-item {width: 95vw; margin-top: 90px;}
 
 
   /* //curation-area */
