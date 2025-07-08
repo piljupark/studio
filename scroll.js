@@ -189,7 +189,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       gsap.set([title, subtitle], { fontSize: 0, opacity: 0 });
 
       gsap.to(title, {
-        fontSize: "45px",
+        fontSize: "clamp(34px, 5vh, 50px)",
         opacity: 1,
         duration: 0.5,
         ease: "power2.out",
@@ -202,7 +202,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       });
 
       gsap.to(subtitle, {
-        fontSize: "16px",
+        fontSize: "18px",
         opacity: 1,
         duration: 0.5,
         ease: "power2.out",
@@ -426,6 +426,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           x: "-100%", // 왼쪽 바깥으로 이동
           opacity: 0,
           duration: 12,
+          delay: 10,
           ease: "power2.out",
         },
         0
@@ -442,9 +443,10 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           x: "0%",
           opacity: 1,
           duration: 12,
+          delay: 10,
           ease: "power2.out",
         },
-        0
+        "0.3"
       );
 
       // 🔥 .right 안의 video는 width 확장
@@ -457,6 +459,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           width: "100%", // 중앙 도달 시 확장
           height: "100vh",
           duration: 12,
+          delay: 10,
         },
         "0.3"
       ); // 같은 타이밍에 실행
@@ -469,7 +472,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         },
         {
           opacity: 1,
-          duration: 24,
+          duration: 12,
           ease: "power2.out",
         },
         ">0.2"
@@ -484,7 +487,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           opacity: 0,
           objectFit: "contain",
           ease: "power2.inOut",
-          duration: 6,
+          duration: 12,
         },
         "+=1"
       ); // 영상 다 보인 뒤 시작
@@ -588,14 +591,35 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       );
 
       // 5️⃣ item-wrap 등장
-      tlLXP.to(
-        ".lxp-cont .grid .item-wrap",
+      // 5️⃣ item-wrap 이미지들이 양쪽에서 날아오게
+      tlLXP.fromTo(
+        ".item-left",
         {
+          x: "-100%",
+          opacity: 0,
+        },
+        {
+          x: "0%",
           opacity: 1,
-          duration: 6,
+          duration: 1.5,
           ease: "power2.out",
         },
-        "+=0.5" // 텍스트 등장 이후 바로
+        "+=0.5" // 두 번째 텍스트 등장 후
+      );
+
+      tlLXP.fromTo(
+        ".item-right",
+        {
+          x: "100%",
+          opacity: 0,
+        },
+        {
+          x: "0%",
+          opacity: 1,
+          duration: 1.5,
+          ease: "power2.out",
+        },
+        "<" // 동시에 등장
       );
 
       // out-area
@@ -617,7 +641,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       ScrollTrigger.create({
         trigger: ".out-area",
         start: "top top",
-        end: "+=2000", // pin 고정 유지 시간
+        end: "+=1400", // pin 고정 유지 시간
         pin: true,
         scrub: false,
         //markers: true,
@@ -641,9 +665,10 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               opacity: 1,
               duration: 0.5,
+              stagger: 0.1,
               ease: "power1.out",
             },
-            "+=1"
+            "1"
           );
 
           // 3단계: 이미지 올라가며 회전
@@ -654,10 +679,11 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd,
               rotation: 15,
-              duration: 0.8 * 3,
+              duration: 0.6 * 4,
+              stagger: 0,
               ease: "power1.inOut",
             },
-            "+=0.2"
+            "<"
           );
 
           tl.to(
@@ -665,7 +691,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd - 50,
               rotation: -15,
-              duration: 1 * 3,
+              duration: 0.8 * 4,
+              stagger: 0,
               ease: "power1.inOut",
             },
             "<"
@@ -676,7 +703,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd - 100,
               rotation: 10,
-              duration: 1.2 * 3,
+              duration: 1.0 * 4,
+              stagger: 0,
               ease: "power1.inOut",
             },
             "<"
