@@ -684,9 +684,9 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         },
       });
 
-      setTimeout(() => {
-        ScrollTrigger.refresh(true);
-      }, 100); // 지연 로드
+      // setTimeout(() => {
+      //   ScrollTrigger.refresh(true);
+      // }, 100); // 지연 로드
     }); // requestAnimationFrame
   }); // DOMContentLoaded
 } // matchmedia
