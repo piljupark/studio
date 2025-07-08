@@ -198,9 +198,9 @@
   .mem-area .plan-wrap .plan img {float: left; width: 25px;}
   .mem-area .plan-wrap .plan .nm {float: left; margin: 2px 0 0 5px; font-size: 14px; line-height: 21px; letter-spacing: -0.94px;}
   .mem-area .plan-wrap .plan .txt { float: left; width: 100%;}
-  .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 80px; margin-top: 32px; font-size: 16px; left: 25px;}
+  .mem-area .plan-wrap .plan .price {position: absolute; width: auto; bottom: 80px; margin-top: 32px; font-size: 16px; left: 14px;}
   .mem-area .plan-wrap .plan .price span {font-size: 14px;}
-  .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); height: 40px; font-size: 12px; }
+  .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 10px; width: calc(35% - 15px); height: 40px; font-size: 12px; }
 
   .mem-area .plan-wrap .right {width: 60%; display: grid;}
   .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }
@@ -225,7 +225,7 @@
   .loop-banner .banner-list .banner img {width: 1200px;}
 
   .bottom {margin-top: 180px;}
-  .bottom .move-wrap {gap: 24px; bottom: 40vw;}
+  .bottom .move-wrap {gap: 14px; bottom: 40vw;}
   .bottom .move-wrap a {font-size: 14px;}
 
 }
