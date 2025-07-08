@@ -630,21 +630,11 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     // original
     const items = gsap.utils.toArray(".original-area .item");
 
-    const visibleCount1 = 2; // ✅ 두 번째 아이템까지만 pin
-    const scrollLength = visibleCount1 * 400;
-
     const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".original-area",
-        start: "top top",
-        end: `+=${scrollLength}`,
-        pin: true,
-        scrub: 1.2,
-        // markers: true,
-      },
+      paused: true, // 👉 처음엔 멈춰 있다가 수동으로 재생
     });
 
-    // 각 아이템을 순차 등장
+    // 순차 등장
     items.forEach((item, i) => {
       tl.fromTo(
         item,
@@ -652,11 +642,24 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         {
           opacity: 1,
           y: 0,
-          duration: 0.15,
+          duration: 0.4,
           ease: "power2.out",
         },
         i * 0.2
       );
+    });
+
+    // ScrollTrigger로 섹션 진입 감지 후 1초 뒤 실행
+    ScrollTrigger.create({
+      trigger: ".original-area",
+      start: "top 80%",
+      once: true,
+      // markers: true,
+      onEnter: () => {
+        setTimeout(() => {
+          tl.play();
+        }, 500); // ✅ 1초(1000ms) 후 재생
+      },
     });
 
     // brief

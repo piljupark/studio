@@ -132,7 +132,7 @@
   .exp-hr .hr-inner .app-wrap {display: none;}
 
   .exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; height: auto; background: #5c6b69; justify-content: center; padding: 45px 0; box-sizing: border-box;}
-  .exp-hr .hr-inner .vid-wrap video {width: 65% !important; max-width: 414px; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius:10vw; overflow: hidden; border: 2px solid #090909;}
+  .exp-hr .hr-inner .vid-wrap video {width: 65% !important; max-width: 414px; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius:10vw; overflow: hidden;}
   .exp-hr .hr-inner .vid-wrap video:nth-child(1) {position: relative; left: unset; transform: unset;}
   .exp-hr .hr-inner .vid-wrap video.active {opacity: 1;}
 
@@ -142,10 +142,10 @@
   .lxp-inner.left .logo {width: 40vw; max-width: 400px;}
   .lxp-inner.left span {font-size: 13vw;}
 
-  .lxp-inner.right video {object-fit: cover;}
-  .lxp-inner.right .txt-wrap {inline-size: max-content;}
-  .lxp-inner.right .txt-wrap h3 {font-size: 26px; font-weight: 700; line-height: 38px; letter-spacing: -0.78px;}
-  .lxp-inner.right .txt-wrap .txt {font-size: 12px; line-height: 18px; letter-spacing: -0.36px; margin-top: 16px;}
+  .lxp-inner.right video { object-fit: cover; }
+  .lxp-inner.right .txt-wrap { inline-size: max-content; }
+  .lxp-inner.right .txt-wrap h3 { font-size: 26px; font-weight: 700; line-height: 38px; letter-spacing: -0.78px; }
+  .lxp-inner.right .txt-wrap .txt { font-size: 12px; line-height: 18px; letter-spacing: -0.36px; margin-top: 16px; }
 
   .lxp-cont-area {display: none;}
 
@@ -204,7 +204,7 @@
 
   .mem-area .plan-wrap .right {width: 60%;}
   .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }
-  .mem-area .plan-wrap .caution {text-align: left; padding: 0; margin-top: 10px; font-size: 12px; line-height: 16px;}
+  .mem-area .plan-wrap .caution {text-align: left; padding: 0; padding-left: 10px; margin: 0; font-size: 12px; line-height: 16px; box-sizing: border-box;}
   .mem-area .plan-wrap .list {margin-top: 30px; gap: 5px;}
   .mem-area .plan-wrap .list li {font-size: 12px; line-height: 16px; letter-spacing: -0.98px;}
 
