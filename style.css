@@ -316,7 +316,7 @@ a, button {font-family: "SUIT Variable";}
 .swiperBanner .swiper-pagination-bullet {background: #d9d9d9; opacity: 1;}
 .swiperBanner .swiper-pagination-bullet-active {background: #03ffd3;}
 
-.loop-banner {position: relative; height: auto; margin-top: 180px; display: flex; flex-direction: column; gap: 20px; overflow: hidden;}
+.loop-banner {position: relative; height: auto; margin-top: 180px; margin-bottom: -23vh; display: flex; flex-direction: column; gap: 20px; overflow: hidden;}
 .loop-banner .loop-track {position: relative; width: 100%; white-space: nowrap;}
 .loop-banner .banner-list {display: inline-flex;}
 .loop-banner .left-loop .banner-list {animation: bannerLeft 80s linear infinite;}
