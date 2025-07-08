@@ -583,7 +583,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
   }); // DOMContentLoaded
 } // matchmedia
 
-//
+// ========================== 모바일
 if (window.matchMedia("(max-width: 767px)").matches) {
   window.addEventListener("load", () => {
     gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
@@ -607,7 +607,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
           gsap.to(".visual-inner", {
             width: "90vw",
-            height: "60vh", // 모바일에 맞게 비율 조정
+            height: "70vh", // 모바일에 맞게 비율 조정
             opacity: 1,
             duration: 0.5,
             ease: "power2.out",
@@ -626,60 +626,6 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           });
         }
       },
-    });
-
-    // intro
-    const intro = document.querySelector(".intro-area");
-    const curation = document.querySelector(".curation-area");
-
-    let locked = false;
-
-    // 아래로 → intro → curation
-    ScrollTrigger.create({
-      trigger: intro,
-      start: "bottom bottom",
-      end: "bottom top",
-      onEnter: () => {
-        if (!locked) {
-          locked = true;
-          gsap.to(window, {
-            scrollTo: {
-              y: curation,
-              offsetY: 0,
-            },
-            duration: 1,
-            ease: "power2.out",
-            onComplete: () => {
-              // 일정 시간 뒤에 다시 스크롤 허용
-              setTimeout(() => (locked = false), 100);
-            },
-          });
-        }
-      },
-      //markers: false,
-    });
-
-    // 위로 → curation → intro (★ 수정된 부분)
-    ScrollTrigger.create({
-      trigger: curation,
-      start: "top top", // 뷰포트의 top과 curation의 top이 닿을 때
-      end: "bottom top", // 아래서 올라올 때를 잡기 위함
-      onLeaveBack: () => {
-        if (!locked) {
-          locked = true;
-          gsap.to(window, {
-            scrollTo: {
-              y: intro,
-              offsetY: 0,
-            },
-            duration: 1,
-            ease: "power2.out",
-            onComplete: () => setTimeout(() => (locked = false), 100),
-          });
-        }
-      },
-      //markers: false,
-      immediateRender: false, // ★ 중요: 스크롤 방향 이벤트 초기화 방지
     });
 
     // original
