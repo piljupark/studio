@@ -468,10 +468,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         {
           width: "100%", // 중앙 도달 시 확장
           height: "100vh",
-          borderRadius: "0px",
           duration: 12,
           delay: 10,
-          ease: "power2.inOut",
         },
         "0.3"
       ); // 같은 타이밍에 실행
@@ -490,10 +488,158 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ">0.2"
       ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
 
+      // // 🔥 4️⃣ 스크롤 500px 더 진행한 뒤 전환
+      // tlLXP.to(
+      //   ".lxp-inner.right video",
+      //   {
+      //     width: 0,
+      //     height: "auto",
+      //     opacity: 0,
+      //     objectFit: "contain",
+      //     ease: "power2.inOut",
+      //     duration: 12,
+      //   },
+      //   "+=1"
+      // ); // 영상 다 보인 뒤 시작
+
+      // tlLXP.to(
+      //   ".lxp-inner.right .txt-wrap",
+      //   {
+      //     opacity: 0,
+      //     duration: 12,
+      //     ease: "power2.out",
+      //   },
+      //   "<"
+      // ); // 동시에 사라짐
+
+      // tlLXP.fromTo(
+      //   ".lxp-cont",
+      //   {
+      //     opacity: 0,
+      //   },
+      //   {
+      //     opacity: 1,
+      //     duration: 12,
+      //     ease: "power2.out",
+      //   },
+      //   "<+0.1"
+      // ); // 살짝 딜레이해서 부드럽게 등장
+
+      // tlLXP.fromTo(
+      //   ".lxp-cont",
+      //   { opacity: 0 },
+      //   { opacity: 1, duration: 12, ease: "power2.out" },
+      //   "<+0.1"
+      // );
+
+      // // 1️⃣ 첫 번째 텍스트 등장
+      // tlLXP.to(
+      //   [
+      //     ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .ti p:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .txt span:nth-child(1)",
+      //   ],
+      //   {
+      //     opacity: 1,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //     stagger: 1,
+      //   },
+      //   "+=0.3"
+      // );
+
+      // // 2️⃣ video 등장
+      // tlLXP.to(
+      //   ".lxp-cont video",
+      //   {
+      //     opacity: 1,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //   },
+      //   ">0.5" // 텍스트 나오고 살짝 뒤
+      // );
+
+      // 3️⃣ 스크롤 500px 후 → video + 첫 번째 텍스트 모두 사라짐
+      // tlLXP.to(
+      //   [
+      //     ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .ti p:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .txt span:nth-child(1)",
+      //   ],
+      //   {
+      //     opacity: 0,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //   },
+      //   "+=8" // 500px 정도 더 진행
+      // );
+
+      // tlLXP.to(
+      //   ".lxp-cont video",
+      //   {
+      //     opacity: 0,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //   },
+      //   "<" // 동시에 사라짐
+      // );
+
+      // // 4️⃣ 두 번째 텍스트 등장
+      // tlLXP.to(
+      //   [
+      //     ".lxp-cont .txt-wrap .sm-ti span:nth-child(2)",
+      //     ".lxp-cont .txt-wrap .ti p:nth-child(2)",
+      //     ".lxp-cont .txt-wrap .txt span:nth-child(2)",
+      //   ],
+      //   {
+      //     opacity: 1,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //     stagger: 0.3,
+      //   },
+      //   "+=1.5" // 사라지고 여유 두고 등장
+      // );
+
+      // // 5️⃣ item-wrap 등장
+      // // 5️⃣ item-wrap 이미지들이 양쪽에서 날아오게
+      // tlLXP.fromTo(
+      //   ".item-left",
+      //   {
+      //     x: "-100%",
+      //     opacity: 0,
+      //   },
+      //   {
+      //     x: "0%",
+      //     opacity: 1,
+      //     duration: 1.5,
+      //     ease: "power2.out",
+      //   },
+      //   "+=0.5" // 두 번째 텍스트 등장 후
+      // );
+
+      // tlLXP.fromTo(
+      //   ".item-right",
+      //   {
+      //     x: "100%",
+      //     opacity: 0,
+      //   },
+      //   {
+      //     x: "0%",
+      //     opacity: 1,
+      //     duration: 1.5,
+      //     ease: "power2.out",
+      //   },
+      //   "<" // 동시에 등장
+      // );
 
       // out-area
       const outItems = gsap.utils.toArray(".out-item");
 
+      // 초기 위치 세팅
+      // gsap.set(
+      //   ".out-area .txt-wrap .sm-ti, .out-area .txt-wrap h3, .out-area .txt-wrap .txt",
+      //   { opacity: 0 }
+      // );
       outItems.forEach((item, i) => {
         gsap.set(item, {
           y: window.innerHeight + 100 + i * 50,
