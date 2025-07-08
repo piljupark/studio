@@ -101,7 +101,7 @@
   .feed-area .txt-wrap .txt {margin-top: 15px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; display: none;}
   .feed-area .cont-wrap {width: 100%; height: auto; margin-top: 30px; padding-bottom: 110px; gap: 12px; justify-content: flex-start;}
   .feed-area .cont-wrap::after {content: ''; display: block; flex: 0 0 80px;}
-  .feed-area .cont-wrap .item {position: relative; top: unset; left: unset; min-width: 38vw;  height: auto; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; opacity: 1;}
+  .feed-area .cont-wrap .item {position: relative; top: unset; left: unset; min-width: 38vw;  height: 295px; min-height: 295px; padding: 6px 6px 24px; border-radius: 15px; opacity: 1;}
   .feed-area .cont-wrap .item figure {min-height: 157px; border-radius: 10px;}
   .feed-area .cont-wrap .item .item-txt-wrap {margin-top: 15px;}
   .feed-area .cont-wrap .item .item-txt-wrap h3 {font-size: clamp(12px, 3vw, 20px);}
