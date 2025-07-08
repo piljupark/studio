@@ -188,9 +188,9 @@
 
   .mem-area .plan-wrap {flex-direction: column; gap: 20px; padding: 0 25px; box-sizing: border-box;}
 
-  .mem-area .plan-wrap .plan {width: 100%; height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
+  .mem-area .plan-wrap .plan {width: 100%; height: auto; padding: 20px 10px; display: flex; justify-content: space-between; gap: 15px; border-radius: 20px;}
   .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 270px;}
-  .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; min-height: 247px; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
+  .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; min-height: 247px; padding: 20px 10px; display: flex; justify-content: space-between; gap: 15px; border-radius: 20px;}
   .mem-area .plan-wrap .plan.plan2 .most {font-size: 14px; min-height: 290px;}
 
   .mem-area .plan-wrap .left {width: 40%;}
@@ -198,11 +198,11 @@
   .mem-area .plan-wrap .plan img {float: left; width: 25px;}
   .mem-area .plan-wrap .plan .nm {float: left; margin: 2px 0 0 5px; font-size: 14px; line-height: 21px; letter-spacing: -0.94px;}
   .mem-area .plan-wrap .plan .txt { float: left; width: 100%;}
-  .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 80px; margin-top: 32px; font-size: 16px; }
+  .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 80px; margin-top: 32px; font-size: 16px; left: 25px;}
   .mem-area .plan-wrap .plan .price span {font-size: 14px;}
   .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); height: 40px; font-size: 12px; }
 
-  .mem-area .plan-wrap .right {width: 60%;}
+  .mem-area .plan-wrap .right {width: 60%; display: grid;}
   .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }
   .mem-area .plan-wrap .caution {text-align: left; padding: 0; padding-left: 10px; margin: 0; font-size: 12px; line-height: 16px; box-sizing: border-box;}
   .mem-area .plan-wrap .list {margin-top: 30px; gap: 5px;}
