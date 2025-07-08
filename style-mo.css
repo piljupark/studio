@@ -150,6 +150,7 @@
   .lxp-cont-area {display: none;}
 
   .lxp-cont .grid {padding: 0 25px; gap: 50px;}
+  .lxp-cont .grid.grid1 img {width: 100%; border-radius: 12px;}
   .lxp-cont .grid.grid1 .item-wrap {display: none;}
   .lxp-cont .grid.grid3 .item-wrap img {width: 100%;}
   .lxp-cont .grid .item-wrap {position: relative; height: auto;}
@@ -168,6 +169,7 @@
   .mo-lxp .grid .txt-wrap .txt {font-size: 14px; font-weight: 500; line-height: 20px; letter-spacing: -0.42px; color: #b3b3b3; font-style: normal; margin-top: 16px; transition: all .3s ease; transition: none;}
 
   .mo-lxp .grid video {position: relative; width: 100%; border-radius: 10px;}
+  .mo-lxp .grid.grid1 img {position: relative; width: 100%; border-radius: 10px;}
 
   .mo-lxp .grid .item-wrap {position: relative; width: 100%; height: auto; display: flex; justify-content: space-between; align-items: start; gap: 15px; transition: all .3s ease; opacity: 1; }
   .mo-lxp .grid .item-wrap img {width: calc(50% - 7.5px); border-radius: 8px;}
