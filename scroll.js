@@ -258,7 +258,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       // 각 아이템 개별 속도 설정
       items.forEach((item, i) => {
         const speed = speedFactors[i] || 1; // fallback 값
-        console.log(`Item ${i + 1} speed:`, speed);
 
         gsap.fromTo(
           item,

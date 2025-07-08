@@ -174,7 +174,7 @@ a, button {font-family: "SUIT Variable";}
 .exp-hr .hr-inner .grid {position: relative; width: 50%; height: 80vh; display: grid; align-content: space-between; }
 .exp-hr .hr-inner .ti-wrap {position: relative;}
 .exp-hr .hr-inner .ti-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; line-height: 18px;}
-.exp-hr .hr-inner .ti-wrap .ti {font-size: 36px; font-weight: 800; line-height: 50px; columns: #000; letter-spacing: -1.08px; font-style: normal; margin-top: 12px;}
+.exp-hr .hr-inner .ti-wrap .ti {font-size: 36px; font-weight: 800; line-height: 50px; color: #000; letter-spacing: -1.08px; font-style: normal; margin-top: 12px;}
 .exp-hr .hr-inner .ti-wrap .ti span {background: linear-gradient(90deg, #0381FF 0%, #03FFD3 81.5%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .exp-hr .hr-inner .ti-wrap .txt {position: relative; font-size: 16px; color: #b3b3b3; line-height: 24px; font-style: normal; letter-spacing: -0.48px; margin-top: 20px; }
 .exp-hr .hr-inner .btn-wrap {position: relative; width: auto; display: grid; justify-content: start; align-content: start; gap: 10px; margin-bottom: clamp(70px, 10vh, 150px);}
