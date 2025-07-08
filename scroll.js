@@ -656,36 +656,45 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
     // brief
     const briefItems = gsap.utils.toArray(".brief-area .item");
+const container = document.querySelector(".brief-area .items-wrap"); // 감싸는 요소
 
-    const scrollPerItem = 400;
-    const briefScrollLength = briefItems.length * scrollPerItem;
+const itemHeight = 400;
+const totalScroll = briefItems.length * itemHeight;
 
-    const tlBrief = gsap.timeline({
+gsap.set(container, { y: 0 }); // 초기값
+
+gsap.to(container, {
+  y: () => -(briefItems.length - 1) * itemHeight * 0.6, // 대략 이동거리
+  ease: "none",
+  scrollTrigger: {
+    trigger: ".brief-area",
+    start: "top top",
+    end: `+=${totalScroll}`,
+    scrub: 1.2,
+    pin: true,
+    // markers: true,
+  },
+});
+
+// ✨ 아이템 등장 효과
+briefItems.forEach((item, i) => {
+  gsap.fromTo(
+    item,
+    { opacity: 0, y: 50 },
+    {
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+      duration: 0.3,
       scrollTrigger: {
-        trigger: ".brief-area",
-        start: "top top",
-        end: `+=${briefScrollLength}`,
-        pin: true,
-        scrub: 0.5,
-        // markers: true,
+        trigger: item,
+        containerAnimation: ScrollTrigger.getById("briefScroll"),
+        start: "top center",
+        toggleActions: "play none none reverse",
       },
-    });
-
-    // ✨ 아이템 등장 순서 애니메이션
-    briefItems.forEach((item, i) => {
-      tlBrief.fromTo(
-        item,
-        { opacity: 0, y: 50, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out",
-        },
-        i * 0.2 // 빠르게 등장
-      );
-    });
+    }
+  );
+  });
 
     //feed
     const feedCont = document.querySelector(".feed-area .cont-wrap");
