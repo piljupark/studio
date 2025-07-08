@@ -732,7 +732,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     });
 
     // exp
-    const scrollDistance = 500; // 전체 스크롤 거리
+    const scrollDistance = 500;
     const totalSteps = 3;
     const buttons = document.querySelectorAll(".btn-wrap .btn");
     const videos = document.querySelectorAll(".vid-wrap video");
@@ -740,27 +740,22 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     let fixed = false;
 
     const fixFinalState = () => {
+      if (fixed) return;
       fixed = true;
 
-      // btn3만 active
+      // 마지막 상태 버튼
       buttons.forEach((btn, i) => {
         btn.classList.toggle("active", i === 2);
         btn.classList.toggle("dimmed", i !== 2);
       });
 
-      // video3만 보여주기
+      // 마지막 영상
       videos.forEach((vid, i) => {
         gsap.set(vid, { opacity: i === 2 ? 1 : 0 });
       });
 
-      // btn-wrap 위치 유지
-      gsap.set(".btn-wrap", { x: 100 });
-    };
-
-    const forceFixIfNeeded = progress => {
-      if (!fixed && progress >= 0.99) {
-        fixFinalState();
-      }
+      // 위치 고정
+      gsap.set(".btn-wrap", { x: -60 });
     };
 
     ScrollTrigger.create({
@@ -769,10 +764,10 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       end: "+=500",
       scrub: true,
       pin: true,
-      //markers: true,
+      id: "expHR",
 
       onUpdate: self => {
-        if (fixed) return;
+        if (fixed) return; // 고정 이후는 무시
 
         const progress = self.progress;
         const index = Math.min(
@@ -781,17 +776,20 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         );
         const offsetX = index === 2 ? 60 : 0;
 
+        // 버튼 애니메이션
         gsap.to(".btn-wrap", {
-          x: 100 - offsetX, // ✅ 초기 여백 100에서 이동
+          x: -offsetX,
           duration: 0.4,
           ease: "power2.out",
         });
 
+        // 버튼 상태
         buttons.forEach((btn, i) => {
           btn.classList.toggle("active", i === index);
           btn.classList.toggle("dimmed", i !== index);
         });
 
+        // 비디오 상태
         videos.forEach((vid, i) => {
           gsap.to(vid, {
             opacity: i === index ? 1 : 0,
@@ -800,20 +798,28 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           });
         });
 
-        // ✅ 강제 고정 체크
-        forceFixIfNeeded(progress);
+        // 마지막 지점 도달 시 고정
+        if (index === 2 && progress >= 0.99) {
+          fixFinalState();
+        }
       },
 
-      onLeave: self => {
-        forceFixIfNeeded(self.progress);
+      onLeave: () => {
+        fixFinalState(); // 하단 넘겼을 때 강제 고정
+      },
+
+      onEnterBack: () => {
+        if (fixed) {
+          fixFinalState(); // 위로 다시 돌아와도 고정 상태 유지
+        }
       },
 
       onScrubComplete: () => {
         const scroll = ScrollTrigger.getById("expHR");
-        if (scroll) forceFixIfNeeded(scroll.progress);
+        if (!fixed && scroll && scroll.progress >= 0.99) {
+          fixFinalState();
+        }
       },
-
-      id: "expHR",
     });
 
     // lxp
