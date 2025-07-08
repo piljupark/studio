@@ -204,9 +204,10 @@
 
   .mem-area .plan-wrap .right {width: 60%; display: grid;}
   .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }
-  .mem-area .plan-wrap .caution {text-align: left; padding: 0; padding-left: 10px; margin: 0; font-size: 12px; line-height: 16px; box-sizing: border-box;}
+  .mem-area .plan-wrap .caution {text-align: left; padding: 0; padding-left: 10px; margin: 0; font-size: 12px; line-height: 16px; box-sizing: border-box; display: none;}
   .mem-area .plan-wrap .list {margin-top: 30px; gap: 5px;}
   .mem-area .plan-wrap .list li {font-size: 12px; line-height: 16px; letter-spacing: -0.98px;}
+  .mem-area .plan-wrap .list .caution {display: block;}
 
   .mem-area .more span {font-size: 14px; letter-spacing: -0.87px;}
 
