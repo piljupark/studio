@@ -399,9 +399,9 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         start: "top top",
         end: "+=1000", // ✅ 1000px 스크롤 후 pin 해제
         pin: true,
-        scrub: false, 
-        markers: false, 
-        id: "expHrPin"
+        scrub: false,
+        markers: false,
+        id: "expHrPin",
       });
 
       // lxp gsap
@@ -489,7 +489,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         },
         ">0.2"
       ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
-
 
       // out-area
       const outItems = gsap.utils.toArray(".out-item");
@@ -687,40 +686,27 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
     //feed
     const feedCont = document.querySelector(".feed-area .cont-wrap");
-    const feedItems = gsap.utils.toArray(".feed-area .item");
 
-    // 전체 스크롤할 거리 계산 (가로 스크롤 길이 + 추가 스크롤 600px)
+    const startPadding = 300;
+    const endPadding = 500;
+    const fakeEndPadding = 150; // ← 마지막에 밀어주는 거리 (공백 효과)
+
     const scrollWidth = feedCont.scrollWidth - window.innerWidth;
-    const extraScroll = 800;
 
     gsap.to(feedCont, {
-      x: () => `-${scrollWidth}px`,
+      x: () => `-${scrollWidth + fakeEndPadding}px`, // ✅ 살짝 더 밀어줌
       ease: "none",
       scrollTrigger: {
         trigger: ".feed-area",
         start: "top top",
-        end: () => `+=${scrollWidth + extraScroll}`,
+        end: () =>
+          `+=${scrollWidth + startPadding + endPadding + fakeEndPadding}`, // ✅ 스크롤 길이도 보정
         pin: true,
         scrub: 1.2,
         anticipatePin: 1,
-        //markers: false,
+        // markers: true,
       },
     });
-
-    // 실제 가로 이동
-    tl.to(feedCont, {
-      x: -scrollWidth,
-      ease: "none",
-      duration: scrollWidth / 500, // 비례로 조절
-    });
-
-    // 빈 공간 유지용 더미 애니메이션
-    tl.to(
-      {},
-      {
-        duration: extraScroll / 500, // 비례로 맞춤
-      }
-    );
 
     // exp
     const scrollDistance = 500; // 전체 스크롤 거리
@@ -809,17 +795,16 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     });
 
     // lxp
-
     let isAutoScrolling = false; // 중복 방지용 플래그
 
     const tlLXP = gsap.timeline({
       scrollTrigger: {
         trigger: ".lxp-area",
         start: "top top",
-        end: "+=2500", // 적당한 길이로 조절
+        end: () => `+=${tlLXP.duration() * 1000}`, // ✅ 자동 계산된 길이만큼 pin
         scrub: 1.2,
         pin: true,
-        //markers: true,
+        // markers: true,
         id: "lxpPin",
         onLeave: () => {
           if (isAutoScrolling) return;
@@ -882,6 +867,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       {
         width: "40%", // 시작 상태
         height: "auto",
+        borderRadius: "0"
       },
       {
         width: "100%", // 중앙 도달 시 확장
@@ -901,7 +887,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         opacity: 1,
         ease: "power2.out",
       },
-      ">0.2"
+      "<"
     ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
   });
 }

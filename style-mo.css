@@ -62,7 +62,8 @@
   /* original-area */
   .original-area {height: auto; padding-top: 80px; flex-direction: column;}
   .original-area .txt-wrap {padding: 0 25px; box-sizing: border-box;}
-  .original-area .txt-wrap h2 {font-size: 28px; letter-spacing: -0.84px; line-height: 28px; text-align: center;}
+  .original-area .txt-wrap .icon {position: relative; display: block; display: flex; justify-content: center; margin: 0 auto;}
+  .original-area .txt-wrap h2 {font-size: 28px; letter-spacing: -0.84px; line-height: 28px; text-align: center; margin-top: 15px;}
   .original-area .txt-wrap .txt {font-size: 14px; line-height: 20px; letter-spacing: -0.42px; text-align: left;  margin-top: 15px; display: none;}
   .original-area .cont-wrap {position: relative; top: unset; left: unset; transform: unset; margin-top: 30px; padding: 0 25px 30px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;}
   .original-area .cont-wrap .item {position: relative; width: 100%; height: auto; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; transform: unset !important; left: unset; top: unset;}
@@ -71,12 +72,17 @@
   .original-area .cont-wrap .item .item-txt-wrap h3 {font-size: 12px; line-height: 28px; letter-spacing: -0.6px; letter-spacing: -0.34px;}
   .original-area .cont-wrap .item .item-txt-wrap .txt {margin-top: 5px; font-size: 7px; line-height: 12px; letter-spacing: -0.21px;}
   .original-area .cont-wrap .item .item-txt-wrap .sub {font-size: 7px; margin-top: 12px;}
+  .original-area .cont-wrap .item.item2 {top: 30px;}
+  .original-area .cont-wrap .item.item4 {top: 30px;}
+
 
   /* brief-area */
   .brief-area {height: auto; padding-top: 80px; flex-direction: column;}
   .brief-area .txt-wrap {padding: 0 25px; box-sizing: border-box;}
-  .brief-area .txt-wrap h2 {font-size: 28px; text-align: left; line-height: 28px; letter-spacing: -0.84px;}
-  .brief-area .txt-wrap .txt {font-size: 14px; text-align: left; line-height: 20px; letter-spacing: -0.42px; margin-top: 15px;}
+  .brief-area .txt-wrap .icon {position: relative; display: block; display: flex; justify-content: center; margin: 0 auto;}
+  .brief-area .txt-wrap h2 {font-size: 28px; text-align: left; line-height: 28px; letter-spacing: -0.84px; margin-top: 15px; text-align: center;}
+  
+  .brief-area .txt-wrap .txt {font-size: 14px; text-align: left; line-height: 20px; letter-spacing: -0.42px; margin-top: 15px; display: none;}
   .brief-area .cont-wrap {position: relative; flex-direction: column; top: unset; left: unset; transform: unset; padding: 0 25px 30px; margin-top: 30px;}
   .brief-area .cont-wrap .grid {width: 100%; max-width: unset; margin: 0 !important; justify-items: end;}
   .brief-area .cont-wrap .item {width: 80%; height: auto; min-height: 194px; margin: 0 0 12px!important; padding: 6px 6px 24px; border-radius: 15px;}
@@ -89,15 +95,17 @@
   /* feed-area */
   .feed-area {height: auto; min-height: 100vh; padding-top: 80px;}
   .feed-area .wrapper {flex-direction: column; padding: 0 25px;}
-  .feed-area .txt-wrap h2 {font-size: 28px; line-height: 28px; letter-spacing: -0.84px;}
-  .feed-area .txt-wrap .txt {margin-top: 15px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
-  .feed-area .cont-wrap {width: 100%; margin-top: 30px; padding-bottom: 110px; gap: 12px; }
+  .feed-area .txt-wrap .icon {position: relative; display: block; display: flex; justify-content: center; margin: 0 auto;}
+  .feed-area .txt-wrap h2 {font-size: 28px; line-height: 28px; letter-spacing: -0.84px; margin-top: 15px; text-align: center;}
+  .feed-area .txt-wrap .txt {margin-top: 15px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; display: none;}
+  .feed-area .cont-wrap {width: 100%; height: auto; margin-top: 30px; padding-bottom: 110px; gap: 12px; justify-content: flex-start;}
   .feed-area .cont-wrap::after {content: ''; display: block; flex: 0 0 80px;}
-  .feed-area .cont-wrap .item {position: relative; top: unset; left: unset; min-width: 38vw; height: 262px; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; opacity: 1;}
+  .feed-area .cont-wrap .item {position: relative; top: unset; left: unset; min-width: 38vw;  height: auto; min-height: 262px; padding: 6px 6px 24px; border-radius: 15px; opacity: 1;}
   .feed-area .cont-wrap .item figure {min-height: 157px; border-radius: 10px;}
   .feed-area .cont-wrap .item .item-txt-wrap {margin-top: 15px;}
   .feed-area .cont-wrap .item .item-txt-wrap h3 {font-size: clamp(12px, 3vw, 20px);}
-  .feed-area .cont-wrap .item .item-txt-wrap .txt {margin-top: 6px; font-size: 10px;}
+  .feed-area .cont-wrap .item .item-txt-wrap .txt {margin-top: 6px; font-size: 10px; line-height: 11.9px;}
+  .feed-area .cont-wrap .item .item-txt-wrap .sub {font-size: 7px; font-weight: 500; line-height: 7px; letter-spacing: 0.208px;}
 
   /* exp-area */
   .exp-area .exp-hr {height: auto; }
@@ -107,10 +115,10 @@
   .exp-hr .hr-inner .ti-wrap .sm-ti {font-size: 16px; }
   .exp-hr .hr-inner .ti-wrap .ti {font-size: 28px; font-weight: 700; line-height: 36px; letter-spacing: -0.84px;}
   .exp-hr .hr-inner .ti-wrap .txt {margin-top: 16px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
-  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 25px 0; margin-top: 40px; box-sizing: border-box; display: flex; justify-content: center; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0); will-change: transform;}
+  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 60px 0; margin-top: 40px; margin-bottom: 0; box-sizing: border-box; display: flex; justify-content: flex-start; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0); will-change: transform; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;}
   .exp-hr .hr-inner .btn-wrap::-webkit-scrollbar {display: none;}
-  .exp-hr .hr-inner .btn-wrap .btn {min-width: max-content; padding: 0 14px; flex: 0 0 auto;}
-  .exp-hr .hr-inner .btn-wrap .btn p {color: rgba(255, 255, 255, 0.8)}
+  .exp-hr .hr-inner .btn-wrap .btn {min-width: max-content; padding: 0 14px; flex: 0 0 auto; scroll-snap-align: start; flex: 0 0 auto; }
+  .exp-hr .hr-inner .btn-wrap .btn p {font-size: 14px; font-weight: 600; letter-spacing: -0.84px; color: rgba(255, 255, 255, 0.8)}
   .exp-hr .hr-inner .btn-wrap .btn::before {width: 100%; padding: 0 20px; box-sizing: border-box; background: rgba(255, 255, 255, 0.2);}
   .exp-hr .hr-inner .btn-wrap .btn .arrow {display: none;}
   .exp-hr .hr-inner .btn-wrap .btn::after {display: none;}
@@ -134,7 +142,7 @@
   .lxp-inner.left span {font-size: 13vw;}
 
   .lxp-inner.right video {object-fit: cover;}
-  .lxp-inner.right .txt-wrap {left: 25px; bottom: 80px;}
+  .lxp-inner.right .txt-wrap {inline-size: max-content;}
   .lxp-inner.right .txt-wrap h3 {font-size: 26px; font-weight: 700; line-height: 38px; letter-spacing: -0.78px;}
   .lxp-inner.right .txt-wrap .txt {font-size: 12px; line-height: 18px; letter-spacing: -0.36px; margin-top: 16px;}
 
