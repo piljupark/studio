@@ -757,6 +757,12 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       gsap.set(".btn-wrap", { x: 100 });
     };
 
+    const forceFixIfNeeded = progress => {
+      if (!fixed && progress >= 0.99) {
+        fixFinalState();
+      }
+    };
+
     ScrollTrigger.create({
       trigger: ".exp-hr",
       start: "top top",
@@ -768,28 +774,24 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       onUpdate: self => {
         if (fixed) return;
 
-        const progress = self.progress; // 0~1
+        const progress = self.progress;
         const index = Math.min(
           Math.floor(progress * totalSteps),
           totalSteps - 1
-        ); // 0, 1, 2
+        );
         const offsetX = index === 2 ? 60 : 0;
-        const finalX = 100 - offsetX;
 
-        // 버튼 이동
         gsap.to(".btn-wrap", {
-          x: -offsetX,
+          x: 100 - offsetX, // ✅ 초기 여백 100에서 이동
           duration: 0.4,
           ease: "power2.out",
         });
 
-        // 버튼 상태
         buttons.forEach((btn, i) => {
           btn.classList.toggle("active", i === index);
           btn.classList.toggle("dimmed", i !== index);
         });
 
-        // 비디오 상태
         videos.forEach((vid, i) => {
           gsap.to(vid, {
             opacity: i === index ? 1 : 0,
@@ -798,21 +800,17 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           });
         });
 
-        // 마지막에 고정
-        if (index === 2 && progress >= 0.99) {
-          fixFinalState();
-        }
+        // ✅ 강제 고정 체크
+        forceFixIfNeeded(progress);
       },
 
-      onLeave: () => {
-        if (!fixed) fixFinalState();
+      onLeave: self => {
+        forceFixIfNeeded(self.progress);
       },
 
       onScrubComplete: () => {
         const scroll = ScrollTrigger.getById("expHR");
-        if (!fixed && scroll && scroll.progress >= 0.99) {
-          fixFinalState();
-        }
+        if (scroll) forceFixIfNeeded(scroll.progress);
       },
 
       id: "expHR",
