@@ -630,8 +630,8 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     // original
     const items = gsap.utils.toArray(".original-area .item");
 
-    // 전체 스크롤 길이 = 아이템 수 * 400px
-    const scrollLength = items.length * 400;
+    const visibleCount1 = 2; // ✅ 두 번째 아이템까지만 pin
+    const scrollLength = visibleCount1 * 400;
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -640,61 +640,69 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         end: `+=${scrollLength}`,
         pin: true,
         scrub: 1.2,
-        //markers: false,
+        // markers: true,
       },
     });
 
-    // 각 아이템을 400px 간격으로 순차 등장
+    // 각 아이템을 순차 등장
     items.forEach((item, i) => {
       tl.fromTo(
         item,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.15, ease: "power2.out" },
-        i * 0.2 // 400px 기준으로 분배 (스크롤 400px = 타임라인 0.4초)
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.15,
+          ease: "power2.out",
+        },
+        i * 0.2
       );
     });
 
     // brief
     const briefItems = gsap.utils.toArray(".brief-area .item");
-const container = document.querySelector(".brief-area .items-wrap"); // 감싸는 요소
+    const container = document.querySelector(".brief-area .items-wrap");
 
-const itemHeight = 400;
-const totalScroll = briefItems.length * itemHeight;
+    const itemHeight = 400;
+    const visibleCount = 3; // ✅ 세 번째 아이템까지만 pin 유지
+    const totalScroll = visibleCount * itemHeight;
 
-gsap.set(container, { y: 0 }); // 초기값
+    // 초기 위치
+    gsap.set(container, { y: 0 });
 
-gsap.to(container, {
-  y: () => -(briefItems.length - 1) * itemHeight * 0.6, // 대략 이동거리
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".brief-area",
-    start: "top top",
-    end: `+=${totalScroll}`,
-    scrub: 1.2,
-    pin: true,
-    // markers: true,
-  },
-});
-
-// ✨ 아이템 등장 효과
-briefItems.forEach((item, i) => {
-  gsap.fromTo(
-    item,
-    { opacity: 0, y: 50 },
-    {
-      opacity: 1,
-      y: 0,
-      ease: "power2.out",
-      duration: 0.3,
+    // pin 구간 동안만 컨테이너 움직임
+    gsap.to(container, {
+      y: () => -(visibleCount - 1) * itemHeight * 0.6, // 3개까지만 이동
+      ease: "none",
       scrollTrigger: {
-        trigger: item,
-        containerAnimation: ScrollTrigger.getById("briefScroll"),
-        start: "top center",
-        toggleActions: "play none none reverse",
+        id: "briefScroll",
+        trigger: ".brief-area",
+        start: "top top",
+        end: `+=${totalScroll}`,
+        scrub: 1.2,
+        pin: false,
+        // markers: true,
       },
-    }
-  );
-  });
+    });
+
+    // ✨ 아이템 등장 애니메이션 (전체)
+    briefItems.forEach((item, i) => {
+      gsap.fromTo(
+        item,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          ease: "power2.out",
+          duration: 0.3,
+          scrollTrigger: {
+            trigger: item,
+            start: "top center",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
 
     //feed
     const feedCont = document.querySelector(".feed-area .cont-wrap");
