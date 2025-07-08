@@ -2,7 +2,8 @@
 
 
 * {font-family: "SUIT Variable";}
-html {overflow-x: hidden; height: auto; overflow-x: hidden;}
+html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;}
+html::-webkit-scrollbar {display: none;}
 body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow-x: hidden;}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
@@ -46,7 +47,8 @@ a, button {font-family: "SUIT Variable";}
 
 .visual-inner .txt-wrap .more:hover {background: #000; color: #fff;}
 
-.visual-inner .scroll {position: absolute; bottom: 2vh; animation: scroll 2.5s 0s infinite;}
+.visual-inner .scroll-btn {position: absolute; bottom: 2vh; width: 34px; height: 17px;}
+.visual-inner .scroll {position: absolute; bottom: 2vh; left: 0; animation: scroll 2.5s 0s infinite;}
 
 @keyframes scroll {
   0% {bottom: 4vh;}
@@ -180,7 +182,7 @@ a, button {font-family: "SUIT Variable";}
 .exp-hr .hr-inner .btn-wrap .btn p {font-size: 20px; color: #787878; font-style: normal; line-height: 24px; font-weight: 600; letter-spacing: -0.48px; z-index: 2;} 
 .exp-hr .hr-inner .btn-wrap .btn .arrow {position: absolute; left: 20px; z-index: 2;}
 .exp-hr .hr-inner .btn-wrap .btn::before {content: ''; position: absolute; width: 48px; height: 48px; left: 0; background: #d9d9d9; border-radius: 40px; transition: all .3s;  z-index: 0;}
-.exp-hr .hr-inner .btn-wrap .btn::after {content: ''; position: absolute; left: 20px; width: 0px; height: 2.5px; background-color: #fff; transition: all .3s ease;}
+.exp-hr .hr-inner .btn-wrap .btn::after {content: ''; position: absolute; left: 20px; bottom: 27.2px; width: 0px; height: 2.5px; background-color: #fff; transition: all .3s ease;}
 .exp-hr .hr-inner .btn-wrap .btn:hover p {color: #fff;}
 .exp-hr .hr-inner .btn-wrap .btn:hover::before {width:calc(100% + 20px); background: #3e4145;}
 .exp-hr .hr-inner .btn-wrap .btn:hover::after {left: 0; width: 24px;}
@@ -227,13 +229,13 @@ a, button {font-family: "SUIT Variable";}
 .lxp-cont .grid .txt-wrap .txt span {opacity: 0;}
 .lxp-cont .grid .txt-wrap .txt span:nth-child(2) {position: absolute; opacity: 0;}
 
-.lxp-cont .grid video {position: relative; width: 80vh; max-width: 980px; margin-top: 50px; border-radius: 30px; opacity: 0;}
+.lxp-cont .grid video {position: relative; width: 80vh; max-width: 980px; margin-top: 50px; border-radius: clamp(20px, 2.5vh, 30px); opacity: 0;}
 
-.lxp-cont .grid .item-wrap {position: absolute; width: 80vh; max-width: 730px; height: auto; top: 50%; left: 0; transform: translate(0, -25%); display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 0; }
-.lxp-cont .grid .item-wrap img {width: calc(50% - 25px); border-radius: 30px;}
+.lxp-cont .grid .item-wrap {position: absolute; width: 80vh; max-width: 800px; height: auto; top: 50%; left: 50%; transform: translate(-50%, -25%); display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 0; }
+.lxp-cont .grid .item-wrap img {width: calc(50% - 25px); border-radius: clamp(20px, 2.5vh, 30px);}
 
 .lxp-area .mo-grid {display: none;}
-.lxp-area .mo-grid.grid1 {display: block; display: grid; align-content: center;}
+.lxp-area .mo-grid.grid1 {display: block; display: grid; align-content: center; justify-content: center;}
 
 .mo-lxp {display: none;}
 /* lxp-area// */
