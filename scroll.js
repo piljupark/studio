@@ -797,43 +797,9 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     // lxp
     let isAutoScrolling = false; // 중복 방지용 플래그
 
-    const tlLXP = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".lxp-area",
-        start: "top top",
-        end: () => `+=${tlLXP.duration() * 1000}`, // ✅ 자동 계산된 길이만큼 pin
-        scrub: 1.2,
-        pin: true,
-        // markers: true,
-        id: "lxpPin",
-        onLeave: () => {
-          if (isAutoScrolling) return;
-          isAutoScrolling = true;
-          gsap.to(window, {
-            scrollTo: ".out-area",
-            duration: 0.8,
-            ease: "power2.inOut",
-            onComplete: () => {
-              isAutoScrolling = false;
-            },
-          });
-        },
-        onEnterBack: () => {
-          if (isAutoScrolling) return;
-          isAutoScrolling = true;
-          gsap.to(window, {
-            scrollTo: ".lxp-area",
-            duration: 0.8,
-            ease: "power2.inOut",
-            onComplete: () => {
-              isAutoScrolling = false;
-            },
-          });
-        },
-      },
-    });
+    // 1. timeline 생성 및 애니메이션 추가
+    const tlLXP = gsap.timeline();
 
-    // .left → 왼쪽 바깥으로 나감
     tlLXP.to(
       ".lxp-inner.left",
       {
@@ -845,7 +811,6 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       0
     );
 
-    // .right → 오른쪽 바깥에서 중앙으로 들어옴
     tlLXP.fromTo(
       ".lxp-inner.right",
       {
@@ -861,13 +826,12 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       0
     );
 
-    // 🔥 .right 안의 video는 width 확장
     tlLXP.fromTo(
       ".lxp-inner.right video",
       {
         width: "40%", // 시작 상태
         height: "auto",
-        borderRadius: "0"
+        borderRadius: "0",
       },
       {
         width: "100%", // 중앙 도달 시 확장
@@ -875,9 +839,8 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         ease: "power2.out",
       },
       0
-    ); // 같은 타이밍에 실행
+    );
 
-    // 4️⃣ txt-wrap → opacity: 0 → 1 (영상 중앙 도달 직후)
     tlLXP.fromTo(
       ".lxp-inner.right .txt-wrap",
       {
@@ -887,7 +850,45 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         opacity: 1,
         ease: "power2.out",
       },
-      "<"
-    ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
+      ">0.2"
+    );
+
+    // 2. ScrollTrigger 별도 생성 (timeline 완성 후)
+    ScrollTrigger.create({
+      animation: tlLXP,
+      trigger: ".lxp-area",
+      start: "top top",
+      end: () => `+=${tlLXP.duration() * 1000}`, // timeline duration에 딱 맞게 pin 유지
+      scrub: 1.2,
+      pin: true,
+      id: "lxpPin",
+      // markers: true,
+
+      onLeave: () => {
+        if (isAutoScrolling) return;
+        isAutoScrolling = true;
+        gsap.to(window, {
+          scrollTo: ".out-area",
+          duration: 0.8,
+          ease: "power2.inOut",
+          onComplete: () => {
+            isAutoScrolling = false;
+          },
+        });
+      },
+
+      onEnterBack: () => {
+        if (isAutoScrolling) return;
+        isAutoScrolling = true;
+        gsap.to(window, {
+          scrollTo: ".lxp-area",
+          duration: 0.8,
+          ease: "power2.inOut",
+          onComplete: () => {
+            isAutoScrolling = false;
+          },
+        });
+      },
+    });
   });
 }
