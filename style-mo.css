@@ -109,14 +109,14 @@
   .feed-area .cont-wrap .item .item-txt-wrap .sub {font-size: 7px; font-weight: 500; line-height: 7px; letter-spacing: 0.208px;}
 
   /* exp-area */
-  .exp-area .exp-hr {height: auto; }
+  .exp-area .exp-hr {height: auto; overflow: visible}
   .exp-hr .hr-inner {height: auto; padding: 0; flex-direction: column;}
   .exp-hr .hr-inner .grid {width: 100%; height: auto; align-content: baseline; display: inline;}
   .exp-hr .hr-inner .ti-wrap {text-align: center; padding-top: 50px;}
   .exp-hr .hr-inner .ti-wrap .sm-ti {font-size: 16px; }
   .exp-hr .hr-inner .ti-wrap .ti {font-size: 28px; font-weight: 700; line-height: 36px; letter-spacing: -0.84px;}
   .exp-hr .hr-inner .ti-wrap .txt {margin-top: 16px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
-  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 60px 0; margin-top: 40px; margin-bottom: 0; box-sizing: border-box; display: flex; justify-content: flex-start; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0); will-change: transform; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;}
+  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 60px 0; margin-top: 40px; margin-bottom: 0; box-sizing: border-box; display: flex; justify-content: flex-start; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0) !important; will-change: transform; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;}
   .exp-hr .hr-inner .btn-wrap::-webkit-scrollbar {display: none;}
   .exp-hr .hr-inner .btn-wrap .btn {min-width: max-content; padding: 0 14px; flex: 0 0 auto; scroll-snap-align: start; flex: 0 0 auto; }
   .exp-hr .hr-inner .btn-wrap .btn p {font-size: 14px; font-weight: 600; letter-spacing: -0.84px; color: rgba(255, 255, 255, 0.8)}
@@ -161,7 +161,7 @@
   .lxp-cont .grid .txt-wrap .txt { margin-top: 16px; font-size: 14px; color: #b3b3b3; line-height: 20px; letter-spacing: -0.42px;}
 
   .mo-lxp {position: relative; width: 100%; height: auto; background: #f4f4f4; display: block;}
-  .mo-lxp .grid {position: relative; width: 100%; max-width: 1000px; height: 100vh; padding: 0 25px; margin: 0 auto; box-sizing: border-box; display: grid; align-content: center; gap: 52px;}
+  .mo-lxp .grid {position: relative; width: 100%; max-width: 1000px; height: auto; padding: 100px 25px; margin: 0 auto; box-sizing: border-box; display: grid; align-content: center; gap: 52px;}
   .mo-lxp .grid .txt-wrap {text-align: center;}
   .mo-lxp .grid .txt-wrap .sm-ti {font-size: 16px; font-weight: 600; color: #000; line-height: 18px; transition: all .3s ease; transition: none;}
   .mo-lxp .grid .txt-wrap .ti {font-size: 24px; font-weight: 700; line-height: 30px; font-style: normal; letter-spacing: -0.72px; margin-top: 8px; transition: all .3s ease; transition: none;}
@@ -190,8 +190,8 @@
 
   .mem-area .plan-wrap .plan {width: 100%; height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
   .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 270px;}
-  .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
-  .mem-area .plan-wrap .plan.plan2 .most {font-size: 14px;}
+  .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; min-height: 247px; padding: 20px; display: flex; justify-content: space-between; gap: 15px;}
+  .mem-area .plan-wrap .plan.plan2 .most {font-size: 14px; min-height: 290px;}
 
   .mem-area .plan-wrap .left {width: 40%;}
   .mem-area .plan-wrap .left .txt {display: none;}
@@ -200,7 +200,7 @@
   .mem-area .plan-wrap .plan .txt { float: left; width: 100%;}
   .mem-area .plan-wrap .plan .price {position: absolute; width: 100%; bottom: 80px; margin-top: 32px; font-size: 16px; }
   .mem-area .plan-wrap .plan .price span {font-size: 14px;}
-  .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); height: 40px; font-size: 14px; }
+  .mem-area .plan-wrap .plan .contact {position: absolute; bottom: 20px; left: 20px; width: calc(35% - 15px); height: 40px; font-size: 12px; }
 
   .mem-area .plan-wrap .right {width: 60%;}
   .mem-area .plan-wrap .right .txt {display: block; display: contents; font-size: 12px; letter-spacing: -0.84px; padding: 0; }

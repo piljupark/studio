@@ -751,7 +751,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       });
 
       // btn-wrap 위치 유지
-      gsap.set(".btn-wrap", { x: -60 });
+      gsap.set(".btn-wrap", { x: 100 });
     };
 
     ScrollTrigger.create({
@@ -771,6 +771,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           totalSteps - 1
         ); // 0, 1, 2
         const offsetX = index === 2 ? 60 : 0;
+        const finalX = 100 - offsetX;
 
         // 버튼 이동
         gsap.to(".btn-wrap", {
