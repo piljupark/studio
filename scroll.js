@@ -649,15 +649,16 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       tl.fromTo(
         item,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" },
-        i * 0.4 // 400px 기준으로 분배 (스크롤 400px = 타임라인 0.4초)
+        { opacity: 1, y: 0, duration: 0.15, ease: "power2.out" },
+        i * 0.2 // 400px 기준으로 분배 (스크롤 400px = 타임라인 0.4초)
       );
     });
 
     // brief
     const briefItems = gsap.utils.toArray(".brief-area .item");
 
-    const briefScrollLength = briefItems.length * 400;
+    const scrollPerItem = 400;
+    const briefScrollLength = briefItems.length * scrollPerItem;
 
     const tlBrief = gsap.timeline({
       scrollTrigger: {
@@ -665,22 +666,24 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         start: "top top",
         end: `+=${briefScrollLength}`,
         pin: true,
-        scrub: 1.2,
-        //markers: false,
+        scrub: 0.5,
+        // markers: true,
       },
     });
 
+    // ✨ 아이템 등장 순서 애니메이션
     briefItems.forEach((item, i) => {
       tlBrief.fromTo(
         item,
-        { opacity: 0, y: 50 },
+        { opacity: 0, y: 50, scale: 0.96 },
         {
           opacity: 1,
           y: 0,
+          scale: 1,
           duration: 0.3,
           ease: "power2.out",
         },
-        i * 0.4 // 400px 당 한 개씩 등장
+        i * 0.2 // 빠르게 등장
       );
     });
 
@@ -740,7 +743,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       end: "+=500",
       scrub: true,
       pin: true,
-      markers: true,
+      //markers: true,
 
       onUpdate: self => {
         if (fixed) return;
@@ -795,15 +798,12 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     });
 
     // lxp
-    let isAutoScrolling = false; // 중복 방지용 플래그
-
-    // 1. timeline 생성 및 애니메이션 추가
     const tlLXP = gsap.timeline();
 
     tlLXP.to(
       ".lxp-inner.left",
       {
-        x: "-100%", // 왼쪽 바깥으로 이동
+        x: "-100%",
         opacity: 0,
         duration: 1.2,
         ease: "power2.out",
@@ -814,7 +814,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     tlLXP.fromTo(
       ".lxp-inner.right",
       {
-        x: "100%", // 오른쪽 바깥에서 시작
+        x: "100%",
         opacity: 0,
       },
       {
@@ -829,12 +829,12 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     tlLXP.fromTo(
       ".lxp-inner.right video",
       {
-        width: "40%", // 시작 상태
+        width: "40%",
         height: "auto",
         borderRadius: "0",
       },
       {
-        width: "100%", // 중앙 도달 시 확장
+        width: "100%",
         height: "100vh",
         ease: "power2.out",
       },
@@ -849,16 +849,17 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       {
         opacity: 1,
         ease: "power2.out",
+        duration: 1.2,
       },
       ">0.2"
     );
 
-    // 2. ScrollTrigger 별도 생성 (timeline 완성 후)
+    // 👉 마지막 애니메이션보다 약간 일찍 pin 해제되게
     ScrollTrigger.create({
       animation: tlLXP,
       trigger: ".lxp-area",
       start: "top top",
-      end: () => `+=${tlLXP.duration() * 1000}`, // timeline duration에 딱 맞게 pin 유지
+      end: () => `+=${(tlLXP.duration() - 1.2) * 1000}`, // ✅ 마지막 애니메이션 길이만큼 일찍 해제
       scrub: 1.2,
       pin: true,
       id: "lxpPin",
