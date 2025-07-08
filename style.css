@@ -62,7 +62,7 @@ a, button {font-family: "SUIT Variable";}
 .intro-area .ti {position: relative; font-size: 45px; font-weight: 600; line-height: 64px; text-align: center; letter-spacing: -1.35px; }
 .intro-area .ti span {background: linear-gradient(90deg, #03FFD3 0%, #022A99 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .intro-area .sub-ti {font-size: 20px; font-weight: 500; line-height: 34px; letter-spacing: -0.6px; color: #b3b3b3; text-align: center; margin-top: 24px;}
-.intro-area .intro-item {width: 80%; width: 80vh; max-width: 1040px; height: auto; margin-top: clamp(100px, 15vh, 154px);}
+.intro-area .intro-item {width: 80%; width: 80vh; max-width: 1040px; height: auto; margin-top: clamp(70px, 10vh, 154px);}
 /* intro-area// */
 
 /* //curation-area */
