@@ -111,8 +111,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         .timeline({
           scrollTrigger: {
             trigger: ".original-area",
-            start: "top top",
-            end: "+=200", // 200px 안에서 이동 완료
+            start: "top+=80 top",
+            end: "+=700", // 200px 안에서 이동 완료
             scrub: 1,
           },
         })
@@ -132,6 +132,9 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           //markers: true,
         },
       });
+
+      // 🔹 타임라인 초반에 딜레이 추가
+      tl.to({}, { duration: 0.3 });
 
       // 1️⃣ 카드 펼치기 (초반)
       cards.forEach((card, i) => {

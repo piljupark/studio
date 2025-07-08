@@ -176,7 +176,7 @@ a, button {font-family: "SUIT Variable";}
 .exp-hr .hr-inner .ti-wrap .ti span {background: linear-gradient(90deg, #0381FF 0%, #03FFD3 81.5%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .exp-hr .hr-inner .ti-wrap .txt {position: relative; font-size: 16px; color: #b3b3b3; line-height: 24px; font-style: normal; letter-spacing: -0.48px; margin-top: 20px; }
 .exp-hr .hr-inner .btn-wrap {position: relative; width: auto; display: grid; justify-content: start; align-content: start; gap: 10px; margin-bottom: clamp(70px, 10vh, 150px);}
-.exp-hr .hr-inner .btn-wrap .btn {position: relative; width: auto; height: 56px; display: flex; align-items: center; background: none; border: none;  text-align: left; padding: 0; padding-left: 50px; margin: 0; box-sizing: border-box; cursor: pointer; inline-size: fit-content; transition: all .3s; }
+.exp-hr .hr-inner .btn-wrap .btn {position: relative; width: auto; height: 56px; display: flex; align-items: center; background: none; border: none;  text-align: left; padding: 0; padding-left: 70px; margin: 0; box-sizing: border-box; cursor: pointer; inline-size: fit-content; transition: all .3s; }
 .exp-hr .hr-inner .btn-wrap .btn p {font-size: 20px; color: #787878; font-style: normal; line-height: 24px; font-weight: 600; letter-spacing: -0.48px; z-index: 2;} 
 .exp-hr .hr-inner .btn-wrap .btn .arrow {position: absolute; left: 20px; z-index: 2;}
 .exp-hr .hr-inner .btn-wrap .btn::before {content: ''; position: absolute; width: 48px; height: 48px; left: 0; background: #d9d9d9; border-radius: 40px; transition: all .3s;  z-index: 0;}
@@ -205,7 +205,7 @@ a, button {font-family: "SUIT Variable";}
 
 .lxp-inner.right {position: absolute; top: 0; width: 100%; height: 100vh; will-change: transform; z-index: 5;}
 .lxp-inner.right video {position: absolute; width: 600px; top: 50%; left: 50%; transform: translate(-50%, -50%); object-fit: cover;}
-.lxp-inner.right .txt-wrap {position: absolute; left: 165px; bottom: 165px; opacity: 0; transition: none;}
+.lxp-inner.right .txt-wrap {position: absolute; left: clamp(92px, 6vw, 165px); bottom: clamp(92px, 6vw, 165px); opacity: 0; transition: none;}
 .lxp-inner.right .txt-wrap h3 {font-size: 36px; font-style: normal; font-weight: 600; line-height: 50px; color: #fff; letter-spacing: -1.08px;}
 .lxp-inner.right .txt-wrap h3 span {color: #03ffd3;}
 .lxp-inner.right .txt-wrap .txt {font-size: 16px; font-style: normal; font-weight: 500; line-height: 24px; color: #fff; letter-spacing: -0.48px; margin-top: 45px;}
@@ -227,13 +227,13 @@ a, button {font-family: "SUIT Variable";}
 .lxp-cont .grid .txt-wrap .txt span {opacity: 0;}
 .lxp-cont .grid .txt-wrap .txt span:nth-child(2) {position: absolute; opacity: 0;}
 
-.lxp-cont .grid video {position: relative; width: 100%; margin-top: 50px; border-radius: 30px; opacity: 0;}
+.lxp-cont .grid video {position: relative; width: 80vh; max-width: 980px; margin-top: 50px; border-radius: 30px; opacity: 0;}
 
-.lxp-cont .grid .item-wrap {position: absolute; width: 100%; height: auto; top: 50%; left: 0; transform: translate(0, -25%); display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 0; }
+.lxp-cont .grid .item-wrap {position: absolute; width: 80vh; max-width: 730px; height: auto; top: 50%; left: 0; transform: translate(0, -25%); display: flex; justify-content: space-between; align-items: start; gap:0; transition: all .3s ease; opacity: 0; }
 .lxp-cont .grid .item-wrap img {width: calc(50% - 25px); border-radius: 30px;}
 
 .lxp-area .mo-grid {display: none;}
-.lxp-area .mo-grid.grid1 {display: block;}
+.lxp-area .mo-grid.grid1 {display: block; display: grid; align-content: center;}
 
 .mo-lxp {display: none;}
 /* lxp-area// */
