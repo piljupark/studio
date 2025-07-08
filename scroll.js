@@ -383,7 +383,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         start: "top top",
         end: "+=1000", // 충분한 pin 길이 (스크롤 막기용)
         pin: true,
-        scrub: false,
+        scrub: true,
         //markers: true, // 디버그용
       });
 
@@ -394,6 +394,16 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         });
       });
 
+      ScrollTrigger.create({
+        trigger: ".exp-hr",
+        start: "top top",
+        end: "+=1000", // ✅ 1000px 스크롤 후 pin 해제
+        pin: true,
+        scrub: false, 
+        markers: false, 
+        id: "expHrPin"
+      });
+
       // lxp gsap
       let isAutoScrolling = false; // 중복 방지용 플래그
 
@@ -401,7 +411,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".lxp-area",
           start: "top top",
-          end: "+=7000", // 적당한 길이로 조절
+          end: "+=4000", // 적당한 길이로 조절
           scrub: 1.2,
           pin: true,
           //markers: true,
@@ -478,149 +488,149 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         ">0.2"
       ); // 🔥 이전 애니메이션 끝난 뒤 0.2초 후에 시작
 
-      // 🔥 4️⃣ 스크롤 500px 더 진행한 뒤 전환
-      tlLXP.to(
-        ".lxp-inner.right video",
-        {
-          width: 0,
-          height: "auto",
-          opacity: 0,
-          objectFit: "contain",
-          ease: "power2.inOut",
-          duration: 12,
-        },
-        "+=1"
-      ); // 영상 다 보인 뒤 시작
+      // // 🔥 4️⃣ 스크롤 500px 더 진행한 뒤 전환
+      // tlLXP.to(
+      //   ".lxp-inner.right video",
+      //   {
+      //     width: 0,
+      //     height: "auto",
+      //     opacity: 0,
+      //     objectFit: "contain",
+      //     ease: "power2.inOut",
+      //     duration: 12,
+      //   },
+      //   "+=1"
+      // ); // 영상 다 보인 뒤 시작
 
-      tlLXP.to(
-        ".lxp-inner.right .txt-wrap",
-        {
-          opacity: 0,
-          duration: 12,
-          ease: "power2.out",
-        },
-        "<"
-      ); // 동시에 사라짐
+      // tlLXP.to(
+      //   ".lxp-inner.right .txt-wrap",
+      //   {
+      //     opacity: 0,
+      //     duration: 12,
+      //     ease: "power2.out",
+      //   },
+      //   "<"
+      // ); // 동시에 사라짐
 
-      tlLXP.fromTo(
-        ".lxp-cont",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 12,
-          ease: "power2.out",
-        },
-        "<+0.1"
-      ); // 살짝 딜레이해서 부드럽게 등장
+      // tlLXP.fromTo(
+      //   ".lxp-cont",
+      //   {
+      //     opacity: 0,
+      //   },
+      //   {
+      //     opacity: 1,
+      //     duration: 12,
+      //     ease: "power2.out",
+      //   },
+      //   "<+0.1"
+      // ); // 살짝 딜레이해서 부드럽게 등장
 
-      tlLXP.fromTo(
-        ".lxp-cont",
-        { opacity: 0 },
-        { opacity: 1, duration: 12, ease: "power2.out" },
-        "<+0.1"
-      );
+      // tlLXP.fromTo(
+      //   ".lxp-cont",
+      //   { opacity: 0 },
+      //   { opacity: 1, duration: 12, ease: "power2.out" },
+      //   "<+0.1"
+      // );
 
-      // 1️⃣ 첫 번째 텍스트 등장
-      tlLXP.to(
-        [
-          ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
-          ".lxp-cont .txt-wrap .ti p:nth-child(1)",
-          ".lxp-cont .txt-wrap .txt span:nth-child(1)",
-        ],
-        {
-          opacity: 1,
-          duration: 6,
-          ease: "power2.out",
-          stagger: 1,
-        },
-        "+=0.3"
-      );
+      // // 1️⃣ 첫 번째 텍스트 등장
+      // tlLXP.to(
+      //   [
+      //     ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .ti p:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .txt span:nth-child(1)",
+      //   ],
+      //   {
+      //     opacity: 1,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //     stagger: 1,
+      //   },
+      //   "+=0.3"
+      // );
 
-      // 2️⃣ video 등장
-      tlLXP.to(
-        ".lxp-cont video",
-        {
-          opacity: 1,
-          duration: 6,
-          ease: "power2.out",
-        },
-        ">0.5" // 텍스트 나오고 살짝 뒤
-      );
+      // // 2️⃣ video 등장
+      // tlLXP.to(
+      //   ".lxp-cont video",
+      //   {
+      //     opacity: 1,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //   },
+      //   ">0.5" // 텍스트 나오고 살짝 뒤
+      // );
 
       // 3️⃣ 스크롤 500px 후 → video + 첫 번째 텍스트 모두 사라짐
-      tlLXP.to(
-        [
-          ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
-          ".lxp-cont .txt-wrap .ti p:nth-child(1)",
-          ".lxp-cont .txt-wrap .txt span:nth-child(1)",
-        ],
-        {
-          opacity: 0,
-          duration: 6,
-          ease: "power2.out",
-        },
-        "+=8" // 500px 정도 더 진행
-      );
+      // tlLXP.to(
+      //   [
+      //     ".lxp-cont .txt-wrap .sm-ti span:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .ti p:nth-child(1)",
+      //     ".lxp-cont .txt-wrap .txt span:nth-child(1)",
+      //   ],
+      //   {
+      //     opacity: 0,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //   },
+      //   "+=8" // 500px 정도 더 진행
+      // );
 
-      tlLXP.to(
-        ".lxp-cont video",
-        {
-          opacity: 0,
-          duration: 6,
-          ease: "power2.out",
-        },
-        "<" // 동시에 사라짐
-      );
+      // tlLXP.to(
+      //   ".lxp-cont video",
+      //   {
+      //     opacity: 0,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //   },
+      //   "<" // 동시에 사라짐
+      // );
 
-      // 4️⃣ 두 번째 텍스트 등장
-      tlLXP.to(
-        [
-          ".lxp-cont .txt-wrap .sm-ti span:nth-child(2)",
-          ".lxp-cont .txt-wrap .ti p:nth-child(2)",
-          ".lxp-cont .txt-wrap .txt span:nth-child(2)",
-        ],
-        {
-          opacity: 1,
-          duration: 6,
-          ease: "power2.out",
-          stagger: 0.3,
-        },
-        "+=1.5" // 사라지고 여유 두고 등장
-      );
+      // // 4️⃣ 두 번째 텍스트 등장
+      // tlLXP.to(
+      //   [
+      //     ".lxp-cont .txt-wrap .sm-ti span:nth-child(2)",
+      //     ".lxp-cont .txt-wrap .ti p:nth-child(2)",
+      //     ".lxp-cont .txt-wrap .txt span:nth-child(2)",
+      //   ],
+      //   {
+      //     opacity: 1,
+      //     duration: 6,
+      //     ease: "power2.out",
+      //     stagger: 0.3,
+      //   },
+      //   "+=1.5" // 사라지고 여유 두고 등장
+      // );
 
-      // 5️⃣ item-wrap 등장
-      // 5️⃣ item-wrap 이미지들이 양쪽에서 날아오게
-      tlLXP.fromTo(
-        ".item-left",
-        {
-          x: "-100%",
-          opacity: 0,
-        },
-        {
-          x: "0%",
-          opacity: 1,
-          duration: 1.5,
-          ease: "power2.out",
-        },
-        "+=0.5" // 두 번째 텍스트 등장 후
-      );
+      // // 5️⃣ item-wrap 등장
+      // // 5️⃣ item-wrap 이미지들이 양쪽에서 날아오게
+      // tlLXP.fromTo(
+      //   ".item-left",
+      //   {
+      //     x: "-100%",
+      //     opacity: 0,
+      //   },
+      //   {
+      //     x: "0%",
+      //     opacity: 1,
+      //     duration: 1.5,
+      //     ease: "power2.out",
+      //   },
+      //   "+=0.5" // 두 번째 텍스트 등장 후
+      // );
 
-      tlLXP.fromTo(
-        ".item-right",
-        {
-          x: "100%",
-          opacity: 0,
-        },
-        {
-          x: "0%",
-          opacity: 1,
-          duration: 1.5,
-          ease: "power2.out",
-        },
-        "<" // 동시에 등장
-      );
+      // tlLXP.fromTo(
+      //   ".item-right",
+      //   {
+      //     x: "100%",
+      //     opacity: 0,
+      //   },
+      //   {
+      //     x: "0%",
+      //     opacity: 1,
+      //     duration: 1.5,
+      //     ease: "power2.out",
+      //   },
+      //   "<" // 동시에 등장
+      // );
 
       // out-area
       const outItems = gsap.utils.toArray(".out-item");
@@ -913,7 +923,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     );
 
     // exp
-    const scrollStep = 500;
+    const scrollDistance = 500; // 전체 스크롤 거리
     const totalSteps = 3;
     const buttons = document.querySelectorAll(".btn-wrap .btn");
     const videos = document.querySelectorAll(".vid-wrap video");
@@ -941,14 +951,19 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     ScrollTrigger.create({
       trigger: ".exp-hr",
       start: "top top",
-      end: `+=${scrollStep * totalSteps}`,
+      end: "+=500",
       scrub: true,
       pin: true,
+      markers: true,
 
       onUpdate: self => {
         if (fixed) return;
 
-        const index = Math.floor(self.progress * totalSteps);
+        const progress = self.progress; // 0~1
+        const index = Math.min(
+          Math.floor(progress * totalSteps),
+          totalSteps - 1
+        ); // 0, 1, 2
         const offsetX = index === 2 ? 60 : 0;
 
         // 버튼 이동
@@ -973,8 +988,8 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           });
         });
 
-        // 마지막 단계 진입하면 고정
-        if (index === 2 && self.progress >= 0.98) {
+        // 마지막에 고정
+        if (index === 2 && progress >= 0.99) {
           fixFinalState();
         }
       },
@@ -984,7 +999,6 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       },
 
       onScrubComplete: () => {
-        // 보완 처리
         const scroll = ScrollTrigger.getById("expHR");
         if (!fixed && scroll && scroll.progress >= 0.99) {
           fixFinalState();
