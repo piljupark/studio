@@ -152,7 +152,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       });
 
       // 2️⃣ 고정 구간 (짧은 딜레이)
-      tl.to({}, { duration: 0.5 });
+      tl.to({}, { duration: 0});
 
       // 3️⃣ 동시에 좌우 퇴장 (0,1 왼쪽 / 2,3 오른쪽)
       tl.to(
@@ -411,7 +411,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".lxp-area",
           start: "top top",
-          end: "+=4000", // 적당한 길이로 조절
+          end: "+=3000", // 적당한 길이로 조절
           scrub: 1.2,
           pin: true,
           //markers: true,
@@ -436,7 +436,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           x: "-100%", // 왼쪽 바깥으로 이동
           opacity: 0,
           duration: 12,
-          delay: 10,
+          delay: 4,
           ease: "power2.out",
         },
         0
@@ -453,7 +453,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           x: "0%",
           opacity: 1,
           duration: 12,
-          delay: 10,
+          delay: 4,
           ease: "power2.out",
         },
         "0.3"
