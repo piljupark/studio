@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const topBtn = document.querySelector(".top");
     const scrolled = window.scrollY;
   
-    if (scrolled > window.innerHeight) {
+    if (scrolled > 2 * window.innerHeight) {
       floatBtns?.classList.add("active");
       topBtn?.classList.add("active");
     } else {
