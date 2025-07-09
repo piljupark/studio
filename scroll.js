@@ -334,7 +334,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             ease: "power3.out",
             zIndex: index + 1,
           },
-          "+=0.6"
+          "+=0.6>"
         );
       });
 
@@ -342,27 +342,27 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       feedTimeline.to({}, { duration: 0.6 });
 
       // 4) 퇴장
-      feedTimeline.to(
-        txtWrap,
-        {
-          x: "-100vw",
-          opacity: 0,
-          duration: 1,
-          ease: "power2.in",
-        },
-        "exit"
-      );
+      // feedTimeline.to(
+      //   txtWrap,
+      //   {
+      //     x: "-100vw",
+      //     opacity: 0,
+      //     duration: 1,
+      //     ease: "power2.in",
+      //   },
+      //   "exit"
+      // );
 
-      feedTimeline.to(
-        feedWrap,
-        {
-          y: "-100vh",
-          opacity: 0,
-          duration: 1,
-          ease: "power2.in",
-        },
-        "exit"
-      );
+      // feedTimeline.to(
+      //   feedWrap,
+      //   {
+      //     y: "-100vh",
+      //     opacity: 0,
+      //     duration: 1,
+      //     ease: "power2.in",
+      //   },
+      //   "exit"
+      // );
 
       // 🔥 핵심 ScrollTrigger 설정
       let feedLocked = false;
@@ -377,14 +377,12 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         onUpdate: self => {
           if (!feedLocked && self.progress === 1) {
             feedLocked = true;
-      
-            // 1. 타임라인 멈춤 + 진행도 고정
+        
             feedTimeline.pause().progress(1);
-      
-            // 2. onUpdate 콜백 비활성화 (한 번만 실행되게)
-            self.callback = null;
-      
-            // ⚠️ 중요: disable, kill 절대 쓰지 말 것 (쓰면 여백 생김)
+        
+            self.animation = null;
+            self.vars.onUpdate = null;
+            ScrollTrigger.refresh(); // 공백 제거
           }
         }
       });

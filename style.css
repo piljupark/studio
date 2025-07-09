@@ -354,6 +354,12 @@ a, button {font-family: "SUIT Variable";}
 .bottom .move-wrap a:hover {bottom: 20px;}
 /* mem-area// */
 
+/* top */
+.top {position: fixed; bottom: 50px; right: 50px; background-color: #fff; width: 50px; height: 50px; border-radius: 15px; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 999; box-shadow: 0px 10px 20px rgba(0,0,0,0.1);}
+
+.top img { width: 18px; transform: rotate(-90deg);}
+/* //top */
+
 
 
 /* //리캐치 */
