@@ -281,6 +281,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       const txtWrap = document.querySelector(".feed-area .txt-wrap");
       const feedWrap = document.querySelector(".feed-area .cont-wrap");
 
+      let feedPlayed = false;
+
       // 초기 상태
       gsap.set(txtWrap, { x: "-100vw", opacity: 0 });
       gsap.set(feedWrap, { y: "-100vh", opacity: 0 });
@@ -303,9 +305,9 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           end: "+=4600", //
           scrub: 1.2,
           pin: true,
-          // markers: true,
         },
       });
+
 
       // 1) 등장 시퀀스
       fl.to({}, { duration: 0.2 });
@@ -398,7 +400,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         trigger: ".exp-hr",
         start: "top top",
         end: "+=1000", // ✅ 1000px 스크롤 후 pin 해제
-        pin: true,
+        pin: false,
         scrub: false,
         markers: false,
         id: "expHrPin",
@@ -411,7 +413,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrollTrigger: {
           trigger: ".lxp-area",
           start: "top top",
-          end: "+=3000", // 적당한 길이로 조절
+          end: "+=2400", // 적당한 길이로 조절
           scrub: 1.2,
           pin: true,
           //markers: true,
@@ -435,8 +437,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         {
           x: "-100%", // 왼쪽 바깥으로 이동
           opacity: 0,
-          duration: 12,
-          delay: 4,
+          duration: 8,
+          delay: 3,
           ease: "power2.out",
         },
         0
@@ -452,8 +454,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         {
           x: "0%",
           opacity: 1,
-          duration: 12,
-          delay: 4,
+          duration: 8,
+          delay: 3,
           ease: "power2.out",
         },
         "0.3"
@@ -469,8 +471,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
           width: "100%", // 중앙 도달 시 확장
           height: "100vh",
           borderRadius: "0px",
-          duration: 12,
-          delay: 10,
+          duration: 8,
+          delay: 3,
           ease: "power2.inOut",
         },
         "0.3"
@@ -573,86 +575,88 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     // int
     let played = false;
 
-  ScrollTrigger.create({
-    trigger: ".int-area",
-    start: "top top",
-    end: "+=1200",
-    pin: true,
-    scrub: false,
-    id: "pinOnly",
-    onUpdate: (self) => {
-      const progress = self.progress;
+    ScrollTrigger.create({
+      trigger: ".int-area",
+      start: "top top",
+      end: "+=1200",
+      pin: true,
+      scrub: false,
+      id: "pinOnly",
+      onUpdate: self => {
+        const progress = self.progress;
 
-      if (progress >= 0.1 && !played) {
-        played = true;
+        if (progress >= 0.1 && !played) {
+          played = true;
 
-        console.log("start animation");
+          console.log("start animation");
 
-        // int .inner 숨기기
-        gsap.to(".int", {
-          background: "linear-gradient(to right, rgba(94, 252, 232, 0), rgba(115, 110, 254, 0))",
-          duration: 0.5,
-          ease: "power2.out",
-          onStart: () => {
-            console.log("int .inner opacity 0");
-          },
-        });
+          // int .inner 숨기기
+          gsap.to(".int", {
+            background:
+              "linear-gradient(to right, rgba(94, 252, 232, 0), rgba(115, 110, 254, 0))",
+            duration: 0.5,
+            ease: "power2.out",
+            onStart: () => {
+              console.log("int .inner opacity 0");
+            },
+          });
 
-        gsap.to(".int .inner", {
-          opacity: 0,
-          duration: 0.5,
-          ease: "power2.out",
-          onStart: () => {
-            console.log("int .inner opacity 0");
-          },
-        });
+          gsap.to(".int .inner", {
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+            onStart: () => {
+              console.log("int .inner opacity 0");
+            },
+          });
 
-        // visual-inner 애니메이션
-        gsap.to(".visual-inner", {
-          width: "90vw",
-          height: "70vh",
-          opacity: 1,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      }
+          // visual-inner 애니메이션
+          gsap.to(".visual-inner", {
+            width: "90vw",
+            height: "70vh",
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
 
-      if (progress < 0.083 && played) {
-        played = false;
+        if (progress < 0.083 && played) {
+          played = false;
 
-        console.log("reset animation");
+          console.log("reset animation");
 
-        gsap.to(".int", {
-          background: "linear-gradient(to right, rgba(94, 252, 232, 1), rgba(115, 110, 254, 1)",
-          duration: 0.5,
-          ease: "power2.out",
-          onStart: () => {
-            console.log("int .inner opacity 0");
-          },
-        });
+          gsap.to(".int", {
+            background:
+              "linear-gradient(to right, rgba(94, 252, 232, 1), rgba(115, 110, 254, 1)",
+            duration: 0.5,
+            ease: "power2.out",
+            onStart: () => {
+              console.log("int .inner opacity 0");
+            },
+          });
 
-        // int .inner 다시 보이기
-        gsap.to(".int .inner", {
-          opacity: 1,
-          duration: 0.5,
-          ease: "power2.out",
-          onStart: () => {
-            console.log("int .inner opacity 1");
-          },
-        });
+          // int .inner 다시 보이기
+          gsap.to(".int .inner", {
+            opacity: 1,
+            duration: 0.5,
+            ease: "power2.out",
+            onStart: () => {
+              console.log("int .inner opacity 1");
+            },
+          });
 
-        // visual-inner 되감기
-        gsap.to(".visual-inner", {
-          width: "0",
-          height: "0",
-          minHeight: "0",
-          opacity: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      }
-    },
-  });
+          // visual-inner 되감기
+          gsap.to(".visual-inner", {
+            width: "0",
+            height: "0",
+            minHeight: "0",
+            opacity: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          });
+        }
+      },
+    });
 
     // original
     const items = gsap.utils.toArray(".original-area .item");
@@ -851,8 +855,8 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
     ScrollTrigger.create({
       trigger: ".swiper1",
-      start: "top 90%",    // 화면 아래 90% 지점에 도달하면 시작
-      end: "bottom top",   // swiper가 화면 위로 완전히 벗어나면 끝
+      start: "top 90%", // 화면 아래 90% 지점에 도달하면 시작
+      end: "bottom top", // swiper가 화면 위로 완전히 벗어나면 끝
       onEnter: () => {
         window.swiper1?.autoplay?.start();
       },
@@ -931,18 +935,18 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       scrub: false,
       pin: false,
       id: "lxpPin",
-      onUpdate: (self) => {
+      onUpdate: self => {
         // 스크롤을 올릴 때
         if (self.direction === -1 && scrollTriggerInstance) {
           scrollTriggerInstance.disable(false); // pin 해제
         }
-    
+
         // 다시 내릴 때 활성화
         if (self.direction === 1 && scrollTriggerInstance) {
           scrollTriggerInstance.enable();
         }
       },
-      onToggle: (self) => {
+      onToggle: self => {
         scrollTriggerInstance = self.scrollTrigger || scrollTriggerInstance;
       },
       // markers: true,
