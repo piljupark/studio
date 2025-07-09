@@ -611,7 +611,6 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         gsap.to(".visual-inner", {
           width: "90vw",
           height: "70vh",
-          minHeight: "660px",
           opacity: 1,
           duration: 0.5,
           ease: "power2.out",
