@@ -152,7 +152,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       });
 
       // 2️⃣ 고정 구간 (짧은 딜레이)
-      tl.to({}, { duration: 0});
+      tl.to({}, { duration: 0 });
 
       // 3️⃣ 동시에 좌우 퇴장 (0,1 왼쪽 / 2,3 오른쪽)
       tl.to(
@@ -500,41 +500,18 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         });
       });
 
-      // scrollTrigger: pin만 담당 + onEnter에서 애니메이션 자동 실행
       ScrollTrigger.create({
         trigger: ".out-area",
         start: "top top",
-        end: "+=1400", // pin 고정 유지 시간
-        pin: true,
+        end: "+=1000",
+        pin: false,
         scrub: false,
-        //markers: true,
         id: "outPin",
         onEnter: () => {
           const tl = gsap.timeline();
 
           tl.to({}, { duration: 0.3 });
 
-          // 1단계: sm-ti, h3 등장
-          tl.to(".out-area .txt-wrap .sm-ti, .txt-wrap h3", {
-            opacity: 1,
-            duration: 0.5,
-            stagger: 0.1,
-            ease: "power1.out",
-          });
-
-          // 2단계: 1초 후 .txt 등장
-          tl.to(
-            ".out-area .txt-wrap .txt",
-            {
-              opacity: 1,
-              duration: 0.5,
-              stagger: 0.1,
-              ease: "power1.out",
-            },
-            "1"
-          );
-
-          // 3단계: 이미지 올라가며 회전
           const yEnd = -(window.innerHeight / 2 + 300);
 
           tl.to(
@@ -542,8 +519,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd,
               rotation: 15,
-              duration: 0.6 * 4,
-              stagger: 0,
+              duration: 0.1 * 14,
               ease: "power1.inOut",
             },
             "<"
@@ -554,8 +530,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd - 50,
               rotation: -15,
-              duration: 0.8 * 4,
-              stagger: 0,
+              duration: 0.2 * 10,
               ease: "power1.inOut",
             },
             "<"
@@ -566,13 +541,21 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             {
               y: yEnd - 100,
               rotation: 10,
-              duration: 1.0 * 4,
-              stagger: 0,
+              duration: 0.3 * 10,
               ease: "power1.inOut",
             },
             "<"
           );
         },
+      });
+
+      window.addEventListener("load", () => {
+        ScrollTrigger.refresh();
+
+        const outTrigger = ScrollTrigger.getById("outPin");
+        if (outTrigger && outTrigger.isActive) {
+          outTrigger.vars.onEnter();
+        }
       });
 
       // setTimeout(() => {

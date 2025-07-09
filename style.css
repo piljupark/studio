@@ -271,11 +271,11 @@ a, button {font-family: "SUIT Variable";}
 .mem-area .plan-wrap.hidden {opacity: 0; visibility: hidden; pointer-events: none;}
 .mem-area .plan-wrap.visible {opacity: 1; visibility: visible;}
 
-.mem-area .plan-wrap .plan {position: relative; width: calc(33.33% - 40px); height: 612px; bottom: 0; padding: 44px 38px; box-sizing: border-box; background-color: #fff; border-radius: 38px; transition: all .3s ease-in-out; display: block;}
+.mem-area .plan-wrap .plan {position: relative; width: calc(33.33% - 40px); height: auto; min-height: 653px; bottom: 0; padding: 44px 38px; box-sizing: border-box; background-color: #fff; border-radius: 38px; transition: all .3s ease-in-out; display: block; display: grid; align-content: space-between;}
 
-.mem-area .plan-wrap .plan.plan2 {width: calc(33.33% - 40px); min-height: 670px; padding: 0; background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); }
+.mem-area .plan-wrap .plan.plan2 {width: calc(33.33% - 40px); min-height: 705px; padding: 0; background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); }
 .mem-area .plan-wrap .plan.plan2 .most {width: 100%; height: auto; font-size: 18px; color: #fff; font-weight: 700; line-height: 26px; text-align: center; letter-spacing: -0.54px; padding-top: 13px; text-shadow: 0 0 10px rgba(0,0,0,0.25); }
-.mem-area .plan-wrap .plan.plan2 .plan-inner {position: absolute; width: calc(100% - 10px); height: 612px; padding: 44px 38px; box-sizing: border-box; background-color: #fff;left: 5px; bottom: 5px; border-radius: 33px; display: block;}
+.mem-area .plan-wrap .plan.plan2 .plan-inner {position: absolute; width: calc(100% - 10px); height: 653px; min-height: 640px; padding: 44px 38px; box-sizing: border-box; background-color: #fff;left: 5px; bottom: 5px; border-radius: 33px; display: block; display: grid; align-content: space-between;}
 
 .mem-area .plan-wrap#planWrap2 {display: none;}
 .mem-area .plan-wrap#planWrap1 .plan.plan2 {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
@@ -321,7 +321,8 @@ a, button {font-family: "SUIT Variable";}
 .swiperBanner .swiper-slide .ti {font-size: 24px; font-weight: 600; color: #03ffd3;line-height: 30px; letter-spacing: -0.72px;}
 .swiperBanner .swiper-slide span {font-size: 16px; font-weight: 500; line-height: 26px; color: rgba(255, 255, 255, 0.8); line-height: 26px; letter-spacing: -0.48px;}
 .swiperBanner .swiper-slide .promo-item {position: absolute; width: 130px; top: 50%; right: 80px; transform: translate(0, -50%);}
-.swiperBanner .swiper-slide .go {position: absolute; top: 50%; right: 108px; padding: 16px 32px; transform: translate(0, -50%); font-size: 21px; line-height: 32px; letter-spacing: -1.75px; color: #000; text-decoration: none; background: #fff; border-radius: 40px; border: 3px solid #03ffd3;}
+.swiperBanner .swiper-slide .go {position: absolute; top: 50%; right: 108px; padding: 17px 70px 17px 60px; transform: translate(0, -50%); font-size: 21px; font-weight: 700; line-height: 32px; letter-spacing: -1.75px; color: #000; text-decoration: none; background: #fff; border-radius: 40px; border: 3px solid #03ffd3;}
+.swiperBanner .swiper-slide .go img { position: absolute; width: 9px; right: 20px; top: 50%; transform: translate(0, -50%); filter: invert(1); }
 .swiperBanner .swiper-pagination-bullet {background: #d9d9d9; opacity: 1;}
 .swiperBanner .swiper-pagination-bullet-active {background: #03ffd3;}
 
