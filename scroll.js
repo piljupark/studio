@@ -43,13 +43,14 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrub: false,
         // markers: true,
         id: "pinOnly",
-        onUpdate: (self) => {
+        onUpdate: self => {
+          // 스크롤 진행도 계산 (0.0 ~ 1.0)
           const progress = self.progress;
-    
+
+          // 600px 중 100px == 100 / 600 = 약 0.1666
           if (progress >= 0.1 && !played) {
             played = true;
-    
-            // visual-inner 애니메이션
+
             gsap.to(".visual-inner", {
               width: "90vw",
               height: "calc(100vh - 200px)",
@@ -58,31 +59,17 @@ if (window.matchMedia("(min-width: 768px)").matches) {
               duration: 0.5,
               ease: "power2.out",
             });
-    
-            // int .inner 숨기기
-            gsap.to(".int .inner", {
-              opacity: 0,
-              duration: 0.5,
-              ease: "power2.out",
-            });
           }
-    
+
+          // 스크롤 되돌릴 때 되감기
           if (progress < 0.083 && played) {
             played = false;
-    
-            // visual-inner 되감기
+
             gsap.to(".visual-inner", {
               width: "0",
               height: "0",
               minHeight: "0",
               opacity: 0,
-              duration: 0.5,
-              ease: "power2.out",
-            });
-    
-            // int .inner 다시 보이기
-            gsap.to(".int .inner", {
-              opacity: 1,
               duration: 0.5,
               ease: "power2.out",
             });
@@ -586,42 +573,69 @@ if (window.matchMedia("(max-width: 767px)").matches) {
     // int
     let played = false;
 
-    ScrollTrigger.create({
-      trigger: ".int-area",
-      start: "top top",
-      end: "+=800", // 모바일에서는 스크롤 길이 줄임
-      pin: true,
-      scrub: false,
-      //markers: true,
-      id: "pinOnlyMobile",
-      onUpdate: self => {
-        const progress = self.progress;
+  ScrollTrigger.create({
+    trigger: ".int-area",
+    start: "top top",
+    end: "+=1200",
+    pin: true,
+    scrub: false,
+    id: "pinOnly",
+    onUpdate: (self) => {
+      const progress = self.progress;
 
-        if (progress >= 0.1 && !played) {
-          played = true;
+      if (progress >= 0.1 && !played) {
+        played = true;
 
-          gsap.to(".visual-inner", {
-            width: "90vw",
-            height: "70vh", // 모바일에 맞게 비율 조정
-            opacity: 1,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        }
+        console.log("start animation");
 
-        if (progress < 0.083 && played) {
-          played = false;
+        // visual-inner 애니메이션
+        gsap.to(".visual-inner", {
+          width: "90vw",
+          height: "calc(100vh - 200px)",
+          minHeight: "660px",
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        });
 
-          gsap.to(".visual-inner", {
-            width: "0",
-            height: "0",
-            opacity: 0,
-            duration: 0.5,
-            ease: "power2.out",
-          });
-        }
-      },
-    });
+        // int .inner 숨기기
+        gsap.to(".int .inner", {
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          onStart: () => {
+            console.log("int .inner opacity 0");
+          },
+        });
+      }
+
+      if (progress < 0.083 && played) {
+        played = false;
+
+        console.log("reset animation");
+
+        // visual-inner 되감기
+        gsap.to(".visual-inner", {
+          width: "0",
+          height: "0",
+          minHeight: "0",
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
+        });
+
+        // int .inner 다시 보이기
+        gsap.to(".int .inner", {
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+          onStart: () => {
+            console.log("int .inner opacity 1");
+          },
+        });
+      }
+    },
+  });
 
     // original
     const items = gsap.utils.toArray(".original-area .item");
