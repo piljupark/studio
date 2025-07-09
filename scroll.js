@@ -588,17 +588,16 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
         console.log("start animation");
 
-        // visual-inner 애니메이션
-        gsap.to(".visual-inner", {
-          width: "90vw",
-          height: "calc(100vh - 200px)",
-          minHeight: "660px",
-          opacity: 1,
+        // int .inner 숨기기
+        gsap.to(".int", {
+          background: "linear-gradient(to right, rgba(94, 252, 232, 0), rgba(115, 110, 254, 0))",
           duration: 0.5,
           ease: "power2.out",
+          onStart: () => {
+            console.log("int .inner opacity 0");
+          },
         });
 
-        // int .inner 숨기기
         gsap.to(".int .inner", {
           opacity: 0,
           duration: 0.5,
@@ -607,6 +606,16 @@ if (window.matchMedia("(max-width: 767px)").matches) {
             console.log("int .inner opacity 0");
           },
         });
+
+        // visual-inner 애니메이션
+        gsap.to(".visual-inner", {
+          width: "90vw",
+          height: "70vh",
+          minHeight: "660px",
+          opacity: 1,
+          duration: 0.5,
+          ease: "power2.out",
+        });
       }
 
       if (progress < 0.083 && played) {
@@ -614,14 +623,13 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
         console.log("reset animation");
 
-        // visual-inner 되감기
-        gsap.to(".visual-inner", {
-          width: "0",
-          height: "0",
-          minHeight: "0",
-          opacity: 0,
+        gsap.to(".int", {
+          background: "linear-gradient(to right, rgba(94, 252, 232, 1), rgba(115, 110, 254, 1)",
           duration: 0.5,
           ease: "power2.out",
+          onStart: () => {
+            console.log("int .inner opacity 0");
+          },
         });
 
         // int .inner 다시 보이기
@@ -632,6 +640,16 @@ if (window.matchMedia("(max-width: 767px)").matches) {
           onStart: () => {
             console.log("int .inner opacity 1");
           },
+        });
+
+        // visual-inner 되감기
+        gsap.to(".visual-inner", {
+          width: "0",
+          height: "0",
+          minHeight: "0",
+          opacity: 0,
+          duration: 0.5,
+          ease: "power2.out",
         });
       }
     },
