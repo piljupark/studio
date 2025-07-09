@@ -281,9 +281,6 @@ if (window.matchMedia("(min-width: 768px)").matches) {
       const txtWrap = document.querySelector(".feed-area .txt-wrap");
       const feedWrap = document.querySelector(".feed-area .cont-wrap");
 
-      let feedPlayed = false;
-
-      // 초기 상태
       gsap.set(txtWrap, { x: "-100vw", opacity: 0 });
       gsap.set(feedWrap, { y: "-100vh", opacity: 0 });
 
@@ -297,22 +294,12 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         });
       });
 
-      // 메인 타임라인
-      const fl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".feed-area",
-          start: "top top",
-          end: "+=4600", //
-          scrub: 1.2,
-          pin: true,
-        },
-      });
+      const feedTimeline = gsap.timeline();
 
+      // 1) 등장
+      feedTimeline.to({}, { duration: 0.2 });
 
-      // 1) 등장 시퀀스
-      fl.to({}, { duration: 0.2 });
-
-      fl.to(
+      feedTimeline.to(
         txtWrap,
         {
           x: 0,
@@ -323,7 +310,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         "slideIn"
       );
 
-      fl.to(
+      feedTimeline.to(
         feedWrap,
         {
           y: 0,
@@ -334,11 +321,11 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         "slideIn"
       );
 
-      // 2) 카드 날아오기 (오른쪽 겹침 + zIndex)
+      // 2) 카드 순차 등장
       const CARD_SPACING = 60;
 
       feedItems.forEach((item, index) => {
-        fl.to(
+        feedTimeline.to(
           item,
           {
             x: CARD_SPACING * index,
@@ -347,15 +334,15 @@ if (window.matchMedia("(min-width: 768px)").matches) {
             ease: "power3.out",
             zIndex: index + 1,
           },
-          `+=0.6`
+          "+=0.6"
         );
       });
 
-      // 3) 300px 정도 여유 (스크롤 후 퇴장용)
-      fl.to({}, { duration: 0.6 });
+      // 3) 여유
+      feedTimeline.to({}, { duration: 0.6 });
 
-      // 4) 퇴장 애니메이션
-      fl.to(
+      // 4) 퇴장
+      feedTimeline.to(
         txtWrap,
         {
           x: "-100vw",
@@ -366,7 +353,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         "exit"
       );
 
-      fl.to(
+      feedTimeline.to(
         feedWrap,
         {
           y: "-100vh",
@@ -376,6 +363,31 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         },
         "exit"
       );
+
+      // 🔥 핵심 ScrollTrigger 설정
+      let feedLocked = false;
+
+      const feedTrigger = ScrollTrigger.create({
+        animation: feedTimeline,
+        trigger: ".feed-area",
+        start: "top top",
+        end: "+=4600",
+        scrub: 1.2,
+        pin: true,
+        onUpdate: self => {
+          if (!feedLocked && self.progress === 1) {
+            feedLocked = true;
+      
+            // 1. 타임라인 멈춤 + 진행도 고정
+            feedTimeline.pause().progress(1);
+      
+            // 2. onUpdate 콜백 비활성화 (한 번만 실행되게)
+            self.callback = null;
+      
+            // ⚠️ 중요: disable, kill 절대 쓰지 말 것 (쓰면 여백 생김)
+          }
+        }
+      });
 
       // exp
       const video = document.querySelector(".exp-vid video");
