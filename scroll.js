@@ -752,7 +752,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
         end: () =>
           `+=${scrollWidth + startPadding + endPadding + fakeEndPadding}`, // ✅ 스크롤 길이도 보정
         pin: true,
-        scrub: 1.2,
+        scrub: 0.4,
         anticipatePin: 1,
         // markers: true,
       },
@@ -851,6 +851,7 @@ if (window.matchMedia("(max-width: 767px)").matches) {
 
     // lxp
     const tlLXP = gsap.timeline();
+    let scrollTriggerInstance;
 
     tlLXP.to(
       ".lxp-inner.left",
@@ -912,9 +913,23 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       trigger: ".lxp-area",
       start: "top top",
       end: () => `+=${(tlLXP.duration() - 1.2) * 1000}`, // ✅ 마지막 애니메이션 길이만큼 일찍 해제
-      scrub: 1.2,
-      pin: true,
+      scrub: false,
+      pin: false,
       id: "lxpPin",
+      onUpdate: (self) => {
+        // 스크롤을 올릴 때
+        if (self.direction === -1 && scrollTriggerInstance) {
+          scrollTriggerInstance.disable(false); // pin 해제
+        }
+    
+        // 다시 내릴 때 활성화
+        if (self.direction === 1 && scrollTriggerInstance) {
+          scrollTriggerInstance.enable();
+        }
+      },
+      onToggle: (self) => {
+        scrollTriggerInstance = self.scrollTrigger || scrollTriggerInstance;
+      },
       // markers: true,
 
       onLeave: () => {
