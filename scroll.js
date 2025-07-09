@@ -43,14 +43,13 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrub: false,
         // markers: true,
         id: "pinOnly",
-        onUpdate: self => {
-          // 스크롤 진행도 계산 (0.0 ~ 1.0)
+        onUpdate: (self) => {
           const progress = self.progress;
-
-          // 600px 중 100px == 100 / 600 = 약 0.1666
+    
           if (progress >= 0.1 && !played) {
             played = true;
-
+    
+            // visual-inner 애니메이션
             gsap.to(".visual-inner", {
               width: "90vw",
               height: "calc(100vh - 200px)",
@@ -59,17 +58,31 @@ if (window.matchMedia("(min-width: 768px)").matches) {
               duration: 0.5,
               ease: "power2.out",
             });
+    
+            // int .inner 숨기기
+            gsap.to(".int .inner", {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.out",
+            });
           }
-
-          // 스크롤 되돌릴 때 되감기
+    
           if (progress < 0.083 && played) {
             played = false;
-
+    
+            // visual-inner 되감기
             gsap.to(".visual-inner", {
               width: "0",
               height: "0",
               minHeight: "0",
               opacity: 0,
+              duration: 0.5,
+              ease: "power2.out",
+            });
+    
+            // int .inner 다시 보이기
+            gsap.to(".int .inner", {
+              opacity: 1,
               duration: 0.5,
               ease: "power2.out",
             });
