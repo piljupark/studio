@@ -222,7 +222,7 @@ a, button {font-family: "SUIT Variable";}
 
 
 .lxp-cont-area {position: relative; width: 100%; height: auto; background-color: #f4f4f4; } 
-.lxp-cont-area .grid {position: relative; width: 100%; max-width: 1000px; height: 100vh; padding: 0 10px; margin: 0 auto; box-sizing: border-box; display: grid; align-content: center; justify-content: center; gap: clamp(30px, 3vw, 75px);}
+.lxp-cont-area .grid {position: relative; width: 100%; max-width: 1000px; height: 100vh; max-height: 1004px; padding: 0 10px; margin: 0 auto; box-sizing: border-box; display: grid; align-content: center; justify-content: center; gap: clamp(30px, 3vw, 75px);}
 .lxp-cont-area .grid .txt-wrap {text-align: center;}
 .lxp-cont-area .grid .txt-wrap .sm-ti {font-size: 18px; font-weight: 600; color: #000; line-height: 18px; transition: all .3s ease; transition: none; display: flex; justify-content: center; align-items: center;}
 .lxp-cont-area .grid .txt-wrap .sm-ti span:nth-child(2) {position: absolute; }
