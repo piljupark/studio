@@ -247,4 +247,6 @@
   .bottom .move-wrap {gap: 14px; bottom: 40vw;}
   .bottom .move-wrap a {font-size: 14px;}
 
+  .top {width: 45px; height: 45px; bottom: 15px; right: 25px; border-radius: 12px;}
+
 }
