@@ -109,14 +109,14 @@
   .feed-area .cont-wrap .item .item-txt-wrap .sub {font-size: 7px; font-weight: 500; line-height: 7px; letter-spacing: 0.208px;}
 
   /* exp-area */
-  .exp-area .exp-hr {height: auto; overflow: visible}
+  .exp-area .exp-hr {height: auto; padding-bottom: 50px !important; overflow: visible}
   .exp-hr .hr-inner {height: auto; padding: 0; flex-direction: column;}
   .exp-hr .hr-inner .grid {width: 100%; height: auto; align-content: baseline; display: inline;}
   .exp-hr .hr-inner .ti-wrap {text-align: center; padding-top: 50px;}
   .exp-hr .hr-inner .ti-wrap .sm-ti {font-size: 16px; }
   .exp-hr .hr-inner .ti-wrap .ti {font-size: 28px; font-weight: 700; line-height: 36px; letter-spacing: -0.84px;}
   .exp-hr .hr-inner .ti-wrap .txt {margin-top: 16px; font-size: 14px; line-height: 20px; letter-spacing: -0.42px; }
-  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 60px 0; margin-top: 40px; margin-bottom: 0; box-sizing: border-box; display: flex; justify-content: flex-start; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0) !important; will-change: transform; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;}
+  .exp-hr .hr-inner .btn-wrap {width: calc(100% + 60px); padding: 33px 60px 0; margin-top: 40px; margin-bottom: 0; box-sizing: border-box; display: flex; justify-content: flex-start; background: rgba(92, 107, 105, 1); overflow-x: scroll; gap: 12px; -ms-overflow-style: none; scrollbar-width: none; transform: translateX(0) !important; will-change: transform; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; display: none;}
   .exp-hr .hr-inner .btn-wrap::-webkit-scrollbar {display: none;}
   .exp-hr .hr-inner .btn-wrap .btn {min-width: max-content; padding: 0 14px; flex: 0 0 auto; scroll-snap-align: start; flex: 0 0 auto; }
   .exp-hr .hr-inner .btn-wrap .btn p {font-size: 14px; font-weight: 600; letter-spacing: -0.84px; color: rgba(255, 255, 255, 0.8)}
@@ -131,10 +131,27 @@
 
   .exp-hr .hr-inner .app-wrap {display: none;}
 
-  .exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; height: auto; background: #5c6b69; justify-content: center; padding: 45px 0; box-sizing: border-box;}
+  .exp-hr .hr-inner .vid-wrap {position: relative; width: 100%; height: auto; background: #5c6b69; justify-content: center; padding: 45px 0; box-sizing: border-box; display: none;}
   .exp-hr .hr-inner .vid-wrap video {width: 65% !important; max-width: 414px; height: auto; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius:10vw; overflow: hidden;}
   .exp-hr .hr-inner .vid-wrap video:nth-child(1) {position: relative; left: unset; transform: unset;}
   .exp-hr .hr-inner .vid-wrap video.active {opacity: 1;}
+
+  .exp-hr .hr-inner .swiper {position: relative; width: 100%; height: auto; display: block;}
+  .exp-hr .hr-inner .swiper.swiper1 {margin-top: 43px; background: #f4f4f4;}
+  .exp-hr .hr-inner .swiper.swiper1 .swiper-slide{display: grid; align-content: center; justify-items: center; gap: 36px; background: #f4f4f4;}
+  .exp-hr .hr-inner .swiper.swiper1 .swiper-slide p {font-size: 14px; font-weight: 600; line-height: 14px; letter-spacing: -0.84px; color: #060606; }
+  .exp-hr .hr-inner .swiper.swiper1 .swiper-slide video {width: 60vw; }
+  .exp-hr .hr-inner .swiper.swiper1 .swiper-button-prev, .swiper-rtl .swiper-button-next {width: 34px; height: 50px; background: #fff; box-shadow: 10px 10px 10px rgba(0,0,0,0.1); left: 0;}
+  .exp-hr .hr-inner .swiper.swiper1  .swiper-button-next, .swiper-rtl .swiper-button-prev {width: 34px; height: 50px; background: #fff; box-shadow: 10px 10px 10px rgba(0,0,0,0.1); right: 0;}
+
+  .exp-hr .hr-inner .swiper.swiper1 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {font-size: 20px; filter: grayscale(1);}
+  .exp-hr .hr-inner .swiper.swiper1 .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {font-size: 20px; filter: grayscale(1);}
+
+
+  .exp-hr .hr-inner .swiper.swiper2 {width: 100%; padding: 0 25px; margin-top: 20px; box-sizing: border-box;}
+  .exp-hr .hr-inner .swiper.swiper2 .swiper-slide {width: 100%; border-bottom: 4px solid rgba(6,6,6,0.08); margin: 0;}
+  .exp-hr .hr-inner .swiper.swiper2 .swiper-slide-thumb-active { border-bottom: 4px solid rgba(6,6,6,0.24);}
+
 
   /* //lxp-area */
   .lxp-cont {height: auto;}

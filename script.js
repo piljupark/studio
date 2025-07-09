@@ -85,6 +85,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  var swiper2 = new Swiper(".swiper2", {
+    spaceBetween: 0,
+    slidesPerView: 3,
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  var swiper1 = new Swiper(".swiper1", {
+    spaceBetween: 10,
+    effect: "fade",
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+      swiper: swiper2,
+    },
+  });
+
   // 반응형 리로드
   let lastWidth = window.innerWidth;
 
