@@ -107,6 +107,22 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
+
+  // 플로팅
+  window.addEventListener("scroll", () => {
+    const floatBtns = document.querySelector(".dir-btn-wrap");
+    const topBtn = document.querySelector(".top");
+    const scrolled = window.scrollY;
+  
+    if (scrolled > window.innerHeight) {
+      floatBtns?.classList.add("active");
+      topBtn?.classList.add("active");
+    } else {
+      floatBtns?.classList.remove("active");
+      topBtn?.classList.remove("active");
+    }
+  });
+
   // 반응형 리로드
   let lastWidth = window.innerWidth;
 
