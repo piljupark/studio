@@ -91,9 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
     freeMode: true,
     watchSlidesProgress: true,
   });
-  var swiper1 = new Swiper(".swiper1", {
+  window.swiper1 = new Swiper(".swiper1", {
     spaceBetween: 10,
     effect: "fade",
+    autoplay: {
+      delay: 2000, // 4초마다 전환 (원하는 값으로 조절 가능)
+      disableOnInteraction: false, // 사용자가 클릭해도 자동재생 유지
+    },
     navigation: {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",

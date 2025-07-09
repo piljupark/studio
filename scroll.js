@@ -785,67 +785,82 @@ if (window.matchMedia("(max-width: 767px)").matches) {
       gsap.set(".btn-wrap", { x: -60 });
     };
 
+    // ScrollTrigger.create({
+    //   trigger: ".exp-hr",
+    //   start: "top top",
+    //   end: "+=500",
+    //   scrub: true,
+    //   pin: true,
+    //   id: "expHR",
+
+    //   onUpdate: self => {
+    //     if (fixed) return; // 고정 이후는 무시
+
+    //     const progress = self.progress;
+    //     const index = Math.min(
+    //       Math.floor(progress * totalSteps),
+    //       totalSteps - 1
+    //     );
+    //     const offsetX = index === 2 ? 60 : 0;
+
+    //     // 버튼 애니메이션
+    //     gsap.to(".btn-wrap", {
+    //       x: -offsetX,
+    //       duration: 0.4,
+    //       ease: "power2.out",
+    //     });
+
+    //     // 버튼 상태
+    //     buttons.forEach((btn, i) => {
+    //       btn.classList.toggle("active", i === index);
+    //       btn.classList.toggle("dimmed", i !== index);
+    //     });
+
+    //     // 비디오 상태
+    //     videos.forEach((vid, i) => {
+    //       gsap.to(vid, {
+    //         opacity: i === index ? 1 : 0,
+    //         duration: 0.4,
+    //         ease: "power2.out",
+    //       });
+    //     });
+
+    //     // 마지막 지점 도달 시 고정
+    //     if (index === 2 && progress >= 0.99) {
+    //       fixFinalState();
+    //     }
+    //   },
+
+    //   onLeave: () => {
+    //     fixFinalState(); // 하단 넘겼을 때 강제 고정
+    //   },
+
+    //   onEnterBack: () => {
+    //     if (fixed) {
+    //       fixFinalState(); // 위로 다시 돌아와도 고정 상태 유지
+    //     }
+    //   },
+
+    //   onScrubComplete: () => {
+    //     const scroll = ScrollTrigger.getById("expHR");
+    //     if (!fixed && scroll && scroll.progress >= 0.99) {
+    //       fixFinalState();
+    //     }
+    //   },
+    // });
+
     ScrollTrigger.create({
-      trigger: ".exp-hr",
-      start: "top top",
-      end: "+=500",
-      scrub: true,
-      pin: true,
-      id: "expHR",
-
-      onUpdate: self => {
-        if (fixed) return; // 고정 이후는 무시
-
-        const progress = self.progress;
-        const index = Math.min(
-          Math.floor(progress * totalSteps),
-          totalSteps - 1
-        );
-        const offsetX = index === 2 ? 60 : 0;
-
-        // 버튼 애니메이션
-        gsap.to(".btn-wrap", {
-          x: -offsetX,
-          duration: 0.4,
-          ease: "power2.out",
-        });
-
-        // 버튼 상태
-        buttons.forEach((btn, i) => {
-          btn.classList.toggle("active", i === index);
-          btn.classList.toggle("dimmed", i !== index);
-        });
-
-        // 비디오 상태
-        videos.forEach((vid, i) => {
-          gsap.to(vid, {
-            opacity: i === index ? 1 : 0,
-            duration: 0.4,
-            ease: "power2.out",
-          });
-        });
-
-        // 마지막 지점 도달 시 고정
-        if (index === 2 && progress >= 0.99) {
-          fixFinalState();
-        }
+      trigger: ".swiper1",
+      start: "top 90%",    // 화면 아래 90% 지점에 도달하면 시작
+      end: "bottom top",   // swiper가 화면 위로 완전히 벗어나면 끝
+      onEnter: () => {
+        window.swiper1?.autoplay?.start();
       },
-
+      onLeaveBack: () => {
+        window.swiper1?.autoplay?.stop();
+      },
       onLeave: () => {
-        fixFinalState(); // 하단 넘겼을 때 강제 고정
-      },
-
-      onEnterBack: () => {
-        if (fixed) {
-          fixFinalState(); // 위로 다시 돌아와도 고정 상태 유지
-        }
-      },
-
-      onScrubComplete: () => {
-        const scroll = ScrollTrigger.getById("expHR");
-        if (!fixed && scroll && scroll.progress >= 0.99) {
-          fixFinalState();
-        }
+        window.swiper1?.autoplay?.stop();
       },
     });
 
