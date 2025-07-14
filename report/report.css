@@ -5,7 +5,7 @@
 html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; }
 /* html::-webkit-scrollbar {display: none;} */
 body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow-x: hidden;}
-a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
+a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0; list-style: none;}
 
 a, button {font-family: "SUIT Variable";}
 
@@ -39,5 +39,14 @@ a, button {font-family: "SUIT Variable";}
 .overview-area .txt-wrap .cont span {font-weight: 800;}
 
 /* contents */
-.contents-area {position: relative; width: 100%; height: auto;}
-.contents-area .int {position: relative; width: 100%; height: auto; padding: 115px 0 125px; box-sizing: border-box; background: linear-gradient(0deg, rgba(9, 9, 9, 0.70) 0%, rgba(9, 9, 9, 0.70) 100%)}
+.contents-area {position: relative; width: 100%; height: auto; overflow: hidden;}
+.contents-area .cont-bg {position: absolute; width: 100%; height: auto; top: 0; left: 0;}
+.contents-area .int {position: relative; width: 100%; height: auto; padding: 115px 0 125px; box-sizing: border-box; background: linear-gradient(0deg, rgba(9, 9, 9, 0.70) 0%, rgba(9, 9, 9, 0.70) 100%); display: grid; align-content: center; justify-items: center; }
+.contents-area .int .cate {font-size: 32px; color: #ff7474; font-weight: 700; line-height: 100%;}
+.contents-area .int ul {margin-top: 60px; display: grid; gap: 26px;}
+.contents-area .int ul li {font-size: 24px; color: #fff; font-weight: 700; line-height: 100%; letter-spacing: -0.48px; display: flex; align-items: center; gap: 30px;}
+.contents-area .int ul li span {padding: 10px 20px; border: 2px solid #fff; border-radius: 40px;}
+
+.contents-area .c1 { position: relative; width: 100%; height: auto; background: rgba(9, 9, 9, 1);}
+.contents-area .inner { position: relative; width: 100%; max-width: 1250px; padding: 150px 25px 120px; box-sizing: border-box; margin: 0 auto;}
+.contents-area .chapter {position: relative; width: fit-content; height: auto; padding: 10px 20px; box-sizing: border-box; font-size: 30px; color: #ff7474; font-weight: 800; line-height: 100%; letter-spacing: -0.6px; border: 1px solid #ff7474; border-radius: 40px;}
