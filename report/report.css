@@ -79,7 +79,7 @@ a, button {font-family: "SUIT Variable";}
 /* bottom  */
 .bottom {position: relative; width: 100%; height: auto; padding: 130px 25px 110px; box-sizing: border-box; background-image: url('../report/images/bg_main.webp'); background-position: center; background-repeat: no-repeat; background-size: cover; overflow: hidden;}
 .bottom .bg {position: absolute; width: 100%; height: 100%; top: 0; left: 0; background: linear-gradient(0deg, rgba(9, 9, 9, 0.70) 0%, rgba(9, 9, 9, 0.70) 100%); z-index: 1;}
-.bottom .txt-wrap {position: relative; width: 100%; height: auto; display: grid; justify-items: center; z-index: 2;}
+.bottom .txt-wrap {position: relative; width: 100%; height: auto; display: grid; justify-items: center; z-index: 3;}
 .bottom .txt-wrap .cate {font-size: 32px; color: #ff7474; font-weight: 700; line-height: 100%;}
 .bottom .txt-wrap .ti {font-size: 32px; color: #fff; font-weight: 700; line-height: 100%; letter-spacing: -0.64px; margin-top: 50px;}
 .bottom .txt-wrap .txt {font-size: 24px; color: #fff; font-weight: 500; line-height: 150%; letter-spacing: -0.48px; margin-top: 30px;}
@@ -88,3 +88,5 @@ a, button {font-family: "SUIT Variable";}
 .bottom .txt-wrap .btn.btn2 {margin-top: 20px;}
 .bottom .shape1 {position: absolute; top: -150px; left: -150px; width: 500px;}
 .bottom .shape2 {position: absolute; bottom: -100px; right: -100px; width: 600px;}
+.bottom .bg-object1 {position: absolute; width: auto; max-width: 1000px; height: auto; left: 10vw; bottom: 150px; z-index: 2;}
+.bottom .bg-object2 {position: absolute; width: auto; max-width: 1000px; height: auto; right: 0; top: 150px; z-index: 2;}
