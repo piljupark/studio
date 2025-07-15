@@ -83,7 +83,8 @@ a, button { font-family: "SUIT Variable"; }
 .bottom .txt-wrap .cate { font-size: 32px; color: #ff7474; font-weight: 700; line-height: 100%; } 
 .bottom .txt-wrap .ti { font-size: 32px; color: #fff; font-weight: 700; line-height: 100%; letter-spacing: -0.64px; margin-top: 50px; } 
 .bottom .txt-wrap .txt { font-size: 24px; color: #fff; font-weight: 500; line-height: 150%; letter-spacing: -0.48px; text-align: center; margin-top: 30px; } 
-.bottom .txt-wrap .btn { width: 100%; max-width: 320px; height: auto; background: none; border: 1px solid #d6ffbb; border-radius: 40px; font-size: 24px; color: #fff; font-weight: 700; padding: 14px 0; box-sizing: border-box; cursor: pointer; } 
+.bottom .txt-wrap .btn { width: 100%; max-width: 370px; height: auto; background: none; border: 1px solid #d6ffbb; border-radius: 40px; font-size: 24px; color: #fff; font-weight: 700; padding: 14px 0; box-sizing: border-box; cursor: pointer; transition: all .2s ease-in-out;} 
+.bottom .txt-wrap .btn:hover {background: #d6ffbb; color: #090909}
 .bottom .txt-wrap .btn.btn1 { margin-top: 50px; } 
 .bottom .txt-wrap .btn.btn2 { margin-top: 20px; } 
 .bottom .shape1 { position: absolute; top: -150px; left: -150px; width: 500px; } 
