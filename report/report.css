@@ -145,6 +145,7 @@ a, button { font-family: "SUIT Variable"; }
  .main .object { min-width: 450px; } 
 
  /* overview */
+ .overview-area {min-height: unset;}
  .overview-area .txt-wrap { height: auto; padding: 60px 25px; box-sizing: border-box; } 
  .overview-area img.object { min-width: 340px; } 
  .overview-area .txt-wrap .cate { font-size: 20px; } 
