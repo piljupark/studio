@@ -112,14 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener("scroll", () => {
     const floatBtns = document.querySelector(".dir-btn-wrap");
     const topBtn = document.querySelector(".top");
+    const flContactBtn = document.querySelector(".fl-contact");
     const scrolled = window.scrollY;
   
     if (scrolled > 2 * window.innerHeight) {
       floatBtns?.classList.add("active");
       topBtn?.classList.add("active");
+      flContactBtn?.classList.add("active");
     } else {
       floatBtns?.classList.remove("active");
       topBtn?.classList.remove("active");
+      flContactBtn?.classList.remove("active");
     }
   });
 
