@@ -136,8 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 상태가 바뀔 때만 reload
     if ((wasDesktop && isNowMobile) || (wasMobile && isNowDesktop)) {
-      const scrollY = window.scrollY || window.pageYOffset;
-      sessionStorage.setItem("scrollPosition", scrollY);
+      if (!window.location.hash) { // 해시 없을 때만 복원 필요
+        const scrollY = window.scrollY || window.pageYOffset;
+        sessionStorage.setItem("scrollPosition", scrollY);
+      }
       location.reload();
     }
 
@@ -145,10 +147,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   window.addEventListener("load", () => {
-    const scrollPosition = sessionStorage.getItem("scrollPosition");
-    if (scrollPosition) {
-      window.scrollTo(0, parseInt(scrollPosition));
-      sessionStorage.removeItem("scrollPosition");
+    if (window.location.hash) {
+      const el = document.querySelector(window.location.hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      const scrollPosition = sessionStorage.getItem("scrollPosition");
+      if (scrollPosition) {
+        window.scrollTo(0, parseInt(scrollPosition));
+        sessionStorage.removeItem("scrollPosition");
+      }
     }
   });
 });

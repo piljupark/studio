@@ -34,15 +34,13 @@
 
   <!-- 리로드 시 스크롤 최상단 유지 -->
   <script>
-    // window.onbeforeunload = function () {
-    //   window.scrollTo(0, 0);
-    // };
-    window.addEventListener("load", function() {
+    window.addEventListener("load", () => {
       if (window.location.hash) {
-        const el = document.querySelector(window.location.hash);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth" });
-        }
+        const hash = window.location.hash;
+        setTimeout(() => {
+          window.location.hash = "";
+          window.location.hash = hash;
+        }, 50);
       }
     });
   </script>
@@ -373,7 +371,7 @@
 
 
   <!-- //exp-area -->
-  <section class="exp-area">
+  <section class="exp-area" id="askHR">
     <div class="exp-vid">
       <video playsinline webkit-playsinline autoplay muted>
         <source src="studio_images/video_intro4-2.mp4" type="video/mp4">

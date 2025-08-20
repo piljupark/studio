@@ -375,14 +375,8 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         scrub: 1.2,
         pin: true,
         onUpdate: self => {
-          if (!feedLocked && self.progress === 1) {
-            feedLocked = true;
-        
+          if (self.progress === 1) {
             feedTimeline.pause().progress(1);
-        
-            self.animation = null;
-            self.vars.onUpdate = null;
-            ScrollTrigger.refresh(); // 공백 제거
           }
         }
       });
@@ -394,7 +388,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         trigger: ".exp-vid",
         start: "top top",
         end: "+=1000", // 충분한 pin 길이 (스크롤 막기용)
-        pin: true,
+        pin: false,
         scrub: true,
         //markers: true, // 디버그용
       });
