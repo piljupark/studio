@@ -117,9 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const scrolled = window.scrollY;
     const isMobile = window.innerWidth <= 768;
 
-    if (isMobile) {
-      // 모바일 로직
-      if (scrolled > 2 * window.innerHeight) {
+    if (scrolled > 2 * window.innerHeight) {
+      if (isMobile) {
+        // 📱 모바일 → 방향에 따라 다르게
         if (scrolled > lastScrollTop) {
           // 아래로 스크롤 → 플로팅 버튼
           floatBtns?.classList.add("active");
@@ -130,14 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
           topBtn?.classList.add("active");
         }
       } else {
-        // 기준보다 위일 때 전부 비활성화
-        floatBtns?.classList.remove("active");
-        topBtn?.classList.remove("active");
+        // 💻 데스크탑 → 둘 다 보이게
+        floatBtns?.classList.add("active");
+        topBtn?.classList.add("active");
       }
     } else {
-      // 데스크탑 로직 → 둘 다 항상 보이게
-      floatBtns?.classList.add("active");
-      topBtn?.classList.add("active");
+      // 스크롤이 기준 미만이면 둘 다 숨김
+      floatBtns?.classList.remove("active");
+      topBtn?.classList.remove("active");
     }
 
     lastScrollTop = scrolled <= 0 ? 0 : scrolled; // 음수 방지
