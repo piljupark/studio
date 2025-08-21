@@ -115,24 +115,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const floatBtns = document.querySelector(".dir-btn-wrap");
     const topBtn = document.querySelector(".top");
     const scrolled = window.scrollY;
-  
-    if (scrolled > 2 * window.innerHeight) {
-      // 기준 이상 내려왔을 때만 방향 체크
-      if (scrolled > lastScrollTop) {
-        // 아래로 스크롤 → 플로팅 버튼
-        floatBtns?.classList.add("active");
-        topBtn?.classList.remove("active");
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      // 모바일 로직
+      if (scrolled > 2 * window.innerHeight) {
+        if (scrolled > lastScrollTop) {
+          // 아래로 스크롤 → 플로팅 버튼
+          floatBtns?.classList.add("active");
+          topBtn?.classList.remove("active");
+        } else {
+          // 위로 스크롤 → top 버튼
+          floatBtns?.classList.remove("active");
+          topBtn?.classList.add("active");
+        }
       } else {
-        // 위로 스크롤 → top 버튼
+        // 기준보다 위일 때 전부 비활성화
         floatBtns?.classList.remove("active");
-        topBtn?.classList.add("active");
+        topBtn?.classList.remove("active");
       }
     } else {
-      // 기준보다 위에 있을 때는 전부 비활성화
-      floatBtns?.classList.remove("active");
-      topBtn?.classList.remove("active");
+      // 데스크탑 로직 → 둘 다 항상 보이게
+      floatBtns?.classList.add("active");
+      topBtn?.classList.add("active");
     }
-  
+
     lastScrollTop = scrolled <= 0 ? 0 : scrolled; // 음수 방지
   });
 
