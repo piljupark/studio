@@ -7,18 +7,32 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TWG3KFG6');</script>
+    })(window,document,'script','dataLayer','GTM-TWG3KFG6');
+  </script>
     <!-- End Google Tag Manager -->
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QE59GXHP8L"></script>
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-QE59GXHP8L');
+    gtag('config', 'G-QE59GXHP8L');
   </script>
+
+  <!-- Re:catch tracker script -->
+  <script async defer>
+    (function (t,r,a,ck,er) {
+      var h=t.getElementsByTagName(r)[0],i=t.createElement(a);
+      i.async=true;
+      i.defer=true;
+      i.id='recatch-tracker-script';
+      i.src='https://track.recatch.cc/recatch-tracker.iife.js?t='+ck+(er ? '&b=true' : '');
+      h.prepend(i);
+    })(document,'head','script',2050,false);
+  </script>
+  <!-- End Re:catch tracker script -->
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
