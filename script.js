@@ -109,21 +109,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // 플로팅
+  let lastScrollTop = 0;
+
   window.addEventListener("scroll", () => {
     const floatBtns = document.querySelector(".dir-btn-wrap");
     const topBtn = document.querySelector(".top");
-    const flContactBtn = document.querySelector(".fl-contact");
     const scrolled = window.scrollY;
   
     if (scrolled > 2 * window.innerHeight) {
-      floatBtns?.classList.add("active");
-      topBtn?.classList.add("active");
-      flContactBtn?.classList.add("active");
+      // 기준 이상 내려왔을 때만 방향 체크
+      if (scrolled > lastScrollTop) {
+        // 아래로 스크롤 → 플로팅 버튼
+        floatBtns?.classList.add("active");
+        topBtn?.classList.remove("active");
+      } else {
+        // 위로 스크롤 → top 버튼
+        floatBtns?.classList.remove("active");
+        topBtn?.classList.add("active");
+      }
     } else {
+      // 기준보다 위에 있을 때는 전부 비활성화
       floatBtns?.classList.remove("active");
       topBtn?.classList.remove("active");
-      flContactBtn?.classList.remove("active");
     }
+  
+    lastScrollTop = scrolled <= 0 ? 0 : scrolled; // 음수 방지
   });
 
   // 반응형 리로드
