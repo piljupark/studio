@@ -1,9 +1,8 @@
 @charset "UTF-8";
 
-
+:root {color-scheme: light only;}
 * {font-family: "SUIT Variable";}
-html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;}
-html {color-scheme: light;}
+html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; color-scheme: light;} 
 html::-webkit-scrollbar {display: none;}
 body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow-x: hidden;}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
@@ -398,4 +397,12 @@ a, button {font-family: "SUIT Variable";}
   from { opacity: 0; transform: translate(-50%, -60%); }
   to { opacity: 1; transform: translate(-50%, -50%); }
 }
- 
+
+
+/* @media (prefers-color-scheme: dark) {
+  html,
+  body {
+    background: #fff !important;
+    background-color: #fff !important;
+  }
+} */
