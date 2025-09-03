@@ -3,6 +3,7 @@
 
 * {font-family: "SUIT Variable";}
 html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;}
+html {color-scheme: light;}
 html::-webkit-scrollbar {display: none;}
 body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow-x: hidden;}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
