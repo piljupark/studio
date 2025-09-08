@@ -289,6 +289,10 @@ a, button {font-family: "SUIT Variable";}
 .mem-area .plan-wrap#planWrap1 .plan.plan2 {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
 .mem-area .plan-wrap#planWrap2 .plan.plan2 {background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); }
 
+.mem-area .plan-wrap#planWrap2 .plan {height: 600px; min-height: 600px;}
+.mem-area .plan-wrap#planWrap2 .plan.plan2 {height: 655px;}
+.mem-area .plan-wrap#planWrap2 .plan.plan2 .plan-inner {height: 600px; min-height: 600px;}
+
 
 .mem-area .plan-wrap .nm {font-size: 26px; font-weight: 800; line-height: 34px; font-style: normal; color: #060606; margin-top: 40px;}
 .mem-area .plan-wrap .txt {font-size: 16px; font-weight: 500; line-height: 16px; color: rgba(6,6,6,0.4); letter-spacing: -0.48px; margin-top: 8px;}
@@ -299,8 +303,9 @@ a, button {font-family: "SUIT Variable";}
 
 .mem-area .plan-wrap .right {position: relative;}
 .mem-area .plan-wrap .right .txt {display: none;}
-.mem-area .plan-wrap .caution {position: relative; width: 100%; padding-top: 13px; text-align: center; left: 0; font-size: 13px; font-weight: 500; color: #858585; line-height: 14px; letter-spacing: -0.39px;}
+.mem-area .plan-wrap .caution {position: relative; width: 100%; padding-top: 13px; text-align: left; left: 0; font-size: 13px; font-weight: 500; color: #858585; line-height: 14px; letter-spacing: -0.39px; display: flex; gap: 10px;}
 .mem-area .plan-wrap .caution span {color: #25c0d4;}
+.mem-area .plan-wrap .plan1 .caution {padding-left: 21px; gap: 5px;}
 
 
 .mem-area .plan-wrap .list {position: relative; width: 100%; margin-top: 50px; display: grid; gap: 5px;}
