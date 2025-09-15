@@ -1,14 +1,14 @@
 @charset "UTF-8";
 
 * {font-family: "SUIT Variable";}
-html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; color-scheme: light;} 
+html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; color-scheme: light; overflow: hidden;}  
 html::-webkit-scrollbar {display: none;}
-body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow-x: hidden; background: #F7FBFC;}
+body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow: hidden; background: #F7FBFC;}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
 
 /* nav */
-nav {position: fixed; top: 60px; right: 60px; display: flex; gap: 10px;}
+nav {position: fixed; top: 60px; right: 60px; display: flex; gap: 10px; z-index: 10;}
 nav a {color: #1b1b1b; font-weight: 600; letter-spacing: -0.64px; text-decoration: none;}
 nav a:hover {font-weight: 700;}
 
@@ -19,3 +19,43 @@ nav a:hover {font-weight: 700;}
 .main .sub span {font-weight: 700;}
 .main .img-wrap {position: relative; width: 100%; height: auto; display: flex; justify-content: flex-end;}
 .main .img-wrap img {position: relative; width: 1000px; }
+
+/* button */
+.main .button {position: absolute; background: #ddd; opacity: 0;}
+.main .button#button1 {width: 700px; height: 180px; top: 320px; right: 110px; }
+.main .button#button2 {width: 700px; height: 300px; bottom: 160px; right: 110px;}
+
+.main .button#button3 {width: 650px; height: 180px; top: 340px; right: 110px; }
+.main .button#button4 {width: 650px; height: 280px; bottom: 0px; right: 110px; }
+
+.main .button#button5 {width: 650px; height: 280px; top: 400px; right: 110px;}
+
+.main .button#button6 {width: 650px; height: 320px; top: 330px; right: 125px;}
+.main .button#button7 {width: 650px; height: 200px; bottom: 50px; right: 125px;}
+
+/* modal */
+.main .modal {position: absolute; width: auto; padding: 20px; box-sizing: border-box; background: #6FC9CD; border-radius: 10px; color: #fff; font-size: 20px; line-height: 1.5; letter-spacing: -0.64px; transition-duration: .2s; opacity: 0; pointer-events: none;}
+.main .modal.active {opacity: 1; pointer-events: auto;}
+.main .modal span {font-weight: 600;}
+
+.main .modal#modal1 {top: 360px;}
+.main .modal#modal2 {bottom: 200px;}
+
+.main .modal#modal3 {top: 300px; background: none; }
+.main .modal#modal3 img {width: 650px; }
+.main .modal#modal3 p {position: relative; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
+
+.main .modal#modal4 {bottom: 100px; background: none; padding: 1;}
+.main .modal#modal4 img {width: 670px;}
+.main .modal#modal4 p {position: relative; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
+
+.main .modal#modal5 {bottom: 160px; width: 340px; background: unset;}
+.main .modal#modal5 img {width: 100%;}
+
+.main .modal#modal6 {bottom: 140px; width: 800px; background: unset;}
+.main .modal#modal6 img {width: 100%;}
+
+.main .modal#modal7 {top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1200px; height: 600px; background: unset; background: #fff; border: 3px solid #6FC9CD; border-radius: 20px; display: grid; align-content: center; justify-items: center;}
+.main .modal#modal7 img {width: 400px;}
+.main .modal#modal7 p {color: #595959; text-align: center; font-size: 26px;}
+.main .modal#modal7 p span {color: #6FC9CD; font-size: 34px;}
