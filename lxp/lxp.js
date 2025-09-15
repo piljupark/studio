@@ -11,8 +11,32 @@ buttons.forEach((btn) => {
     const modal = document.querySelector(`#modal${num}`);
 
     // 해당 모달 열기
-    if (modal) {
-      modal.classList.add('active');
+    modal.classList.add('active');
+
+    if (num === "7") {
+      const x = window.innerWidth / 2;
+      const y = window.innerHeight / 2;
+      new LottiUI(x, y);
     }
   });
 });
+
+
+// LottiUI 클래스 추가
+class LottiUI {
+  constructor(x, y) {
+    const div = document.createElement("dotlottie-player");
+    div.setAttribute("src", "https://lottie.host/824cb754-a11a-4458-bba0-1f5129c3ed76/NuLW5jGi8g.lottie");
+    div.setAttribute("background", "transparent");
+    div.setAttribute("speed", "1");
+    div.setAttribute("loop", true);
+    div.setAttribute("autoplay", true);
+    div.style.cssText = `top:${y}px; left:${x}px;`;
+
+    document.body.append(div);
+
+    setTimeout(() => {
+      div.remove();
+    }, 3000);
+  }
+}

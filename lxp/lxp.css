@@ -9,8 +9,9 @@ a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
 /* nav */
 nav {position: fixed; top: 60px; right: 60px; display: flex; gap: 10px; z-index: 10;}
-nav a {color: #1b1b1b; font-weight: 600; letter-spacing: -0.64px; text-decoration: none;}
+nav a {color: #1b1b1b; font-weight: 600; letter-spacing: -0.64px; text-decoration: none; padding: 10px 20px; background: #09F4D8; border-radius: 10px; opacity: 0.5;}
 nav a:hover {font-weight: 700;}
+nav a.active {opacity: 1;}
 
 /* main */
 .main {position: relative; width: 100%; height: auto; padding: 50px; box-sizing: border-box;}
@@ -59,3 +60,15 @@ nav a:hover {font-weight: 700;}
 .main .modal#modal7 img {width: 400px;}
 .main .modal#modal7 p {color: #595959; text-align: center; font-size: 26px;}
 .main .modal#modal7 p span {color: #6FC9CD; font-size: 34px;}
+
+
+dotlottie-player {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  z-index: 99;
+  transform: translate(-50%, -50%);
+}
+
+.more {position: absolute; padding: 10px 30px; background: linear-gradient(270deg, #09F4D8 0%, #058E7E 100%); color: #fff; border-radius: 10px; font-size: 18px; text-decoration: none; bottom: 40px; right: 40px; z-index: 10; font-family: 'KMA'; font-size: 30px; display: flex; align-items: center; justify-content: center; }
+.more img {width: 30px; margin-left: 8px;}
