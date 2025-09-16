@@ -59,7 +59,7 @@ nav a.active {opacity: 1;}
 .main .modal#modal6 {bottom: 140px; width: 800px; background: unset;}
 .main .modal#modal6 img {width: 100%;}
 
-.main .modal#modal7 {top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1200px; height: 600px; background: unset; background: #fff; border: 3px solid #6FC9CD; border-radius: 20px; display: grid; align-content: center; justify-items: center;}
+.main .modal#modal7 {top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1200px; height: 600px; background: unset; background: #fff; border: 3px solid #6FC9CD; border-radius: 20px; display: grid; align-content: center; justify-items: center; z-index: 20;}
 .main .modal#modal7 img {width: 400px;}
 .main .modal#modal7 p {color: #595959; text-align: center; font-size: 26px;}
 .main .modal#modal7 p span {color: #6FC9CD; font-size: 34px;}
