@@ -64,6 +64,9 @@ nav a.active {opacity: 1;}
 .main .modal#modal7 p {color: #595959; text-align: center; font-size: 26px;}
 .main .modal#modal7 p span {color: #6FC9CD; font-size: 34px;}
 
+.more {position: absolute; padding: 15px 30px 10px; background: linear-gradient(270deg, #09F4D8 0%, #058E7E 100%) !important; color: #fff; border-radius: 10px; font-size: 18px; text-decoration: none; bottom: 40px !important; right: 40px !important; z-index: 10; font-family: 'KMA'; font-size: 30px; display: flex; align-items: center; justify-content: center; opacity: 1 !important; width: unset !important; height: unset !important; }
+.more img {width: 30px; margin-left: 8px;}
+
 
 dotlottie-player {
   position: fixed;
@@ -73,5 +76,3 @@ dotlottie-player {
   transform: translate(-50%, -50%);
 }
 
-.more {position: absolute; padding: 15px 30px 10px; background: linear-gradient(270deg, #09F4D8 0%, #058E7E 100%) !important; color: #fff; border-radius: 10px; font-size: 18px; text-decoration: none; bottom: 40px !important; right: 40px !important; z-index: 10; font-family: 'KMA'; font-size: 30px; display: flex; align-items: center; justify-content: center; opacity: 1 !important; width: unset !important; height: unset !important; }
-.more img {width: 30px; margin-left: 8px;}

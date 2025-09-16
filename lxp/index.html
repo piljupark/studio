@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>stud.io LXP</title>
-
-  <!-- 상대경로 정합성 위한 기준 경로 (루트 배포 기준) -->
-  <base href="/lxp/" />
-
-  <meta name="color-scheme" content="light only">
-  <meta name="theme-color" content="#fff">
-  <meta name="supported-color-schemes" content="light"/>
-
-  <link rel="stylesheet" href="lxp.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kmadev-lab/kma-font@main/kma-font/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" />
-  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-
-  <!-- 페이지 공통 스크립트(버튼, 모달 등 초기화 함수) -->
-  <script defer src="lxp.js"></script>
-  <!-- SPA 라우터 -->
-  <script defer src="spa.js"></script>
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>stud.io LXP</title>
+  
+    <base href="/lxp/" />
+    <link rel="preconnect" href="https://lottie.host" crossorigin>
+    <link rel="preload" as="fetch" href="https://lottie.host/824cb754-a11a-4458-bba0-1f5129c3ed76/NuLW5jGi8g.lottie" crossorigin>
+  
+    <!-- CSS / 폰트 -->
+    <meta name="color-scheme" content="light only">
+    <meta name="theme-color" content="#fff">
+    <meta name="supported-color-schemes" content="light"/>
+    <link rel="stylesheet" href="lxp.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kmadev-lab/kma-font@main/kma-font/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" />
+  
+    <!-- 라이브러리 -->
+    <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  
+    <!-- 앱 스크립트 -->
+    <script defer src="lxp.js"></script>
+    <script defer src="spa.js"></script>
+  </head>
 <body>
   <!-- 공통 nav (data-link로 라우팅 가로채기) -->
   <nav id="global-nav">

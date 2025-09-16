@@ -1,28 +1,50 @@
-class LottiUI {
-  constructor(x, y) {
-    const el = document.createElement("dotlottie-player");
-    el.setAttribute("src", "https://lottie.host/824cb754-a11a-4458-bba0-1f5129c3ed76/NuLW5jGi8g.lottie");
+const LOTTIE_SRC = "https://lottie.host/824cb754-a11a-4458-bba0-1f5129c3ed76/NuLW5jGi8g.lottie";
+
+const LottieManager = (() => {
+  let el = null, hideTimer = null;
+
+  function ensure() {
+    if (el) return el;
+    el = document.createElement("dotlottie-player");
+    el.setAttribute("src", LOTTIE_SRC);
     el.setAttribute("background", "transparent");
     el.setAttribute("speed", "1");
     el.setAttribute("loop", "true");
-    el.setAttribute("autoplay", "true");
+    el.setAttribute("autoplay", "false");
     el.style.position = "fixed";
-    el.style.top = `${y ?? window.innerHeight / 2}px`;
-    el.style.left = `${x ?? window.innerWidth / 2}px`;
+    el.style.top = "50%";
+    el.style.left = "50%";
     el.style.transform = "translate(-50%, -50%)";
+    el.style.display = "none";
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), 3000);
+    return el;
   }
-}
+
+  function show(durationMs = 2000) {
+    const p = ensure();
+    try { p.stop?.(); p.seek?.(0); } catch {}
+    p.style.display = "block";
+    p.play?.();
+    if (hideTimer) clearTimeout(hideTimer);
+    hideTimer = setTimeout(hide, durationMs);
+  }
+
+  function hide() {
+    if (!el) return;
+    try { el.stop?.(); } catch {}
+    el.style.display = "none";
+  }
+
+  function prewarm() { ensure(); }
+
+  return { show, hide, prewarm };
+})();
 
 function toggleFullscreen() {
   const doc = document;
   const el = doc.documentElement;
-  if (!doc.fullscreenElement) {
-    el.requestFullscreen?.().catch(err => alert(`Error: ${err.message}`));
-  } else {
-    doc.exitFullscreen?.();
-  }
+  if (!doc.fullscreenElement) el.requestFullscreen?.().catch(()=>{});
+  else doc.exitFullscreen?.();
 }
 
 function closeAllModals(root) {
@@ -31,8 +53,7 @@ function closeAllModals(root) {
 
 function openModalByNumber(root, num) {
   const modal = root.querySelector(`#modal${num}`);
-  if (!modal) return;
-  modal.classList.add("active");
+  if (modal) modal.classList.add("active");
 }
 
 function parseButtonNum(el) {
@@ -57,26 +78,33 @@ function setActiveButtonOpacity(root, activeNum) {
 
 window.initPage = function initPage(pageName) {
   const root = document.getElementById("app") || document;
+  LottieManager.prewarm();
+
   const buttons = getButtonsOnPage(root);
   if (buttons.length) setActiveButtonOpacity(root, buttons[0].num);
 
-  const onButtonClick = (e) => {
-    const btn = e.target.closest(".button");
-    if (!btn || !root.contains(btn)) return;
-    closeAllModals(root);
-    const num = parseButtonNum(btn);
-    if (!Number.isInteger(num)) return;
-    openModalByNumber(root, num);
-    if (num === 7) new LottiUI(window.innerWidth / 2, window.innerHeight / 2);
-    setActiveButtonOpacity(root, num);
-  };
-  root.addEventListener("click", onButtonClick);
+  if (!root.__lxpButtonBound) {
+    root.addEventListener("click", (e) => {
+      const btn = e.target.closest(".button");
+      if (!btn || !root.contains(btn)) return;
+      closeAllModals(root);
+      const num = parseButtonNum(btn);
+      if (!Number.isInteger(num)) return;
+      openModalByNumber(root, num);
+      if (num === 7) LottieManager.show(2000);
+      setActiveButtonOpacity(root, num);
+    });
+    root.__lxpButtonBound = true;
+  }
 
-  root.addEventListener("click", (e) => {
-    const modal = e.target.closest(".modal");
-    if (!modal || !root.contains(modal)) return;
-    if (e.target === modal) modal.classList.remove("active");
-  });
+  if (!root.__lxpModalBound) {
+    root.addEventListener("click", (e) => {
+      const modal = e.target.closest(".modal");
+      if (!modal || !root.contains(modal)) return;
+      if (e.target === modal) modal.classList.remove("active");
+    });
+    root.__lxpModalBound = true;
+  }
 
   if (!window.__lxpEscBound) {
     document.addEventListener("keydown", (e) => {
@@ -89,10 +117,11 @@ window.initPage = function initPage(pageName) {
   }
 
   const fsBtn = root.querySelector('[data-action="toggle-fullscreen"]');
-  if (fsBtn) {
+  if (fsBtn && !fsBtn.__lxpFsBound) {
     fsBtn.addEventListener("click", (e) => {
       e.preventDefault();
       toggleFullscreen();
-    }, { once: true });
+    });
+    fsBtn.__lxpFsBound = true;
   }
 };
