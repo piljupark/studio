@@ -40,3 +40,12 @@ class LottiUI {
     }, 3000);
   }
 }
+
+
+// 풀스크린 버튼 
+function toggleFullscreen(btn) {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen()
+      .catch(err => alert(`Error: ${err.message}`));
+  }
+}
