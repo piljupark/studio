@@ -67,8 +67,8 @@ nav a.active {opacity: 1;}
 
 dotlottie-player {
   position: fixed;
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   z-index: 99;
   transform: translate(-50%, -50%);
 }

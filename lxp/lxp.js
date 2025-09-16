@@ -10,10 +10,6 @@ class LottiUI {
     el.style.top = `${y ?? window.innerHeight / 2}px`;
     el.style.left = `${x ?? window.innerWidth / 2}px`;
     el.style.transform = "translate(-50%, -50%)";
-    el.style.width = "220px";
-    el.style.height = "220px";
-    el.style.pointerEvents = "none";
-    el.style.zIndex = "9999";
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 3000);
   }
