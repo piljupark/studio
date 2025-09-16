@@ -38,6 +38,9 @@ a, button {font-family: "SUIT Variable";}
 
 .visual-inner { position: relative; width: 90vw; max-width: 1700px; height: calc(100vh - 200px); max-height: 960px; min-height: 660px; background-image: url('studio_images/bg_intro1.webp'); background-position: center; background-repeat: no-repeat; background-size: cover; border-radius: 40px; overflow: hidden; display: grid; justify-content: center; align-items: center; justify-items: center; align-content: center; text-align: center;}
 
+.int-scroll-btn {position: absolute; bottom: 2vh; width: 34px; height: 17px;}
+.int-scroll {position: relative; margin-top: 200px; animation: scroll 2.5s 0s infinite;}
+
 .visual-inner .txt-wrap {position: relative;}
 .visual-inner .txt-wrap .txt1 {font-size: clamp(40px, 6vh, 50px); font-style: normal; font-weight: 900; line-height: normal; background: linear-gradient(90deg, #FFF 0%, #90D4C9 72.5%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .visual-inner .txt-wrap .v-logo {width: 530px; margin-top: 46px; width: clamp(500px, 70vh, 530px); margin-top: clamp(35px, 5vh, 46px);}
@@ -55,6 +58,11 @@ a, button {font-family: "SUIT Variable";}
   50% {bottom: 2vh;}
   100% {bottom: 4vh;}
 }
+
+.visual-inner .dir-wrap {position: relative; width: auto; margin-top: 30px; display: flex; align-items: center; justify-content: center; gap: 20px; }
+.visual-inner .dir-wrap a {font-size: 18px; color: #1b1b1b; font-weight: 700; line-height: 30px; letter-spacing: -0.5px; text-decoration: none;}
+.visual-inner .dir-wrap a img {width: 15px; height: 15px; margin-left: 8px; transform: rotate(-45deg); transition: all .2s;}
+.visual-inner .dir-wrap a:hover img {transform: rotate(-0deg);}
 /* //visual */
 
 /* //intro-area */
@@ -63,6 +71,7 @@ a, button {font-family: "SUIT Variable";}
 .intro-area .ti span {background: linear-gradient(90deg, #03FFD3 0%, #022A99 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;}
 .intro-area .sub-ti {font-size: 18px; font-weight: 500; line-height: 28px; letter-spacing: -0.6px; color: #7c7c7c; text-align: center; margin-top:28px;}
 .intro-area .intro-item {width: 80%; width: 80vh; max-width: 1040px; height: auto; margin-top: clamp(70px, 10vh, 154px);}
+
 /* intro-area// */
 
 /* //curation-area */

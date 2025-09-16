@@ -19,6 +19,8 @@
   .int {width: 300px; height: 100px;}
   .int .inner { width: calc(100% - 4px); height: calc(100% - 4px); }
   .int .inner img.int-logo {width: 170px;}
+  .int-scroll-btn {width: 16px;}
+  .int-scroll {width: 16px}
   /* //int */
 
   /* //visual */
@@ -30,6 +32,9 @@
 
   .visual-inner .scroll-btn {width: 16px;}
   .visual-inner .scroll {width: 16px}
+
+  .visual-inner .dir-wrap a {font-size: 14px;}
+  .visual-inner .dir-wrap a img {width: 12px; height: 12px;}
   /* visual// */
 
   /* //brief-area */
