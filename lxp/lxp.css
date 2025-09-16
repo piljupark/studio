@@ -50,7 +50,7 @@ nav a.active {opacity: 1;}
 .main .modal#modal4 img {width: 670px;}
 .main .modal#modal4 p {position: relative; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
 
-.main .modal#modal5 {bottom: 90px; width: 380px; left: 180px; background: unset;}
+.main .modal#modal5 {bottom: 40px; width: 380px; left: 180px; background: unset;}
 .main .modal#modal5 img {width: 100%;}
 
 .main .modal#modal6 {bottom: 140px; width: 800px; background: unset;}
