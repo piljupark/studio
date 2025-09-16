@@ -14,11 +14,11 @@ nav a:hover {font-weight: 700;}
 nav a.active {opacity: 1;}
 
 /* main */
-.main {position: relative; width: 100%; height: auto; padding: 50px; padding-bottom: 0; box-sizing: border-box;}
-.main h1 {font-family: 'KMA'; color: #6FC9CD; font-size: 60px; font-weight: 700; letter-spacing: -1.8px;}
+.main {position: relative; width: 100%; height: 100vh; padding: 50px; padding-bottom: 0; box-sizing: border-box; }
+.main h1 {font-family: 'KMA'; width: fit-content; color: #6FC9CD; font-size: 60px; font-weight: 700; letter-spacing: -1.8px;}
 .main .sub {margin-top: 20px; font-size: 24px; letter-spacing: -1.84px; color: #6e7677; font-weight: 400; line-height: 1.5;}
 .main .sub span {font-weight: 700;}
-.main .img-wrap {position: relative; width: 100%; height: 700px; display: flex; justify-content: flex-end;}
+.main .img-wrap {position: absolute; width: 100%; height: 700px; bottom: 0; right: 60px; display: flex; justify-content: flex-end;}
 .main .img-wrap img {position: absolute; width: 1000px; bottom: 0; }
 
 /* button */
@@ -44,11 +44,11 @@ nav a.active {opacity: 1;}
 
 .main .modal#modal3 {top: 300px; background: none; }
 .main .modal#modal3 img {width: 650px; }
-.main .modal#modal3 p {position: relative; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
+.main .modal#modal3 p {position: relative; max-width: 650px; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
 
 .main .modal#modal4 {bottom: 100px; background: none; padding: 1;}
 .main .modal#modal4 img {width: 670px;}
-.main .modal#modal4 p {position: relative; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
+.main .modal#modal4 p {position: relative; max-width: 670px; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
 
 .main .modal#modal5 {bottom: 40px; width: 380px; left: 180px; background: unset;}
 .main .modal#modal5 img {width: 100%;}
@@ -70,5 +70,5 @@ dotlottie-player {
   transform: translate(-50%, -50%);
 }
 
-.more {position: absolute; padding: 15px 30px 10px; background: linear-gradient(270deg, #09F4D8 0%, #058E7E 100%); color: #fff; border-radius: 10px; font-size: 18px; text-decoration: none; bottom: 40px; right: 40px; z-index: 10; font-family: 'KMA'; font-size: 30px; display: flex; align-items: center; justify-content: center; }
+.more {position: absolute; padding: 15px 30px 10px; background: linear-gradient(270deg, #09F4D8 0%, #058E7E 100%) !important; color: #fff; border-radius: 10px; font-size: 18px; text-decoration: none; bottom: 40px !important; right: 40px !important; z-index: 10; font-family: 'KMA'; font-size: 30px; display: flex; align-items: center; justify-content: center; opacity: 1 !important; width: unset !important; height: unset !important; }
 .more img {width: 30px; margin-left: 8px;}
