@@ -9,7 +9,7 @@ a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
 
 /* nav */
 nav {position: fixed; top: 60px; right: 60px; display: flex; gap: 10px; z-index: 10;}
-nav a {font-weight: 800; letter-spacing: -0.64px; color: #fff; text-decoration: none; padding: 10px 20px; background: #09F4D8; border-radius: 10px; opacity: 0.5;}
+nav a {font-weight: 800; letter-spacing: -0.64px; color: #fff; text-decoration: none; padding: 10px 20px; background: #09F4D8; border-radius: 10px; opacity: 0.3;}
 nav a:hover {font-weight: 700;}
 nav a.active {opacity: 1;}
 
@@ -22,27 +22,30 @@ nav a.active {opacity: 1;}
 .main .img-wrap img {position: absolute; width: 1000px; bottom: 0; }
 
 /* button */
-.main .button {position: absolute; background: #ddd; opacity: 0;}
-.main .button#button1 {width: 700px; height: 180px; top: 320px; right: 110px; }
-.main .button#button2 {width: 700px; height: 300px; bottom: 160px; right: 110px;}
+.main .button {position: absolute; border: 5px dashed rgba(108, 114, 114, 0.50);  border-radius: 10px; opacity: 1;}
+.main .button#button1 {width: 690px; height: 155px; bottom: 430px; right: 120px; }
+.main .button#button2 {width: 690px; height: 280px; bottom: 120px; right: 122px;}
 
-.main .button#button3 {width: 650px; height: 180px; top: 340px; right: 110px; }
-.main .button#button4 {width: 650px; height: 280px; bottom: 0px; right: 110px; }
+.main .button#button3 {width: 630px; height: 180px; bottom: 390px; right: 135px; }
+.main .button#button4 {width: 630px; height: 210px; bottom: 0px; right: 135px; }
 
-.main .button#button5 {width: 650px; height: 280px; top: 400px; right: 110px;}
+.main .button#button5 {width: 640px; height: 240px; bottom: 230px; right: 110px;}
 
-.main .button#button6 {width: 650px; height: 320px; top: 330px; right: 125px;}
-.main .button#button7 {width: 650px; height: 200px; bottom: 50px; right: 125px;}
+.main .button#button6 {width: 670px; height: 350px; bottom: 230px; right: 120px; border-color: #fff;}
+.main .button#button7 {width: 650px; height: 200px; bottom: 50px; right: 125px; border: none !important;}
+
+.touch {position: absolute; right: 160px; bottom: 680px;  font-size: 24px; font-weight: 600; letter-spacing: -0.64px;}
+.touch::before {content: ''; width: 25px; height: 25px; background: linear-gradient(to right, #4fd8d8, #7c4dff); position: absolute; left: -40px; top: 2.5px; border-radius: 100%;}
 
 /* modal */
 .main .modal {position: absolute; width: auto; padding: 20px; box-sizing: border-box; background: #6FC9CD; border-radius: 10px; color: #fff; font-size: 20px; line-height: 1.5; letter-spacing: -0.64px; transition-duration: .2s; opacity: 0; pointer-events: none;}
 .main .modal.active {opacity: 1; pointer-events: auto;}
 .main .modal span {font-weight: 600;}
 
-.main .modal#modal1 {top: 360px;}
+.main .modal#modal1 {bottom: 480px;}
 .main .modal#modal2 {bottom: 200px;}
 
-.main .modal#modal3 {top: 300px; background: none; }
+.main .modal#modal3 {bottom: 150px; background: none; }
 .main .modal#modal3 img {width: 650px; }
 .main .modal#modal3 p {position: relative; max-width: 650px; padding: 20px; margin-top: -30px; background: #6FC9CD;box-sizing: border-box; border-radius: 10px; z-index: 2;}
 
@@ -64,8 +67,8 @@ nav a.active {opacity: 1;}
 
 dotlottie-player {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 800px;
+  height: 800px;
   z-index: 99;
   transform: translate(-50%, -50%);
 }

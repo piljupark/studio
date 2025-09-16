@@ -1,6 +1,3 @@
-// lxp.js
-
-// ---------- Lottie UI ----------
 class LottiUI {
   constructor(x, y) {
     const el = document.createElement("dotlottie-player");
@@ -9,8 +6,6 @@ class LottiUI {
     el.setAttribute("speed", "1");
     el.setAttribute("loop", "true");
     el.setAttribute("autoplay", "true");
-
-    // 화면 중앙 고정 표시
     el.style.position = "fixed";
     el.style.top = `${y ?? window.innerHeight / 2}px`;
     el.style.left = `${x ?? window.innerWidth / 2}px`;
@@ -19,18 +14,14 @@ class LottiUI {
     el.style.height = "220px";
     el.style.pointerEvents = "none";
     el.style.zIndex = "9999";
-
     document.body.appendChild(el);
-
     setTimeout(() => el.remove(), 3000);
   }
 }
 
-// ---------- Fullscreen ----------
 function toggleFullscreen() {
   const doc = document;
   const el = doc.documentElement;
-
   if (!doc.fullscreenElement) {
     el.requestFullscreen?.().catch(err => alert(`Error: ${err.message}`));
   } else {
@@ -38,7 +29,6 @@ function toggleFullscreen() {
   }
 }
 
-// ---------- 모달 헬퍼 ----------
 function closeAllModals(root) {
   root.querySelectorAll(".modal.active").forEach(m => m.classList.remove("active"));
 }
@@ -49,44 +39,49 @@ function openModalByNumber(root, num) {
   modal.classList.add("active");
 }
 
-// ---------- 초기화 진입점 (SPA에서 라우팅 후 호출) ----------
+function parseButtonNum(el) {
+  const id = el.id || "";
+  const m = id.match(/^button(\d+)$/);
+  return m ? Number(m[1]) : null;
+}
+
+function getButtonsOnPage(root) {
+  return Array.from(root.querySelectorAll(".button"))
+    .map(el => ({ el, num: parseButtonNum(el) }))
+    .filter(x => Number.isInteger(x.num))
+    .sort((a, b) => a.num - b.num);
+}
+
+function setActiveButtonOpacity(root, activeNum) {
+  const buttons = getButtonsOnPage(root);
+  for (const { el, num } of buttons) {
+    el.style.opacity = num === activeNum ? "1" : "0.4";
+  }
+}
+
 window.initPage = function initPage(pageName) {
   const root = document.getElementById("app") || document;
+  const buttons = getButtonsOnPage(root);
+  if (buttons.length) setActiveButtonOpacity(root, buttons[0].num);
 
-  // 1) 버튼 클릭 → 같은 페이지(.main) 안 모달 매칭해서 열기
-  //    (#app가 매번 갈아끼워지므로 root에 바인딩하면 중복리스너 없음)
-  root.addEventListener("click", onButtonClick);
-
-  function onButtonClick(e) {
+  const onButtonClick = (e) => {
     const btn = e.target.closest(".button");
     if (!btn || !root.contains(btn)) return;
-
-    // 같은 root 내 모든 모달 닫기
     closeAllModals(root);
-
-    // 버튼 id에서 숫자 추출
-    const id = btn.id || "";
-    const num = id.replace("button", "");
-    if (!num) return;
-
-    // 해당 모달 열기
+    const num = parseButtonNum(btn);
+    if (!Number.isInteger(num)) return;
     openModalByNumber(root, num);
+    if (num === 7) new LottiUI(window.innerWidth / 2, window.innerHeight / 2);
+    setActiveButtonOpacity(root, num);
+  };
+  root.addEventListener("click", onButtonClick);
 
-    // CLEAR 버튼(= button7)일 때 Lottie 띄우기
-    if (num === "7") {
-      new LottiUI(window.innerWidth / 2, window.innerHeight / 2);
-    }
-  }
-
-  // 2) 모달 바깥 영역 클릭 시 닫기 (모달 요소 자체를 backdrop로 사용한다고 가정)
   root.addEventListener("click", (e) => {
     const modal = e.target.closest(".modal");
     if (!modal || !root.contains(modal)) return;
-    // 모달 내부 컨텐츠가 별도 래퍼라면, 배경 클릭만 닫고 싶을 때 이렇게:
     if (e.target === modal) modal.classList.remove("active");
   });
 
-  // 3) ESC 로 닫기 (전역은 한 번만 바인딩)
   if (!window.__lxpEscBound) {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
@@ -97,12 +92,11 @@ window.initPage = function initPage(pageName) {
     window.__lxpEscBound = true;
   }
 
-  // 4) 전체화면 버튼 (data-action="toggle-fullscreen")
   const fsBtn = root.querySelector('[data-action="toggle-fullscreen"]');
   if (fsBtn) {
     fsBtn.addEventListener("click", (e) => {
       e.preventDefault();
       toggleFullscreen();
-    }, { once: true }); // 동일 버튼 중복 바인딩 방지
+    }, { once: true });
   }
 };
