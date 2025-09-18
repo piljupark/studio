@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>stud.io LXP</title>
-  
+
     <base href="/lxp/" />
     <link rel="preconnect" href="https://lottie.host" crossorigin>
     <link rel="preload" as="fetch" href="https://lottie.host/824cb754-a11a-4458-bba0-1f5129c3ed76/NuLW5jGi8g.lottie" crossorigin>
-  
+
     <!-- CSS / 폰트 -->
     <meta name="color-scheme" content="light only">
     <meta name="theme-color" content="#fff">
@@ -16,31 +16,162 @@
     <link rel="stylesheet" href="lxp.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/kmadev-lab/kma-font@main/kma-font/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" />
-  
+
     <!-- 라이브러리 -->
     <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
-  
+
     <!-- 앱 스크립트 -->
     <script defer src="lxp.js"></script>
-    <script defer src="spa.js"></script>
+    <script defer src="onepage.js"></script>
   </head>
 <body>
-  <!-- 공통 nav (data-link로 라우팅 가로채기) -->
+  <!-- 공통 nav (해시 라우팅) -->
   <nav id="global-nav">
-    <a href="/lxp/" data-link>대시보드</a>
-    <a href="/lxp/management" data-link>과정관리</a>
-    <a href="/lxp/qualification" data-link>수료ㆍ자격</a>
-    <a href="/lxp/education" data-link>교육</a>
+    <a href="#dashboard" data-link>대시보드</a>
+    <a href="#management" data-link>과정관리</a>
+    <a href="#qualification" data-link>수료ㆍ자격</a>
+    <a href="#education" data-link>교육</a>
   </nav>
 
-  <!-- 라우팅으로 갈아끼울 영역 -->
-  <main id="app" aria-live="polite"></main>
+  <!-- 원페이지 섹션들 -->
+  <main id="app" aria-live="polite">
+    <!-- DASHBOARD -->
+    <section class="main" id="dashboard" data-page="dashboard" hidden>
+      <h1 class="btn_fullsc" data-action="toggle-fullscreen">쉽게 확인하는 대시보드</h1>
+      <p class="sub">
+        개별 수료증과 자격증을 체계적으로 확인할 수 있어 조직원 별 교육 이수 현황을 실시간으로 확인 할 수 있습니다. <br> 
+        필요한 정보를 한눈에 <span>파악할 수 있어 교육 운영이 더 쉬워집니다.</span>
+      </p>
 
+      <div class="img-wrap">
+        <img src="images/img_dash.webp" alt="대시보드" data-hero loading="eager" fetchpriority="high" decoding="async">
+      </div>
+
+      <div class="button" id="button1"></div>
+      <div class="button" id="button2"></div>
+
+      <div class="modal-wrap">
+        <div class="modal" id="modal1">
+          총 조직원 수, 오늘 접속자 수, 완료된 과정 수, 발급된 수료증·자격증 수를 비롯해 <br>
+          현재 진행 중인 과정, 시험, 설문 현황까지 한 눈에 확인 할 수 있습니다.
+        </div>
+        <div class="modal" id="modal2">
+          이번 주 교육·시험 일정을 확인하고, 과정 종료일과 시험일도 함께 볼 수 있습니다. <br>
+          또한 ASK HR 맞춤형 코스 추천을 통해,<br>
+          <span>우리 기업의 관심 카테고리에 맞춘 우선순위 높은 과정</span>을 손쉽게 선택할 수 있습니다.
+        </div>
+      </div>
+
+      <p class="touch">화면을 클릭해보세요!</p>
+      <a href="#management" data-link class="more">
+        NEXT 
+        <img src="images/icon_arrow_next.svg" alt="next">
+      </a>
+    </section>
+
+    <!-- MANAGEMENT -->
+    <section class="main" id="management" data-page="management" hidden>
+      <h1>체계적인 교육 과정 관리</h1>
+      <p class="sub">
+        <span>조직 구성원별 학습 수준과 목적에 맞는 교육 과정을 설계할 수 있습니다.</span> <br>
+        기수별 운영부터 등록, 이수현황, 인원별 관리까지 교육 전반을 통합적으로 관리할 수 있습니다.
+      </p>
+
+      <div class="img-wrap">
+        <img src="images/img_manage.webp" alt="과정관리" loading="lazy" decoding="async">
+      </div>
+
+      <div class="button" id="button3"></div>
+      <div class="button" id="button4"></div>
+
+      <div class="modal-wrap">
+        <div class="modal" id="modal3">
+          <img src="images/img_manage2.webp" alt="과정관리 상세 1" loading="lazy" decoding="async">
+          <p>
+            총 조직원 수, 오늘 접속자 수, 완료된 과정 수, 발급된 수료증·자격증 수를 비롯해
+            현재 진행 중인 과정, 시험, 설문 현황까지 한 눈에 확인 할 수 있습니다.
+          </p>
+        </div>
+        <div class="modal" id="modal4">
+          <img src="images/img_manage3.webp" alt="과정관리 상세 2" loading="lazy" decoding="async">
+          <p>
+            조직원 관리와 기수 운영을 클릭 한 번으로 처리하고,
+            이수 현황·수료율까지 확인할 수 있어, 효과적으로 통합 관리할 수 있습니다.
+          </p>
+        </div>
+      </div>
+
+      <p class="touch">화면을 클릭해보세요!</p>
+      <a href="#qualification" data-link class="more">
+        NEXT
+        <img src="images/icon_arrow_next.svg" alt="next">
+      </a>
+    </section>
+
+    <!-- QUALIFICATION -->
+    <section class="main" id="qualification" data-page="qualification" hidden>
+      <h1>체계적인 교육 과정 관리</h1>
+      <p class="sub">
+        <span>조직 구성원별 학습 수준과 목적에 맞는 교육 과정을 설계할 수 있습니다.</span> <br>
+        기수별 운영부터 등록, 이수현황, 인원별 관리까지 교육 전반을 통합적으로 관리할 수 있습니다.
+      </p>
+
+      <div class="img-wrap">
+        <img src="images/img_qual.webp" alt="교육과정" loading="lazy" decoding="async">
+      </div>
+
+      <div class="button" id="button5"></div>
+
+      <div class="modal-wrap">
+        <div class="modal" id="modal5">
+          <img src="images/img_qual2.webp" alt="교육과정" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <p class="touch">화면을 클릭해보세요!</p>
+      <a href="#education" data-link class="more">
+        NEXT
+        <img src="images/icon_arrow_next.svg" alt="next">
+      </a>
+    </section>
+
+    <!-- EDUCATION -->
+    <section class="main" id="education" data-page="education" hidden>
+      <h1>필수교육부터 직무 교육까지</h1>
+      <p class="sub">
+        <span>조직 구성원별 학습 수준과 목적에 맞는 교육 과정을 설계할 수 있습니다.</span> <br>
+        기수별 운영부터 등록, 이수현황, 인원별 관리까지 교육 전반을 통합적으로 관리할 수 있습니다.
+      </p>
+
+      <div class="img-wrap">
+        <img src="images/img_edu1-1.webp" alt="교육" loading="lazy" decoding="async">
+      </div>
+
+      <div class="button" id="button6"></div>
+
+      <div class="modal-wrap">
+        <div class="modal" id="modal6">
+          <img src="images/img_edu2.webp" alt="교육 세부" loading="lazy" decoding="async">
+        </div>
+        <div class="modal" id="modal7">
+          <img src="images/img_edu3.webp" alt="체험 완료" loading="lazy" decoding="async">
+          <p>
+            <span>맞춤형 학습 플랫폼 체험이 완료되었어요!</span> <br>
+            스탭에게 스탬프를 받아가세요.
+          </p>
+        </div>
+      </div>
+
+      <p class="touch">화면을 클릭해보세요!</p>
+      <a class="more button" id="button7" style="cursor: pointer;">CLEAR</a>
+    </section>
+  </main>
+
+  <!-- (선택) SW는 남겨도 되고 삭제해도 됩니다. 이미지 캐싱용으로는 유용 -->
   <script>
     if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/lxp/sw.js');
+      navigator.serviceWorker.register('/lxp/sw.js').catch(()=>{});
     }
   </script>
-  
 </body>
 </html>
