@@ -1,10 +1,16 @@
 @charset "UTF-8";
 
+
 * {font-family: "SUIT Variable";}
 html {overflow-x: hidden; height: auto; overflow-x: hidden; scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none; color-scheme: light; overflow: hidden;}  
 html::-webkit-scrollbar {display: none;}
 body {margin: 0; padding: 0; height: auto; font-family: "SUIT Variable"; overflow: hidden; background: #F7FBFC;}
 a,p,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd {margin: 0; padding: 0;}
+
+/* skeleton */
+.skeleton { padding: 24px; }
+.skeleton .bar { height: 18px; width: 40%; margin-bottom: 16px; background: #eee; border-radius: 6px; }
+.skeleton .card { height: 160px; background: #f3f3f3; border-radius: 12px; }
 
 
 /* nav */
@@ -75,4 +81,7 @@ dotlottie-player {
   z-index: 99;
   transform: translate(-50%, -50%);
 }
+
+
+
 

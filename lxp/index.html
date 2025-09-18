@@ -35,5 +35,12 @@
 
   <!-- 라우팅으로 갈아끼울 영역 -->
   <main id="app" aria-live="polite"></main>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/lxp/sw.js');
+    }
+  </script>
+  
 </body>
 </html>
