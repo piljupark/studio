@@ -287,57 +287,222 @@ a, button {font-family: "SUIT Variable";}
 .mem-area .btn-wrap .btn1 {font-family: 'KMA'; font-size: 16px; font-weight: 700; font-style: normal; color: #060606; line-height: 30px; }
 .mem-area .btn-wrap .btn2 img {width: 65px; filter: invert();}
 .mem-area .btn-wrap .act-btn {position: absolute; width: 50%; height: 100%; left: 0; top: 0; background-color: #fff; border-radius: 40px; transition: all .3s ease-in-out;}
-.mem-area .plan-wrap {position: relative; width: 100%; max-width: 1280px; height: auto; margin: 45px auto 0; display: flex; justify-content: space-between; align-items: flex-end; transition: opacity .3s ease;}
+
+.mem-area .plan-wrap {position: relative; width: calc(100% - 40px); max-width: 1280px; height: auto; margin: 45px 20px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: stretch; gap: 20px; transition: opacity .3s ease; }
+
 .mem-area .plan-wrap.hidden {opacity: 0; visibility: hidden; pointer-events: none;}
 .mem-area .plan-wrap.visible {opacity: 1; visibility: visible;}
 
-.mem-area .plan-wrap .plan {position: relative; width: calc(33.33% - 40px); height: auto; min-height: 653px; bottom: 0; padding: 44px 38px; box-sizing: border-box; background-color: #fff; border-radius: 38px; transition: all .3s ease-in-out; display: block; display: grid; align-content: space-between;}
+/* 공통 카드 */
+.mem-area .plan-wrap .plan {
+  position: relative;
+  width: calc(25% - 40px);
+  height: 705px;
+  min-height: 705px;
+  bottom: 0;
+  padding: 44px 38px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 38px;
+  transition: all .3s ease-in-out;
+  display: grid;
+  align-content: space-between;
+  overflow: hidden; 
+  flex: 0 0 calc(50% - 10px);
+}
 
-.mem-area .plan-wrap .plan.plan2 {width: calc(33.33% - 40px); min-height: 705px; padding: 0; background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); }
-.mem-area .plan-wrap .plan.plan2 .most {width: 100%; height: auto; font-size: 18px; color: #fff; font-weight: 700; line-height: 26px; text-align: center; letter-spacing: -0.54px; padding-top: 13px; text-shadow: 0 0 10px rgba(0,0,0,0.25); }
-.mem-area .plan-wrap .plan.plan2 .plan-inner {position: absolute; width: calc(100% - 10px); height: 653px; min-height: 640px; padding: 44px 38px; box-sizing: border-box; background-color: #fff;left: 5px; bottom: 5px; border-radius: 33px; display: block; display: grid; align-content: space-between;}
+/* planWrap2 숨김 유지(기존 그대로) */
+.mem-area .plan-wrap#planWrap2 { display: none; }
 
-.mem-area .plan-wrap#planWrap2 {display: none;}
-.mem-area .plan-wrap#planWrap1 .plan.plan2 {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
-.mem-area .plan-wrap#planWrap2 .plan.plan2 {background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); }
+/* ===== 텍스트/버튼 공통 ===== */
+.mem-area .plan-wrap .nm {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 34px;
+  font-style: normal;
+  color: #060606;
+  margin-top: 40px;
+}
 
-.mem-area .plan-wrap#planWrap2 .plan {height: 600px; min-height: 600px;}
-.mem-area .plan-wrap#planWrap2 .plan.plan2 {height: 655px;}
-.mem-area .plan-wrap#planWrap2 .plan.plan2 .plan-inner {height: 600px; min-height: 600px;}
+.mem-area .plan-wrap .txt {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: rgba(6,6,6,0.4);
+  letter-spacing: -0.48px;
+  margin-top: 8px;
+}
 
+.mem-area .plan-wrap .price {
+  margin-top: 26px;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 34px;
+  color: #060606;
+  letter-spacing: -1.02px;
+}
 
-.mem-area .plan-wrap .nm {font-size: 26px; font-weight: 800; line-height: 34px; font-style: normal; color: #060606; margin-top: 40px;}
-.mem-area .plan-wrap .txt {font-size: 16px; font-weight: 500; line-height: 16px; color: rgba(6,6,6,0.4); letter-spacing: -0.48px; margin-top: 8px;}
-.mem-area .plan-wrap .price {margin-top: 26px; font-size: 34px; font-weight: 800; line-height: 34px; color: #060606; letter-spacing: -1.02px; }
-.mem-area .plan-wrap .price span {font-size: 18px; font-weight: 600; color: #898989; line-height: 22px; }
-.mem-area .plan-wrap .contact {position: relative; width: 100%; margin-top: 40px; height: 50px; border: 1px solid #EDEDED; background: linear-gradient(0deg, #F8F8F8 0%, #EDEDED 100%); border-radius: 40px; font-size: 18px; color: #3f3f3f; font-weight: 700; line-height: 22px; font-style: normal; transition: all .3s ease-in-out; }
-.mem-area .plan-wrap .contact a {position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2; cursor: pointer;}
+.mem-area .plan-wrap .price span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #898989;
+  line-height: 22px;
+}
 
-.mem-area .plan-wrap .right {position: relative;}
-.mem-area .plan-wrap .right .txt {display: none;}
-.mem-area .plan-wrap .caution {position: relative; width: 100%; padding-top: 13px; text-align: left; left: 0; font-size: 13px; font-weight: 500; color: #858585; line-height: 14px; letter-spacing: -0.39px; display: flex; gap: 10px;}
-.mem-area .plan-wrap .caution span {color: #25c0d4;}
-.mem-area .plan-wrap .plan1 .caution {padding-left: 21px; gap: 5px;}
+.mem-area .plan-wrap .contact {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+  height: 50px;
+  border: 1px solid #EDEDED;
+  background: linear-gradient(0deg, #F8F8F8 0%, #EDEDED 100%);
+  border-radius: 40px;
+  font-size: 18px;
+  color: #3f3f3f;
+  font-weight: 700;
+  line-height: 22px;
+  font-style: normal;
+  transition: all .3s ease-in-out;
+}
 
+.mem-area .plan-wrap .contact a {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
 
-.mem-area .plan-wrap .list {position: relative; width: 100%; margin-top: 50px; display: grid; gap: 5px;}
-.mem-area .plan-wrap .list li {list-style: none; font-size: 15px; font-style: normal; font-weight: 600; line-height: 30px; letter-spacing: -0.45px; color: rgba(6,6,6,0.7); }
-.mem-area .plan-wrap .list li span {font-weight: 800;}
-.mem-area .plan-wrap .list .caution {display: none;}
+/* ===== 오른쪽 영역 + 스크롤 ===== */
+.mem-area .plan-wrap .right {
+  position: relative;
+  display: flex;          /* ✅ 리스트 스크롤 먹이기 */
+  flex-direction: column;
+  min-height: 0;          /* ✅ overflow 스크롤 필수 */
+}
 
-.mem-area .plan-wrap .plan:hover {bottom: 20px;}
-.mem-area .plan-wrap .plan:hover .contact { background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); color: #fff;}
+.mem-area .plan-wrap .right .txt {
+  display: none;
+}
 
+.mem-area .plan-wrap .list {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+  display: grid;
+  gap: 5px;
 
-.mem-area .plan-wrap#planWrap1 .plan:hover .contact {background: linear-gradient(90deg, rgba(150, 3, 255, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(150, 3, 255, 1)100%);}
-.mem-area .plan-wrap#planWrap2 .plan:hover .contact {background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%); background: linear-gradient(0deg, #F8F8F8 0%, #EDEDED 100%); color: #3f3f3f;}
+  flex: 1;                /* ✅ 남은 높이를 리스트가 차지 */
+  min-height: 0;          /* ✅ overflow 스크롤 필수 */
+  overflow-y: auto;       /* ✅ 넘치면 스크롤 */
+  padding-right: 8px;     /* 스크롤바 여백 */
+  -webkit-overflow-scrolling: touch;
+}
 
-.mem-area .more {position: relative; width: 156px; height: 30px; margin: 0 auto; left: 50%; transform: translate(-50%, 0); margin-top: 37px; border: none; background: none; opacity: .5;}
-.mem-area .more span {display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 16px; font-weight: 600; color: #060606; line-height: 16px; letter-spacing: -0.48px; transition: .5s; box-sizing: border-box;}
-.mem-area .more span svg {fill: #060606; transition: all .5s;} 
-.mem-area .more a {position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 2;}
-.mem-area .more:hover span {padding-left: 10px; color: rgba(0, 141, 148, 1);}
-.mem-area .more:hover svg {fill: rgba(0, 141, 148, 1);}
+.mem-area .plan-wrap .list li {
+  list-style: none;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30px;
+  letter-spacing: -0.45px;
+  color: rgba(6,6,6,0.7);
+}
+
+.mem-area .plan-wrap .list li span {
+  font-weight: 800;
+}
+
+.mem-area .plan-wrap .list .caution {
+  display: none;
+}
+
+/* ===== caution(기존 유지) ===== */
+.mem-area .plan-wrap .caution {
+  position: relative;
+  width: 100%;
+  padding-top: 13px;
+  text-align: left;
+  left: 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #858585;
+  line-height: 14px;
+  letter-spacing: -0.39px;
+  display: flex;
+  gap: 10px;
+}
+
+.mem-area .plan-wrap .caution span {
+  color: #25c0d4;
+}
+
+.mem-area .plan-wrap .plan1 .caution {
+  padding-left: 21px;
+  gap: 5px;
+}
+
+/* ===== Hover(모든 카드 동일) ===== */
+.mem-area .plan-wrap .plan:hover {
+  bottom: 20px;
+}
+
+.mem-area .plan-wrap .plan:hover .contact {
+  background: linear-gradient(90deg, rgba(3, 255, 211, 1) 0%, rgba(107, 198, 255, 1) 50%, rgba(3, 255, 211, 1) 100%);
+  color: #fff;
+}
+
+/* ===== (선택) 리스트 스크롤바 ===== */
+.mem-area .plan-wrap .list::-webkit-scrollbar {
+  width: 6px;
+}
+.mem-area .plan-wrap .list::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.18);
+  border-radius: 999px;
+}
+.mem-area .plan-wrap .list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* more 버튼(기존 유지) */
+.mem-area .more {
+  position: relative;
+  width: 156px;
+  height: 30px;
+  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 37px;
+  border: none;
+  background: none;
+  opacity: .5;
+}
+.mem-area .more span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #060606;
+  line-height: 16px;
+  letter-spacing: -0.48px;
+  transition: .5s;
+  box-sizing: border-box;
+}
+.mem-area .more span svg { fill: #060606; transition: all .5s; }
+.mem-area .more a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+.mem-area .more:hover span { padding-left: 10px; color: rgba(0, 141, 148, 1); }
+.mem-area .more:hover svg { fill: rgba(0, 141, 148, 1); }
 
 .promo {position: relative; width: 100%; max-width: 1280px; height: 60px; margin: 100px auto 0; display: flex; justify-content: center; align-items: center; gap: 40px; background: #26ece2; font-size: 20px; font-style: normal; font-weight: 700; color: #060606; line-height: 48px; letter-spacing: -0.6px; text-transform: uppercase; }
 
