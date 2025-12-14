@@ -3,10 +3,8 @@
 
 @media screen and (max-width: 1024px) {
  /* mem-area */
-  .mem-area .plan-wrap {padding: 0 25px; box-sizing: border-box; gap: 20px;}
-  .mem-area .plan-wrap .plan {width: 33%; padding: 25px; }
-  .mem-area .plan-wrap .plan.plan2 {width: 35%;}
-  .mem-area .plan-wrap .plan.plan2 .plan-inner {padding: 25px;}
+  .mem-area .plan-wrap {flex-wrap: wrap; padding: 0 25px; box-sizing: border-box; gap: 20px;}
+  .mem-area .plan-wrap .plan {width: 50%; padding: 25px; flex: 0 0 calc(50% - 10px);}
 
   .mem-area .plan-wrap .list li {font-size: 14px; letter-spacing: -0.32px;}
 }
@@ -213,12 +211,9 @@
   .mem-area .btn-wrap .btn1 img {width: 45px;}
   .mem-area .btn-wrap .btn2 {font-size: 14px; }
 
-  .mem-area .plan-wrap {flex-direction: column; gap: 20px; padding: 0 25px; box-sizing: border-box;}
+  .mem-area .plan-wrap {gap: 20px; padding: 0 25px; box-sizing: border-box; }
 
-  .mem-area .plan-wrap .plan {width: 100%; height: auto; min-height: unset; padding: 20px 10px; display: flex; justify-content: space-between; gap: 15px; border-radius: 20px;}
-  .mem-area .plan-wrap .plan.plan2 {width: 100%; height: auto; min-height: 270px;}
-  .mem-area .plan-wrap .plan.plan2 .plan-inner {height: auto; min-height: 247px; padding: 20px 10px; display: flex; justify-content: space-between; gap: 15px; border-radius: 20px;}
-  .mem-area .plan-wrap .plan.plan2 .most {font-size: 14px; min-height: 290px;}
+  .mem-area .plan-wrap .plan {width: 100%; height: auto; min-height: unset; padding: 20px 10px; display: flex; justify-content: space-between; gap: 15px; border-radius: 20px; flex: 0 0 100%;}
 
   .mem-area .plan-wrap .left {width: 40%;}
   .mem-area .plan-wrap .left .txt {display: none;}
@@ -238,8 +233,6 @@
   .mem-area .plan-wrap .list .caution {display: block;}
 
   .mem-area .plan-wrap#planWrap2 .plan {height: auto; min-height: unset;}
-  .mem-area .plan-wrap#planWrap2 .plan.plan2 {height: 245px;}
-  .mem-area .plan-wrap#planWrap2 .plan.plan2 .plan-inner {height: auto; min-height: unset;}
   
 
   .mem-area .more span {font-size: 14px; letter-spacing: -0.87px;}
