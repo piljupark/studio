@@ -288,11 +288,9 @@ a, button {font-family: "SUIT Variable";}
 .mem-area .btn-wrap .btn2 img {width: 65px; filter: invert();}
 .mem-area .btn-wrap .act-btn {position: absolute; width: 50%; height: 100%; left: 0; top: 0; background-color: #fff; border-radius: 40px; transition: all .3s ease-in-out;}
 
-<<<<<<< HEAD
 .mem-area .plan-wrap {position: relative; width: calc(100% - 40px); max-width: 1280px; height: auto; margin: 45px 20px 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: stretch; gap: 20px; transition: opacity .3s ease; }
-=======
 .mem-area .plan-wrap {position: relative; width: calc(100% - 40px); max-width: 1280px; height: auto; margin: 45px auto 0; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: stretch; gap: 20px; transition: opacity .3s ease; }
->>>>>>> d9774fc3fed319942f4b0932cdaf96814e3b4df3
+
 
 .mem-area .plan-wrap.hidden {opacity: 0; visibility: hidden; pointer-events: none;}
 .mem-area .plan-wrap.visible {opacity: 1; visibility: visible;}
